@@ -6,6 +6,9 @@ package com.toxic.prikupa.core.engine;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
+
 import playn.core.Image;
 import playn.core.Platform.Type;
 import playn.core.PlayN;
@@ -17,6 +20,8 @@ import playn.core.util.Callback;
  * 
  */
 public class Resources {
+
+  final static Logger log = LoggerFactory.getLogger(Resources.class.getSimpleName());
 
   static int callbacks_counter = 0;
 
@@ -117,8 +122,7 @@ public class Resources {
     @Override
     public final void onSuccess(Image result) {
       if (images.containsKey(this.path)) {
-        PlayN.log().warn(
-          "Something going wrong you have load twice already existing resource!" + "\n Path : " + this.path);
+        log.warn("Something going wrong you have load twice already existing resource!" + "\n Path : " + this.path);
       }
       else {
         images.put(this.path, new ImageResource(result));
@@ -128,12 +132,14 @@ public class Resources {
 
     @Override
     public final void onFailure(Throwable cause) {
-      PlayN.log().warn("Couldn't find element with path : " + this.path);
+      log.warn("Couldn't find element with path : " + this.path);
     }
 
   }
 
   static class TextCallback implements Callback<String> {
+    
+    final static Logger logText = LoggerFactory.getLogger(TextCallback.class.getSimpleName());
 
     private final String path;
     private final Callback<String> callback;
@@ -146,8 +152,7 @@ public class Resources {
     @Override
     public final void onSuccess(String result) {
       if (text.containsKey(this.path)) {
-        PlayN.log().warn(
-          "Something going wrong you have load twice already existing resource!" + "\n Path : " + this.path);
+        logText.warn("Something going wrong you have load twice already existing resource!" + "\n Path : " + this.path);
         text.get(this.path).increase();
       }
       else {
@@ -159,7 +164,7 @@ public class Resources {
 
     @Override
     public final void onFailure(Throwable cause) {
-      PlayN.log().warn("Couldn't find element with path : " + this.path);
+      logText.warn("Couldn't find element with path : " + this.path);
       this.callback.onFailure(cause);
     }
 

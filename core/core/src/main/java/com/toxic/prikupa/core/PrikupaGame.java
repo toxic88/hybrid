@@ -2,7 +2,6 @@ package com.toxic.prikupa.core;
 
 import playn.core.Font.Style;
 import playn.core.Game;
-import playn.core.Log.Level;
 import playn.core.PlayN;
 import playn.core.Pointer.Event;
 import playn.core.TextFormat.Alignment;
@@ -18,9 +17,14 @@ import com.toxic.prikupa.core.engine.MoveHandler;
 import com.toxic.prikupa.core.engine.Scene;
 import com.toxic.prikupa.core.engine.SelectHandler;
 import com.toxic.prikupa.core.engine.TextFormat;
+import com.toxic.prikupa.core.engine.util.LogLevel;
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
 import com.toxic.prikupa.core.engine.util.TimerUtility;
 
 public class PrikupaGame extends Game.Default {
+  
+  final static Logger log = LoggerFactory.getLogger(PrikupaGame.class.getSimpleName());
 
   
   //ANTS_TAG : should start refactored project, after providing Logger utility classes.
@@ -31,12 +35,13 @@ public class PrikupaGame extends Game.Default {
 
   public PrikupaGame() {
     super(UPDATE_RATE);
-    PlayN.log().setMinLevel(Level.DEBUG);
+    LoggerFactory.setLogLevel(LogLevel.WARN);
+    LoggerFactory.setPrintTime(true);
   }
 
   @Override
   public void init() {
-    PlayN.log().debug("Start game!");
+    log.debug("Start game!");
     final Scene main = new Scene();
     // ANTS_TAG : provide this feature to have possibility pause game,
     // during tabs for example switched PlayN.platform.setLifeCycle()
@@ -65,7 +70,7 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(Event e) {
-        PlayN.log().warn("clipped on select " + e.toString());
+        log.warn("clipped on select " + e.toString());
         BaseElement redQuad = new BaseElement();
         redQuad.setSize(WIDTH, HEIGHT);
         redQuad.setOrigin(WIDTH / 2f, HEIGHT / 2f);
@@ -84,7 +89,7 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onMove(Event e) {
-        PlayN.log().warn("main : on drug " + e.toString());
+        log.warn("main : on drug " + e.toString());
       }
 
     });
@@ -92,7 +97,7 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(Event e) {
-        PlayN.log().warn("main on select " + e.toString());
+        log.warn("main on select " + e.toString());
         final BaseElement elem = new BaseElement();
         elem.setSize(WIDTH, HEIGHT);
         elem.setPropogative(false);

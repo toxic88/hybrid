@@ -13,6 +13,9 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
+
 import playn.core.PlayN;
 import playn.core.Pointer;
 import playn.core.Pointer.Event;
@@ -23,6 +26,8 @@ import playn.core.Pointer.Event;
  * 
  */
 public class EventManager {
+  
+  final static Logger log = LoggerFactory.getLogger(EventManager.class.getSimpleName());
 
   // ANTS_TAG : should also organize additional event for handle policy of out
   // of bounce
@@ -86,7 +91,7 @@ public class EventManager {
         .remove(this.parentsListTwo.size() - 1);
 
       if (parentFirst != parentSecond) {
-        PlayN.log().error("Current elements are not of the same Scene!");
+        log.error("Current elements are not of the same Scene!");
         throw new IllegalStateException("Current elements are not of the same Scene!");
       }
 
@@ -124,7 +129,7 @@ public class EventManager {
       while (!temp.isRoot()) {
         temp = temp.getParent();
         if (temp == null) {
-          PlayN.log().error("Comparing object doesn't have real root.");
+          log.error("Comparing object doesn't have real root.");
           throw new IllegalStateException("Comparing object doesn't have real root.");
         }
         parentsList.add(temp);
