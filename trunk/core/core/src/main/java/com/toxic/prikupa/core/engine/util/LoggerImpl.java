@@ -27,21 +27,38 @@ class LoggerImpl implements Logger {
   LoggerImpl(String className) {
     this.className = className;
   }
-  
+
   /**
-  * <p>
-  *  Create formated string of current time.
-  * </p> 
-  * <br/>
-  * @return
-  */
- private static String getFormatedTime() {
-   Calendar.getInstance().setTimeInMillis((long) PlayN.currentTime());
-   return format.format(Calendar.getInstance().getTime());
- }
+   * <p>
+   * Create formated string of current time.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  private static String getFormatedTime() {
+    Calendar.getInstance().setTimeInMillis((long) PlayN.currentTime());
+    return format.format(Calendar.getInstance().getTime());
+  }
+
+  /**
+   * <p>
+   * Weather corresponding level equals or greater then global logging level.
+   * </p>
+   * <br/>
+   * 
+   * @param level
+   * @return
+   */
+  private static boolean checkConditions(LogLevel level) {
+    return (LoggerFactory.getGlobalLevel().getLevelCount() <= level.getLevelCount());
+  }
 
   @Override
   public void debug(String msg, Throwable cause) {
+    if (!(checkConditions(LogLevel.DEBUG))) {
+      return;
+    }
     String currentTime = "";
     if (LoggerFactory.shoudPrintTime()) {
       currentTime = " : time : " + getFormatedTime();
@@ -51,29 +68,41 @@ class LoggerImpl implements Logger {
 
   @Override
   public void info(String msg, Throwable cause) {
+    if (!(checkConditions(LogLevel.INFO))) {
+      return;
+    }
     String currentTime = "";
     if (LoggerFactory.shoudPrintTime()) {
       currentTime = getFormatedTime();
     }
-    PlayN.log().info("[" + LogLevel.INFO.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
+    PlayN.log().info(
+      "[" + LogLevel.INFO.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
   }
 
   @Override
   public void warn(String msg, Throwable cause) {
+    if (!(checkConditions(LogLevel.WARN))) {
+      return;
+    }
     String currentTime = "";
     if (LoggerFactory.shoudPrintTime()) {
       currentTime = getFormatedTime();
     }
-    PlayN.log().warn("[" + LogLevel.WARN.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
+    PlayN.log().warn(
+      "[" + LogLevel.WARN.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
   }
 
   @Override
   public void error(String msg, Throwable cause) {
+    if (!(checkConditions(LogLevel.ERROR))) {
+      return;
+    }
     String currentTime = "";
     if (LoggerFactory.shoudPrintTime()) {
       currentTime = getFormatedTime();
     }
-    PlayN.log().error("[" + LogLevel.ERROR.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
+    PlayN.log().error(
+      "[" + LogLevel.ERROR.toString() + " : " + this.className + " : time : " + currentTime + "] : " + msg, cause);
   }
 
   @Override
