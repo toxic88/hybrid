@@ -15,7 +15,7 @@ public class LoggerFactory {
 
   private static LoggerFactory instance;
 
-  LogLevel level = LogLevel.ERROR;
+  LogLevel level ;
 
   boolean shouldPrintTime = false;
 
@@ -26,7 +26,7 @@ public class LoggerFactory {
    * <br/>
    */
   private LoggerFactory() {
-    PlayN.log().setMinLevel(Level.valueOf(this.level.toString()));
+    PlayN.log().setMinLevel(Level.DEBUG);
   }
   
   /**
@@ -56,8 +56,6 @@ public class LoggerFactory {
     if (logLevel == null) {
       throw new IllegalArgumentException("You have specified empty log level!");
     }
-    // ANTS_TAG : check this implementation
-    PlayN.log().setMinLevel(Level.valueOf(logLevel.toString()));
     get().level = logLevel;
   }
 

@@ -22,21 +22,24 @@ public enum LogLevel {
    * </p>
    * <br/>
    */
-  DEBUG(0),
+  DEBUG("DEBUG",0),
+  
   /**
    * <p>
    * The info and error messages will be printed.
    * </p>
    * <br/>
    */
-  INFO(1),
+  INFO("INFO",1),
+  
   /**
    * <p>
    * The warnings, info and error messages will be printed.
    * </p>
    * <br/>
    */
-  WARN(2),
+  WARN("WARN",2),
+  
   /**
    * <p>
    * Most upper level, it is exist minimum value. The error messages will be
@@ -44,11 +47,13 @@ public enum LogLevel {
    * </p>
    * <br/>
    */
-  ERROR(3);
+  ERROR("ERROR",3);
 
   private final int level;
+  private final String name;
 
-  private LogLevel(int value) {
+  private LogLevel(String name,int value) {
+    this.name=name;
     this.level = value;
   }
 
@@ -62,6 +67,11 @@ public enum LogLevel {
    */
   public int getLevelCount() {
     return this.level;
+  }
+  
+  @Override
+  public String toString(){
+    return this.name;
   }
 
 }
