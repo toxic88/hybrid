@@ -24,6 +24,8 @@ import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 import tripleplay.util.Timer.Handle;
 
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
 import com.toxic.prikupa.core.engine.util.TimerUtility;
 
 /**
@@ -31,6 +33,8 @@ import com.toxic.prikupa.core.engine.util.TimerUtility;
  * 
  */
 public class BaseElement {
+  
+  final static Logger log = LoggerFactory.getLogger(BaseElement.class.getSimpleName());
 
   // ANTS_TAG : create smart caching of reusable cached images - why we should
   // it create again!
@@ -77,7 +81,7 @@ public class BaseElement {
 
     @Override
     public void onFailure(Throwable cause) {
-      PlayN.log().error("Cann't load image.\n Reason : \n" + BaseElement.this.bkground.getImage().toString());
+      log.error("Cann't load image.\n Reason : \n" + BaseElement.this.bkground.getImage().toString());
     }
 
   };
@@ -211,7 +215,7 @@ public class BaseElement {
               break;
 
             default:
-              PlayN.log().error("Something going wrong, you shouldn't see this message!");
+              log.error("Something going wrong, you shouldn't see this message!");
               throw new IllegalStateException("Something going wrong, you shouldn't see this message!");
           }
 
@@ -491,7 +495,7 @@ public class BaseElement {
     this.currentEvent = event;
     if (this.holdHandler != null) {
       if (this.holdCancel != null) {
-        PlayN.log().warn("Should stop previous holdHandler, before registrated next");
+        log.warn("Should stop previous holdHandler, before registrated next");
         this.holdCancel.cancel();
         this.holdCancel = null;
       }
@@ -523,20 +527,20 @@ public class BaseElement {
     }
     this.previousEvent = e;
     this.currentEvent = null;
-    PlayN.log().warn("The previous event has been interrapted! Recieve touch cancel event!" + e.toString());
+    log.warn("The previous event has been interrapted! Recieve touch cancel event!" + e.toString());
   }
 
   public void addChild(BaseElement child) {
     if (child == null) {
-      PlayN.log().error("You try add empty element. The operation will be skipped.");
+      log.error("You try add empty element. The operation will be skipped.");
       throw new IllegalArgumentException("You try add empty element. The operation will be skipped.");
     }
     if (this.children.contains(child)) {
-      PlayN.log().error("Element is already child of this element : " + this.toString());
+      log.error("Element is already child of this element : " + this.toString());
       throw new IllegalArgumentException("Element is already child of this element : " + this.toString());
     }
     if (child.layer.parent() != null) {
-      PlayN.log().warn("The element is alreay has parent!");
+      log.warn("The element is alreay has parent!");
       GroupLayer parentTemp = child.layer.parent();
       parentTemp.remove(child.layer);
     }
@@ -566,7 +570,7 @@ public class BaseElement {
       child.disableElements();
     }
     else {
-      PlayN.log().warn("The element has another parent!");
+      log.warn("The element has another parent!");
     }
   }
 
@@ -606,7 +610,7 @@ public class BaseElement {
 
   public void setScale(float x, float y) {
     if (x <= 0.05f || y <= 0.05f) {
-      PlayN.log().warn("You try scale negative values ! X : " + x + " , Y : " + y);
+      log.warn("You try scale negative values ! X : " + x + " , Y : " + y);
       throw new IllegalArgumentException("You try scale negative values ! X : " + x + " , Y : " + y);
     }
 
@@ -615,7 +619,7 @@ public class BaseElement {
 
   public void setScale(float scale) {
     if (scale <= 0.05f) {
-      PlayN.log().warn("You try scale negative value ! scale : " + scale);
+      log.warn("You try scale negative value ! scale : " + scale);
       throw new IllegalArgumentException("You try scale negative value ! scale : " + scale);
     }
     this.layer.setScale(scale, scale);
@@ -652,7 +656,7 @@ public class BaseElement {
 
   public void setSize(float x, float y) {
     if (x <= 0 || y <= 0) {
-      PlayN.log().warn("Couldn't setting up negative argument!");
+      log.warn("Couldn't setting up negative argument!");
       throw new IllegalArgumentException("Couldn't setting up negative argument!");
     }
     if (this.backGround != null) {
@@ -679,7 +683,7 @@ public class BaseElement {
       this.layer.setAlpha(alpha);
     }
     else {
-      PlayN.log().warn("Alpha parametr should be between [0.0:1.0]");
+      log.warn("Alpha parametr should be between [0.0:1.0]");
       throw new IllegalArgumentException("Alpha parametr should be between [0.0:1.0]");
     }
   }
@@ -766,7 +770,7 @@ public class BaseElement {
 
       @Override
       public void stop() {
-        PlayN.log().debug("Stopped previous SHAKE animation!");
+        log.debug("Stopped previous SHAKE animation!");
         this.cancelHandler.cancel();
         BaseElement.this.animStoppers.remove(AnimationType.SHAKE);
       }
@@ -825,7 +829,7 @@ public class BaseElement {
 
       @Override
       public void stop() {
-        PlayN.log().debug("Stopped previous TRANSITION animation!");
+        log.debug("Stopped previous TRANSITION animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
         }
@@ -839,22 +843,22 @@ public class BaseElement {
 
   public final CancelHandler animateAction(final CustomAnimation action, final Interpolator mode, final int duration) {
     if (mode == null) {
-      PlayN.log().error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
+      log.error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
       throw new IllegalArgumentException("You have tried animate element : " + this.toString() + "\n"
         + "with empty Interpolator.");
     }
     if (action == null) {
-      PlayN.log().error("You have tried animate empty CustomAction on element : " + this.toString());
+      log.error("You have tried animate empty CustomAction on element : " + this.toString());
       throw new IllegalArgumentException("You have tried animate empty CustomAction on element : " + this.toString());
     }
     if (duration <= 0) {
-      PlayN.log().error(
+      log.error(
         "You have set negative time to animation on element : " + this.toString() + "\n with value : " + duration);
       throw new IllegalStateException("You have set negative time to animation on element : " + this.toString()
         + "\n with value : " + duration);
     }
     if (this.animStoppers.get(AnimationType.CUSTOM) != null) {
-      PlayN.log().warn(
+      log.warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
       this.animStoppers.get(AnimationType.CUSTOM).stop();
@@ -885,7 +889,7 @@ public class BaseElement {
 
       @Override
       public void stop() {
-        PlayN.log().debug("Stopped previous CUSTOM animation!");
+        log.debug("Stopped previous CUSTOM animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
         }
@@ -932,7 +936,7 @@ public class BaseElement {
 
       @Override
       public void stop() {
-        PlayN.log().debug("Stopped previous ROTATE animation!");
+        log.debug("Stopped previous ROTATE animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
         }
@@ -946,12 +950,12 @@ public class BaseElement {
 
   public final CancelHandler animateOpacity(final float to, final Interpolator mode, final int duration) {
     if (mode == null) {
-      PlayN.log().error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
+      log.error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
       throw new IllegalArgumentException("You have tried animate element : " + this.toString() + "\n"
         + "with empty Interpolator.");
     }
     if (to < 0 || to > 1.0f) {
-      PlayN.log().warn(
+      log.warn(
         "You have pushed Illigal value for widget : " + this.toString() + "\n"
           + "It can change from [0:1.0] . You pushed : " + to);
       throw new IllegalArgumentException("You have pushed Illigal value for widget : " + this.toString() + "\n"
@@ -985,7 +989,7 @@ public class BaseElement {
 
       @Override
       public void stop() {
-        PlayN.log().debug("Stopped previous OPACITY animation!");
+        log.debug("Stopped previous OPACITY animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
         }
@@ -1076,7 +1080,7 @@ public class BaseElement {
 
   public void setClipped(boolean flag) {
     if (flag && !(this.layer instanceof GroupLayer.Clipped)) {
-      PlayN.log().info("Create clipped");
+      log.info("Create clipped");
       GroupLayer parentTemp = this.layer.parent();
       GroupLayer wrapper = PlayN.graphics().createGroupLayer(width(), height());
       wrapper.setTx(this.layer.tx());
@@ -1086,16 +1090,16 @@ public class BaseElement {
       this.layer.setTy(0f);
       this.layer.setOrigin(0, 0);
       if (parentTemp != null) {
-        PlayN.log().warn("parent doesn't equal null");
+        log.warn("parent doesn't equal null");
         parentTemp.remove(this.layer);
       }
       wrapper.add(this.layer);
       if (parentTemp != null) {
-        PlayN.log().warn("parent doesn't equal null");
+        log.warn("parent doesn't equal null");
         parentTemp.add(wrapper);
       }
       this.layer = wrapper;
-      PlayN.log().warn("created.");
+      log.warn("created.");
     }
     else {
       GroupLayer parentTemp = this.layer.parent();
@@ -1207,7 +1211,7 @@ public class BaseElement {
   float getRealDepth(BaseElement child) {
 
     if (child == null) {
-      PlayN.log().error("You've try get index of null element, in the object : " + toString());
+      log.error("You've try get index of null element, in the object : " + toString());
       return -1;
     }
 

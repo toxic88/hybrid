@@ -3,13 +3,16 @@
  */
 package com.toxic.prikupa.core.engine;
 
-import playn.core.PlayN;
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
 
 /**
  * @author Strelock
  * 
  */
 public final class Backgound {
+  
+  final static Logger log = LoggerFactory.getLogger(Backgound.class.getSimpleName());
 
   /**
    * <p>
@@ -128,7 +131,7 @@ public final class Backgound {
         break;
 
       default:
-        PlayN.log().error("You have passed parameter to the Background constructor of " + "unprovided value : " + type);
+        log.error("You have passed parameter to the Background constructor of " + "unprovided value : " + type);
         this.repeatX = copy.repeatX;
         this.repeatY = copy.repeatY;
         this.resize = copy.resize;

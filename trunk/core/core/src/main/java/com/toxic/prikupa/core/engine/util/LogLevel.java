@@ -25,18 +25,18 @@ public enum LogLevel {
   DEBUG(0),
   /**
    * <p>
-   * The warnings, info and error messages will be printed.
-   * </p>
-   * <br/>
-   */
-  WARN(1),
-  /**
-   * <p>
    * The info and error messages will be printed.
    * </p>
    * <br/>
    */
-  INFO(2),
+  INFO(1),
+  /**
+   * <p>
+   * The warnings, info and error messages will be printed.
+   * </p>
+   * <br/>
+   */
+  WARN(2),
   /**
    * <p>
    * Most upper level, it is exist minimum value. The error messages will be
