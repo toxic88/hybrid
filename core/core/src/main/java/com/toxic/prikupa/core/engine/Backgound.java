@@ -12,7 +12,7 @@ import com.toxic.prikupa.core.engine.util.LoggerFactory;
  */
 public final class Backgound {
   
-  final static Logger log = LoggerFactory.getLogger(Backgound.class.getSimpleName());
+  final static Logger log = LoggerFactory.getLogger(Backgound.class.getName());
 
   /**
    * <p>

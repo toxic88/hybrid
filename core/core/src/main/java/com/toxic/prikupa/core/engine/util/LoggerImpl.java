@@ -1,18 +1,14 @@
 package com.toxic.prikupa.core.engine.util;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
 import playn.core.PlayN;
+
+import com.toxic.prikupa.core.PrikupaGame;
 
 /**
  * @author Strelock
  * 
  */
 class LoggerImpl implements Logger {
-
-  private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
 
   private final String className;
 
@@ -37,8 +33,7 @@ class LoggerImpl implements Logger {
    * @return
    */
   private static String getFormatedTime() {
-    Calendar.getInstance().setTimeInMillis((long) PlayN.currentTime());
-    return format.format(Calendar.getInstance().getTime());
+    return PrikupaGame.getContext().getCurrentTime();
   }
 
   /**

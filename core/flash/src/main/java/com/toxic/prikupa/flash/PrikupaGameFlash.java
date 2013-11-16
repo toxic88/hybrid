@@ -20,6 +20,6 @@ public class PrikupaGameFlash extends FlashGame {
 	    FlashPlatform platform = FlashPlatform.register();
 	    
 	    platform.assets().setPathPrefix("prikupa/");
-	    PlayN.run(new PrikupaGame());
+	    PlayN.run(new PrikupaGame(new FlashContext()));
     }
 }

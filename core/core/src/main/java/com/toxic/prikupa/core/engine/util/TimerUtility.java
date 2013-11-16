@@ -16,6 +16,16 @@ public class TimerUtility extends Timer {
   public static TimerUtility getInstance() {
     return timer;
   }
+  
+  /**
+   *
+   * <p>
+   * Default hidden constructor, for singleton ensuring.
+   * </p> 
+   * <br/>
+   */
+  private TimerUtility(){
+  }
 
   @Override
   public Handle every(int millis, Runnable action) {

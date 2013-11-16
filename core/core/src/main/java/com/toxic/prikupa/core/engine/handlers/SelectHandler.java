@@ -1,7 +1,9 @@
 /**
  * 
  */
-package com.toxic.prikupa.core.engine;
+package com.toxic.prikupa.core.engine.handlers;
+
+import com.toxic.prikupa.core.engine.BaseElement;
 
 import playn.core.Pointer.Event;
 

@@ -43,6 +43,6 @@ public class PrikupaGameHtml extends HtmlGame {
         // config.experimentalFullscreen = true;
         HtmlPlatform platform = HtmlPlatform.register(config);
         platform.assets().setPathPrefix("prikupa/");
-        PlayN.run(new PrikupaGame());
+        PlayN.run(new PrikupaGame(new HtmlContext()));
     }
 }
