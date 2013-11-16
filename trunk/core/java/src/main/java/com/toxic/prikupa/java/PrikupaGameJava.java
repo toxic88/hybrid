@@ -14,6 +14,6 @@ public class PrikupaGameJava {
 //    config.emulateTouch= true;
     // use config to customize the Java platform, if needed
     JavaPlatform.register(config);
-    PlayN.run(new PrikupaGame());
+    PlayN.run(new PrikupaGame(new JavaContext()));
   }
 }

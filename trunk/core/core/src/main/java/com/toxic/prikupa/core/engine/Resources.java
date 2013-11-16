@@ -6,14 +6,14 @@ package com.toxic.prikupa.core.engine;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.toxic.prikupa.core.engine.util.Logger;
-import com.toxic.prikupa.core.engine.util.LoggerFactory;
-
 import playn.core.Image;
 import playn.core.Platform.Type;
 import playn.core.PlayN;
 import playn.core.Sound;
 import playn.core.util.Callback;
+
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
 
 /**
  * @author Strelock
@@ -21,7 +21,7 @@ import playn.core.util.Callback;
  */
 public class Resources {
 
-  final static Logger log = LoggerFactory.getLogger(Resources.class.getSimpleName());
+  final static Logger log = LoggerFactory.getLogger(Resources.class.getName());
 
   static int callbacks_counter = 0;
 
@@ -139,7 +139,7 @@ public class Resources {
 
   static class TextCallback implements Callback<String> {
     
-    final static Logger logText = LoggerFactory.getLogger(TextCallback.class.getSimpleName());
+    final static Logger logText = LoggerFactory.getLogger(TextCallback.class.getName());
 
     private final String path;
     private final Callback<String> callback;

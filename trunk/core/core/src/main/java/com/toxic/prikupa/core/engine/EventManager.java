@@ -13,12 +13,13 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
 
-import com.toxic.prikupa.core.engine.util.Logger;
-import com.toxic.prikupa.core.engine.util.LoggerFactory;
-
 import playn.core.PlayN;
 import playn.core.Pointer;
 import playn.core.Pointer.Event;
+
+import com.toxic.prikupa.core.engine.handlers.HoldHandler;
+import com.toxic.prikupa.core.engine.util.Logger;
+import com.toxic.prikupa.core.engine.util.LoggerFactory;
 
 /**
  * 
@@ -27,7 +28,7 @@ import playn.core.Pointer.Event;
  */
 public class EventManager {
   
-  final static Logger log = LoggerFactory.getLogger(EventManager.class.getSimpleName());
+  final static Logger log = LoggerFactory.getLogger(EventManager.class.getName());
 
   // ANTS_TAG : should also organize additional event for handle policy of out
   // of bounce

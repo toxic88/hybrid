@@ -10,13 +10,14 @@ import tripleplay.util.Interpolator;
 
 import com.toxic.prikupa.core.engine.Backgound;
 import com.toxic.prikupa.core.engine.BaseElement;
-import com.toxic.prikupa.core.engine.CancelHandler;
+import com.toxic.prikupa.core.engine.handlers.CancelHandler;
 import com.toxic.prikupa.core.engine.CustomAnimation;
-import com.toxic.prikupa.core.engine.HoldHandler;
-import com.toxic.prikupa.core.engine.MoveHandler;
 import com.toxic.prikupa.core.engine.Scene;
-import com.toxic.prikupa.core.engine.SelectHandler;
 import com.toxic.prikupa.core.engine.TextFormat;
+import com.toxic.prikupa.core.engine.handlers.HoldHandler;
+import com.toxic.prikupa.core.engine.handlers.MoveHandler;
+import com.toxic.prikupa.core.engine.handlers.SelectHandler;
+import com.toxic.prikupa.core.engine.util.Context;
 import com.toxic.prikupa.core.engine.util.LogLevel;
 import com.toxic.prikupa.core.engine.util.Logger;
 import com.toxic.prikupa.core.engine.util.LoggerFactory;
@@ -24,7 +25,9 @@ import com.toxic.prikupa.core.engine.util.TimerUtility;
 
 public class PrikupaGame extends Game.Default {
   
-  final static Logger log = LoggerFactory.getLogger(PrikupaGame.class.getSimpleName());
+  final static Logger log = LoggerFactory.getLogger(PrikupaGame.class.getName());
+  
+  private static Context CONTEXT;
 
   
   //ANTS_TAG : should start refactored project, after providing Logger utility classes.
@@ -33,8 +36,17 @@ public class PrikupaGame extends Game.Default {
   private static final int UPDATE_RATE = 30;
   private final Clock.Source clock = new Clock.Source(UPDATE_RATE);
 
-  public PrikupaGame() {
+  /**
+   *
+   * <p>
+   * Default application of game engine.
+   * </p> 
+   * <br/>
+   * @param con instance of {@link Context}
+   */
+  public PrikupaGame(Context con) {
     super(UPDATE_RATE);
+    CONTEXT = con;
     LoggerFactory.setLogLevel(LogLevel.WARN);
     LoggerFactory.setPrintTime(true);
   }
@@ -135,7 +147,7 @@ public class PrikupaGame extends Game.Default {
             PlayN.log().warn("on hold event : " + eventHold.toString());
             if (this.cancel != null) {
               PlayN.log().warn("Previous shake event doesn't properly ended" + "\nWill forced it.");
-              this.cancel.stop();
+              this.cancel.cancel();
             }
             this.cancel = elem.animateShake(3.0f, 3.0f, Interpolator.EASE_IN_BACK, 100);
           }
@@ -145,7 +157,7 @@ public class PrikupaGame extends Game.Default {
     });
     main.activate();
   }
-
+  
   @Override
   public void update(int delta) {
     this.clock.update(delta);
@@ -160,4 +172,17 @@ public class PrikupaGame extends Game.Default {
       Scene.update(this.clock);
     }
   }
+  
+  /**
+   *
+   * <p>
+   * Context of application.
+   * </p> 
+   * <br/>
+   * @return instance of {@link Context}
+   */
+  public static Context getContext(){
+    return CONTEXT;
+  }
+  
 }

@@ -9,6 +9,6 @@ public class PrikupaGameActivity extends GameActivity {
 
   @Override
   public void main(){
-    PlayN.run(new PrikupaGame());
+    PlayN.run(new PrikupaGame(new AndroidContext()));
   }
 }

@@ -24,6 +24,10 @@ import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 import tripleplay.util.Timer.Handle;
 
+import com.toxic.prikupa.core.engine.handlers.CancelHandler;
+import com.toxic.prikupa.core.engine.handlers.HoldHandler;
+import com.toxic.prikupa.core.engine.handlers.MoveHandler;
+import com.toxic.prikupa.core.engine.handlers.SelectHandler;
 import com.toxic.prikupa.core.engine.util.Logger;
 import com.toxic.prikupa.core.engine.util.LoggerFactory;
 import com.toxic.prikupa.core.engine.util.TimerUtility;
@@ -34,7 +38,7 @@ import com.toxic.prikupa.core.engine.util.TimerUtility;
  */
 public class BaseElement {
   
-  final static Logger log = LoggerFactory.getLogger(BaseElement.class.getSimpleName());
+  final static Logger log = LoggerFactory.getLogger(BaseElement.class.getName());
 
   // ANTS_TAG : create smart caching of reusable cached images - why we should
   // it create again!
@@ -751,7 +755,7 @@ public class BaseElement {
       PlayN.log().warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
-      this.animStoppers.get(AnimationType.SHAKE).stop();
+      this.animStoppers.get(AnimationType.SHAKE).cancel();
     }
 
     final CancelHandler cancel = new CancelHandler() {
@@ -763,13 +767,13 @@ public class BaseElement {
           @Override
           public void run() {
             if (BaseElement.this.animStoppers.get(AnimationType.SHAKE) != null) {
-              BaseElement.this.animStoppers.get(AnimationType.SHAKE).stop();
+              BaseElement.this.animStoppers.get(AnimationType.SHAKE).cancel();
             }
           }
         }).handle();
 
       @Override
-      public void stop() {
+      public void cancel() {
         log.debug("Stopped previous SHAKE animation!");
         this.cancelHandler.cancel();
         BaseElement.this.animStoppers.remove(AnimationType.SHAKE);
@@ -810,7 +814,7 @@ public class BaseElement {
       PlayN.log().warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
-      this.animStoppers.get(AnimationType.TRANSITION).stop();
+      this.animStoppers.get(AnimationType.TRANSITION).cancel();
     }
 
     final CancelHandler cancel = new CancelHandler() {
@@ -822,13 +826,13 @@ public class BaseElement {
           @Override
           public void run() {
             if (BaseElement.this.animStoppers.get(AnimationType.TRANSITION) != null) {
-              BaseElement.this.animStoppers.get(AnimationType.TRANSITION).stop();
+              BaseElement.this.animStoppers.get(AnimationType.TRANSITION).cancel();
             }
           }
         }).handle();
 
       @Override
-      public void stop() {
+      public void cancel() {
         log.debug("Stopped previous TRANSITION animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
@@ -861,7 +865,7 @@ public class BaseElement {
       log.warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
-      this.animStoppers.get(AnimationType.CUSTOM).stop();
+      this.animStoppers.get(AnimationType.CUSTOM).cancel();
     }
 
     final CancelHandler cancel = new CancelHandler() {
@@ -882,13 +886,13 @@ public class BaseElement {
         @Override
         public void run() {
           if (BaseElement.this.animStoppers.get(AnimationType.CUSTOM) != null) {
-            BaseElement.this.animStoppers.get(AnimationType.CUSTOM).stop();
+            BaseElement.this.animStoppers.get(AnimationType.CUSTOM).cancel();
           }
         }
       }).handle();
 
       @Override
-      public void stop() {
+      public void cancel() {
         log.debug("Stopped previous CUSTOM animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
@@ -917,7 +921,7 @@ public class BaseElement {
       PlayN.log().warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
-      this.animStoppers.get(AnimationType.ROTATE).stop();
+      this.animStoppers.get(AnimationType.ROTATE).cancel();
     }
 
     final CancelHandler cancel = new CancelHandler() {
@@ -929,13 +933,13 @@ public class BaseElement {
           @Override
           public void run() {
             if (BaseElement.this.animStoppers.get(AnimationType.ROTATE) != null) {
-              BaseElement.this.animStoppers.get(AnimationType.ROTATE).stop();
+              BaseElement.this.animStoppers.get(AnimationType.ROTATE).cancel();
             }
           }
         }).handle();
 
       @Override
-      public void stop() {
+      public void cancel() {
         log.debug("Stopped previous ROTATE animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
@@ -971,7 +975,7 @@ public class BaseElement {
       PlayN.log().warn(
         "Previous shake animation with element : " + this.toString()
           + "Doesn't yet finished.\nWill be forced to stop now.");
-      this.animStoppers.get(AnimationType.OPACITY).stop();
+      this.animStoppers.get(AnimationType.OPACITY).cancel();
     }
 
     final CancelHandler cancel = new CancelHandler() {
@@ -982,13 +986,13 @@ public class BaseElement {
           @Override
           public void run() {
             if (BaseElement.this.animStoppers.get(AnimationType.OPACITY) != null) {
-              BaseElement.this.animStoppers.get(AnimationType.OPACITY).stop();
+              BaseElement.this.animStoppers.get(AnimationType.OPACITY).cancel();
             }
           }
         }).handle();
 
       @Override
-      public void stop() {
+      public void cancel() {
         log.debug("Stopped previous OPACITY animation!");
         if (this.cancelHandler != null) {
           this.cancelHandler.cancel();
@@ -1010,7 +1014,7 @@ public class BaseElement {
   public void stopAnimation() {
     for (AnimationType type : this.animStoppers.keySet()) {
       if (this.animStoppers.get(type) != null) {
-        this.animStoppers.get(type).stop();
+        this.animStoppers.get(type).cancel();
         this.animStoppers.remove(type);
       }
     }
@@ -1018,35 +1022,35 @@ public class BaseElement {
 
   public void stopShakeAnimation() {
     if (this.animStoppers.get(AnimationType.SHAKE) != null) {
-      this.animStoppers.get(AnimationType.SHAKE).stop();
+      this.animStoppers.get(AnimationType.SHAKE).cancel();
       this.animStoppers.remove(AnimationType.SHAKE);
     }
   }
 
   public void stopTransitionAnimation() {
     if (this.animStoppers.get(AnimationType.TRANSITION) != null) {
-      this.animStoppers.get(AnimationType.TRANSITION).stop();
+      this.animStoppers.get(AnimationType.TRANSITION).cancel();
       this.animStoppers.remove(AnimationType.TRANSITION);
     }
   }
 
   public void stopActionAnimation() {
     if (this.animStoppers.get(AnimationType.CUSTOM) != null) {
-      this.animStoppers.get(AnimationType.CUSTOM).stop();
+      this.animStoppers.get(AnimationType.CUSTOM).cancel();
       this.animStoppers.remove(AnimationType.CUSTOM);
     }
   }
 
   public void stopRotateAnimation() {
     if (this.animStoppers.get(AnimationType.ROTATE) != null) {
-      this.animStoppers.get(AnimationType.ROTATE).stop();
+      this.animStoppers.get(AnimationType.ROTATE).cancel();
       this.animStoppers.remove(AnimationType.ROTATE);
     }
   }
 
   public void stopOpacityAnimation() {
     if (this.animStoppers.get(AnimationType.OPACITY) != null) {
-      this.animStoppers.get(AnimationType.OPACITY).stop();
+      this.animStoppers.get(AnimationType.OPACITY).cancel();
       this.animStoppers.remove(AnimationType.OPACITY);
     }
   }
