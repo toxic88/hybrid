@@ -4,8 +4,7 @@
 package com.toxic.prikupa.core.engine.handlers;
 
 import com.toxic.prikupa.core.engine.BaseElement;
-
-import playn.core.Pointer.Event;
+import com.toxic.prikupa.core.engine.events.ActionEvent;
 
 /**
  * <p>
@@ -24,6 +23,6 @@ public interface SelectHandler {
 	 * Will be executed when selected element.
 	 * </p>
 	 */
-	public abstract void onSelect(Event e);
+	public abstract void onSelect(ActionEvent e);
 
 }

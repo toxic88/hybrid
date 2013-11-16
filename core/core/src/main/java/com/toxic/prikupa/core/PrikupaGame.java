@@ -3,17 +3,17 @@ package com.toxic.prikupa.core;
 import playn.core.Font.Style;
 import playn.core.Game;
 import playn.core.PlayN;
-import playn.core.Pointer.Event;
 import playn.core.TextFormat.Alignment;
 import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
 import com.toxic.prikupa.core.engine.Backgound;
 import com.toxic.prikupa.core.engine.BaseElement;
-import com.toxic.prikupa.core.engine.handlers.CancelHandler;
 import com.toxic.prikupa.core.engine.CustomAnimation;
 import com.toxic.prikupa.core.engine.Scene;
 import com.toxic.prikupa.core.engine.TextFormat;
+import com.toxic.prikupa.core.engine.events.ActionEvent;
+import com.toxic.prikupa.core.engine.handlers.CancelHandler;
 import com.toxic.prikupa.core.engine.handlers.HoldHandler;
 import com.toxic.prikupa.core.engine.handlers.MoveHandler;
 import com.toxic.prikupa.core.engine.handlers.SelectHandler;
@@ -28,9 +28,7 @@ public class PrikupaGame extends Game.Default {
   final static Logger log = LoggerFactory.getLogger(PrikupaGame.class.getName());
   
   private static Context CONTEXT;
-
   
-  //ANTS_TAG : should start refactored project, after providing Logger utility classes.
   private static final float WIDTH = 50;
   private static final float HEIGHT = 50;
   private static final int UPDATE_RATE = 30;
@@ -81,17 +79,17 @@ public class PrikupaGame extends Game.Default {
       private static final int MAX_RANGE = 700;
 
       @Override
-      public void onSelect(Event e) {
+      public void onSelect(ActionEvent e) {
         log.warn("clipped on select " + e.toString());
         BaseElement redQuad = new BaseElement();
         redQuad.setSize(WIDTH, HEIGHT);
         redQuad.setOrigin(WIDTH / 2f, HEIGHT / 2f);
-        redQuad.setPosition(e.localX() - main.width() / 2f + 200, e.localY() - main.height() / 2f + 200);
+        redQuad.setPosition(e.getX() - main.width() / 2f + 200, e.getY() - main.height() / 2f + 200);
         redQuad.setRotation((float) (Math.PI * 2f * PlayN.random()));
         redQuad.setBackGround(new Backgound(0xFFFF0000));
         clipped.addChild(redQuad);
-        redQuad.animateTransition(e.localX() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2),
-          e.localY() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2), Interpolator.EASE_INOUT, 1500);
+        redQuad.animateTransition(e.getX() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2),
+          e.getY() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2), Interpolator.EASE_INOUT, 1500);
         redQuad.animateRotate((float) (Math.PI * 2.f), Interpolator.EASE_OUT_BACK, 1500);
         redQuad.animateOpacity(0.2f, Interpolator.LINEAR, 700);
       }
@@ -100,7 +98,7 @@ public class PrikupaGame extends Game.Default {
     main.addMoveHandler(new MoveHandler() {
 
       @Override
-      public void onMove(Event e) {
+      public void onMove(ActionEvent e) {
         log.warn("main : on drug " + e.toString());
       }
 
@@ -108,7 +106,7 @@ public class PrikupaGame extends Game.Default {
     main.addSelectHandler(new SelectHandler() {
 
       @Override
-      public void onSelect(Event e) {
+      public void onSelect(ActionEvent e) {
         log.warn("main on select " + e.toString());
         final BaseElement elem = new BaseElement();
         elem.setSize(WIDTH, HEIGHT);
@@ -118,7 +116,7 @@ public class PrikupaGame extends Game.Default {
         // elem.setClipped(true);
         elem.setOrigin(0f, 0f);
         elem.setBackGround(new Backgound(0xFF00FFFF));
-        elem.setPosition(e.localX(), e.localY());
+        elem.setPosition(e.getX(), e.getY());
         main.addChild(elem);
         elem.animateAction(new CustomAnimation() {
 
@@ -143,7 +141,7 @@ public class PrikupaGame extends Game.Default {
           private CancelHandler cancel;
 
           @Override
-          public void onHold(Event eventHold) {
+          public void onHold(ActionEvent eventHold) {
             PlayN.log().warn("on hold event : " + eventHold.toString());
             if (this.cancel != null) {
               PlayN.log().warn("Previous shake event doesn't properly ended" + "\nWill forced it.");

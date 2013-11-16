@@ -31,6 +31,6 @@ public interface Context {
    * @param millsec amount of milliseconds till 1970s
    * @return
    */
-  public abstract String convertMillseconds(float millsec);
+  public abstract String convertMillseconds(double millsec);
 
 }

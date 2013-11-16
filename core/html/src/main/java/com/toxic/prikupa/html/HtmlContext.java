@@ -14,7 +14,7 @@ public class HtmlContext implements Context {
   }
 
   @Override
-  public String convertMillseconds(float millsec) {
+  public String convertMillseconds(double millsec) {
     return DateTimeFormat.getFormat("HH:mm:ss:SSS").format(new Date((long) millsec));
   }
 

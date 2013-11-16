@@ -4,8 +4,7 @@
 package com.toxic.prikupa.core.engine.handlers;
 
 import com.toxic.prikupa.core.engine.EventManager;
-
-import playn.core.Pointer.Event;
+import com.toxic.prikupa.core.engine.events.ActionEvent;
 
 /**
  * @author Strelock
@@ -24,6 +23,6 @@ public interface HoldHandler {
      * 
      * @param e
      */
-    public abstract void onHold(Event e);
+    public abstract void onHold(ActionEvent e);
 
 }

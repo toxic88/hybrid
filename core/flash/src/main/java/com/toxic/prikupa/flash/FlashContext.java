@@ -14,7 +14,7 @@ public class FlashContext implements Context {
   }
 
   @Override
-  public String convertMillseconds(float millsec) {
+  public String convertMillseconds(double millsec) {
     return "";
   }
 
