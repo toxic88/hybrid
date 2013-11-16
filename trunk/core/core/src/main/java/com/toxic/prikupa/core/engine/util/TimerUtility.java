@@ -3,60 +3,112 @@
  */
 package com.toxic.prikupa.core.engine.util;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import tripleplay.util.Timer;
 
+import com.toxic.prikupa.core.engine.handlers.CancelHandler;
+
 /**
+ * <p>
+ * Implementation of wrapper {@link Timer}.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
-public class TimerUtility extends Timer {
+public class TimerUtility implements AppTimer {
 
-  private static final TimerUtility timer = new TimerUtility();
+  private static final Logger log = LoggerFactory.getLogger(TimerUtility.class.getName());
 
-  public static TimerUtility getInstance() {
-    return timer;
+  private static final TimerUtility instance = new TimerUtility();
+
+  public static AppTimer getInstance() {
+    return instance;
   }
-  
+
+  private final Timer timer = new Timer();
+
+  final Map<Runnable, CancelHandler> cancels = new HashMap<Runnable, CancelHandler>();
+
   /**
-   *
    * <p>
    * Default hidden constructor, for singleton ensuring.
-   * </p> 
+   * </p>
    * <br/>
    */
-  private TimerUtility(){
+  private TimerUtility() {
   }
 
   @Override
-  public Handle every(int millis, Runnable action) {
-    return super.every(millis, action);
+  public CancelHandler every(int millis, Runnable action) {
+    CancelHandler handler = new CancelAction(this.timer.every(millis, new ActionWrapper(action)));
+    this.cancels.put(action, handler);
+    return handler;
   }
 
   @Override
-  public Handle after(int millis, Runnable action) {
-    return super.after(millis, action);
+  public CancelHandler after(int millis, Runnable action) {
+    CancelHandler handler = new CancelAction(this.timer.after(millis, new ActionWrapper(action)));
+    this.cancels.put(action, handler);
+    return handler;
   }
 
   @Override
-  public Handle atThenEvery(int initialMillis, int repeatMillis, Runnable action) {
-    return super.atThenEvery(initialMillis, repeatMillis, action);
+  public CancelHandler atThenEvery(int initialMillis, int repeatMillis, Runnable action) {
+    CancelHandler handler = new CancelAction(this.timer.atThenEvery(initialMillis, repeatMillis, new ActionWrapper(
+      action)));
+    this.cancels.put(action, handler);
+    return handler;
+  }
+
+  void removeCancelHandler(CancelHandler handle) {
+    this.cancels.remove(handle);
   }
 
   @Override
   public void update() {
-    super.update();
-    // int size = sizeOfActiveTask(timer._root);
-    // if(size!=0){
-    // PlayN.log().debug("Active tasks : is " + size);
-    // }
+    this.timer.update();
+    int size = this.cancels.size();
+    if (size != 0) {
+      log.debug("Active tasks : is " + size);
+    }
   }
 
-  // private static int sizeOfActiveTask(Action action_root) {
-  // int counter=1;
-  // while(action_root.next!=null){
-  // counter++;
-  // }
-  // return counter;
-  // }
+  /**
+   * <p>
+   * Removed handlers from collection, after proper execution.
+   * </p>
+   * <br/>
+   * 
+   * @author Strelock
+   * 
+   */
+  private class ActionWrapper implements Runnable {
+
+    private final Runnable action;
+
+    /**
+     * <p>
+     * Simple wrapper of actions for proper disposing {@link CancelHandler}s
+     * binded with executed actions.
+     * </p>
+     * <br/>
+     * 
+     * @param act
+     */
+    ActionWrapper(Runnable act) {
+      this.action = act;
+    }
+
+    @Override
+    public void run() {
+      this.action.run();
+      TimerUtility.this.cancels.remove(this.action);
+    }
+
+  }
 
 }

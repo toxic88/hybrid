@@ -15,15 +15,14 @@ import playn.core.Image;
 import playn.core.ImageLayer;
 import playn.core.Layer;
 import playn.core.PlayN;
-import playn.core.Pointer.Event;
 import playn.core.TextLayout;
 import playn.core.util.Callback;
 import pythagoras.f.Point;
 import tripleplay.anim.Animation;
 import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
-import tripleplay.util.Timer.Handle;
 
+import com.toxic.prikupa.core.engine.events.ActionEvent;
 import com.toxic.prikupa.core.engine.handlers.CancelHandler;
 import com.toxic.prikupa.core.engine.handlers.HoldHandler;
 import com.toxic.prikupa.core.engine.handlers.MoveHandler;
@@ -37,7 +36,7 @@ import com.toxic.prikupa.core.engine.util.TimerUtility;
  * 
  */
 public class BaseElement {
-  
+
   final static Logger log = LoggerFactory.getLogger(BaseElement.class.getName());
 
   // ANTS_TAG : create smart caching of reusable cached images - why we should
@@ -47,9 +46,11 @@ public class BaseElement {
   // ANTS_TAG : maybe bound it with Resource manager and CachedImage object.
   // ANTS_TAG : enhanced animation model : add possibility launch animation with
   // Delay or even for signal
-  // ANTS_TAG : instance of DRAWABLE_CANVAS : should be wrapped as separate object
+  // ANTS_TAG : instance of DRAWABLE_CANVAS : should be wrapped as separate
+  // object
   // with additional functionally
-  // ANTS_TAG : create smart fast hashCode for snapshot's produced objects, shouldn't 
+  // ANTS_TAG : create smart fast hashCode for snapshot's produced objects,
+  // shouldn't
   // create object, that keeping in memory, and has been already create...
   // ANTS_TAG : provide smart auto-caching engine
   // ANTS_TAG : investigate Workers performance benefits.
@@ -104,16 +105,16 @@ public class BaseElement {
 
   private MoveHandler moveHandler;
 
-  Event previousEvent;
-  Event currentEvent;
+  ActionEvent previousEvent;
+  ActionEvent currentEvent;
 
   HoldHandler holdHandler;
 
-  Handle holdCancel;
+  CancelHandler holdCancel;
 
   Map<AnimationType, CancelHandler> animStoppers = new HashMap<AnimationType, CancelHandler>();
 
-  Event initialEvent;
+  ActionEvent initialEvent;
 
   public BaseElement() {
     this.layer = PlayN.graphics().createGroupLayer();
@@ -129,8 +130,6 @@ public class BaseElement {
     }
   }
 
-  // ANTS_TAG : enhance this method -> change creating new CanvasObject to
-  // resize it parameters.
   private void initTempSizeCanvas() {
     if (this.canvasInit == true) {
       return;
@@ -437,14 +436,14 @@ public class BaseElement {
    * 
    * @param e
    */
-  void dispatchSelectEvent(final Event e) {
-    if(this.initialEvent==null){
+  void dispatchSelectEvent(final ActionEvent e) {
+    if (this.initialEvent == null) {
       return;
     }
     if (this.moveHandler == null
       || this.previousEvent == null
-      || (new Point(this.initialEvent.x(), this.initialEvent.y())
-        .distance(this.currentEvent.x(), this.currentEvent.y()) < EventManager.RADIUS_HIT)) {
+      || (new Point(this.initialEvent.getX(), this.initialEvent.getY()).distance(this.currentEvent.getX(),
+        this.currentEvent.getY()) < EventManager.RADIUS_HIT)) {
       this.previousEvent = this.currentEvent;
       this.currentEvent = e;
       if (this.selectHandler != null) {
@@ -457,7 +456,7 @@ public class BaseElement {
     }
     this.previousEvent = this.currentEvent;
     this.currentEvent = null;
-    this.initialEvent=null;
+    this.initialEvent = null;
   }
 
   /**
@@ -468,15 +467,15 @@ public class BaseElement {
    * 
    * @param e
    */
-  void dispatchMoveEvent(final Event e) {
-    if(this.initialEvent==null){
+  void dispatchMoveEvent(final ActionEvent e) {
+    if (this.initialEvent == null) {
       return;
     }
     // ANTS_TAG : this bug of uncontrolled out of boundary events
     this.previousEvent = this.currentEvent;
     this.currentEvent = e;
     if (this.moveHandler != null
-      && new Point(BaseElement.this.previousEvent.x(), BaseElement.this.previousEvent.y()).distance(e.x(), e.y()) > EventManager.RADIUS_HIT) {
+      && new Point(BaseElement.this.previousEvent.getX(), BaseElement.this.previousEvent.getY()).distance(e.getX(), e.getY()) > EventManager.RADIUS_HIT) {
       if (this.holdCancel != null) {
         this.holdCancel.cancel();
         this.holdCancel = null;
@@ -493,7 +492,7 @@ public class BaseElement {
    * 
    * @param event
    */
-  void dispatchEventStart(final Event event) {
+  void dispatchEventStart(final ActionEvent event) {
     this.initialEvent = event;
     this.previousEvent = this.currentEvent;
     this.currentEvent = event;
@@ -509,8 +508,8 @@ public class BaseElement {
         @Override
         public void run() {
           if (BaseElement.this.currentEvent != null
-            && (new Point(BaseElement.this.currentEvent.x(), BaseElement.this.currentEvent.y()).distance(event.x(),
-              event.y()) < EventManager.RADIUS_HIT)) {
+            && (new Point(BaseElement.this.currentEvent.getX(), BaseElement.this.currentEvent.getY()).distance(event.getX(),
+              event.getY()) < EventManager.RADIUS_HIT)) {
             BaseElement.this.holdHandler.onHold(BaseElement.this.currentEvent);
           }
           else {
@@ -522,7 +521,7 @@ public class BaseElement {
     }
   }
 
-  void dispatchCancelEvent(Event e) {
+  void dispatchCancelEvent(ActionEvent e) {
     this.previousEvent = this.currentEvent;
     this.currentEvent = e;
     if (this.holdCancel != null) {
@@ -676,6 +675,9 @@ public class BaseElement {
 
   public void setDepth(float depth) {
     this.layer.setDepth(depth);
+    BaseElement parentTemp = this.parent;
+    parentTemp.removeChild(this);
+    parentTemp.addChild(this);
   }
 
   public float depth() {
@@ -711,10 +713,10 @@ public class BaseElement {
       + width() + ":" + height() + "]";
   }
 
-  boolean hitTest(Event e) {
+  boolean hitTest(ActionEvent e) {
     // PlayN.log().debug("\nEvent :\n" + e.toString() + "\nOf object : " +
     // this.toString());
-    Point localAxis = Layer.Util.screenToLayer(this.layer, e.x(), e.y());
+    Point localAxis = Layer.Util.screenToLayer(this.layer, e.getX(), e.getY());
     // PlayN.log().debug("Converted coord : [" + localAxis.x + ":" +
     // localAxis.y + "].\n");
     if (localAxis.x() > 0 && localAxis.y() > 0 && width() > localAxis.x() && height() > localAxis.y() && isActive()) {
@@ -729,6 +731,32 @@ public class BaseElement {
   public void setDebug(boolean flag) {
     this.debug = flag;
     renderer();
+  }
+
+  /**
+   * <p>
+   * Absolute index of ordering {@link BaseElement}s according to depth.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public int getPriority() {
+    int priority = 0;
+    BaseElement parentTemp = getParent();
+    if (parentTemp == null) {
+      return 0;
+    }
+    BaseElement child = this;
+    while (!parentTemp.isRoot()) {
+      priority += parentTemp.getRealDepth(child);
+      child = parentTemp;
+      parentTemp = child.getParent();
+      if (parentTemp == null) {
+        return 0;
+      }
+    }
+    return priority;
   }
 
   public final CancelHandler animateShake(final float amplitudeX, final float amplitudeY, final Interpolator mode,
@@ -856,15 +884,14 @@ public class BaseElement {
       throw new IllegalArgumentException("You have tried animate empty CustomAction on element : " + this.toString());
     }
     if (duration <= 0) {
-      log.error(
-        "You have set negative time to animation on element : " + this.toString() + "\n with value : " + duration);
+      log.error("You have set negative time to animation on element : " + this.toString() + "\n with value : "
+        + duration);
       throw new IllegalStateException("You have set negative time to animation on element : " + this.toString()
         + "\n with value : " + duration);
     }
     if (this.animStoppers.get(AnimationType.CUSTOM) != null) {
-      log.warn(
-        "Previous shake animation with element : " + this.toString()
-          + "Doesn't yet finished.\nWill be forced to stop now.");
+      log.warn("Previous shake animation with element : " + this.toString()
+        + "Doesn't yet finished.\nWill be forced to stop now.");
       this.animStoppers.get(AnimationType.CUSTOM).cancel();
     }
 
@@ -959,9 +986,8 @@ public class BaseElement {
         + "with empty Interpolator.");
     }
     if (to < 0 || to > 1.0f) {
-      log.warn(
-        "You have pushed Illigal value for widget : " + this.toString() + "\n"
-          + "It can change from [0:1.0] . You pushed : " + to);
+      log.warn("You have pushed Illigal value for widget : " + this.toString() + "\n"
+        + "It can change from [0:1.0] . You pushed : " + to);
       throw new IllegalArgumentException("You have pushed Illigal value for widget : " + this.toString() + "\n"
         + "It can change from [0:1.0] . You pushed : " + to);
     }

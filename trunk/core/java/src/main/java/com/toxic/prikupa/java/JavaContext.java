@@ -25,7 +25,7 @@ public class JavaContext implements Context {
   }
 
   @Override
-  public String convertMillseconds(float millsec) {
+  public String convertMillseconds(double millsec) {
     return format.format(new Date((long) millsec));
   }
 

@@ -3,7 +3,7 @@
  */
 package com.toxic.prikupa.core.engine.handlers;
 
-import playn.core.Pointer.Event;
+import com.toxic.prikupa.core.engine.events.ActionEvent;
 
 /**
  * @author Strelock
@@ -16,6 +16,6 @@ public interface MoveHandler {
    * Will be executed when you pressed on element.
    * </p>
    */
-  public abstract void onMove(Event e);
+  public abstract void onMove(ActionEvent e);
 
 }
