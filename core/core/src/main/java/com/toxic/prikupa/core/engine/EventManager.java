@@ -63,11 +63,13 @@ public class EventManager {
   }
 
   private final Set<BaseElement> registared = new HashSet<BaseElement>();
+  
+  private Set<CachedPriority> used;
 
-  final Queue<BaseElement> targets = new PriorityQueue<BaseElement>(12, new Comparator<BaseElement>() {
+  final Queue<CachedPriority> targets = new PriorityQueue<CachedPriority>(12, new Comparator<CachedPriority>() {
 
     @Override
-    public int compare(BaseElement o1, BaseElement o2) {
+    public int compare(CachedPriority o1, CachedPriority o2) {
 
       if (o1 == null) {
         return 1;
@@ -107,6 +109,7 @@ public class EventManager {
     @Override
     public void onPointerStart(Event event) {
       event.flags().setPreventDefault(true);
+      EventManager.this.targets.clear();
       EventManager.this.dispatchStartEvent(new ActionEventImpl(event));
     }
 
@@ -114,6 +117,7 @@ public class EventManager {
     public void onPointerEnd(Event event) {
       event.flags().setPreventDefault(true);
       EventManager.this.dispatchSelect(new ActionEventImpl(event));
+      EventManager.this.targets.clear();
     }
 
     @Override
@@ -134,22 +138,25 @@ public class EventManager {
   void dispatchStartEvent(ActionEvent e) {
     for (BaseElement elem : this.registared) {
       if (elem.hitTest(e)) {
-        this.targets.add(elem);
+        this.targets.add(new CachedPriority(elem));
       }
     }
-    for (BaseElement elem : this.targets) {
-      elem.dispatchEventStart(e);
-      if (!elem.isPropogative()) {
+    this.used = new HashSet<CachedPriority>();
+    for (CachedPriority elem : this.targets) {
+      elem.getElement().dispatchEventStart(e);
+      this.used.add(elem);
+      if (!elem.getElement().isPropogative()) {
         break;
       }
     }
+    this.targets.retainAll(this.used);
   }
 
   void dispatchCancel(ActionEvent e) {
-    for (BaseElement elem : this.targets) {
-      if (elem.hitTest(e)) {
-        elem.dispatchCancelEvent(e);
-        if (!elem.isPropogative()) {
+    for (CachedPriority elem : this.targets) {
+      if (elem.getElement().hitTest(e)) {
+    	  elem.getElement().dispatchCancelEvent(e);
+        if (!elem.getElement().isPropogative()) {
           break;
         }
       }
@@ -158,10 +165,10 @@ public class EventManager {
   }
 
   void dispatchSelect(ActionEvent e) {
-    for (BaseElement elem : this.targets) {
-      if (elem.hitTest(e)) {
-        elem.dispatchSelectEvent(e);
-        if (!elem.isPropogative()) {
+    for (CachedPriority elem : this.targets) {
+      if (elem.getElement().hitTest(e)) {
+    	  elem.getElement().dispatchSelectEvent(e);
+        if (!elem.getElement().isPropogative()) {
           break;
         }
       }
@@ -171,10 +178,10 @@ public class EventManager {
 
   void dispatchMove(ActionEvent e) {
     // ANTS_TAG : should think up about out of boundary case!
-    for (BaseElement elem : this.targets) {
-      if (elem.hitTest(e)) {
-        elem.dispatchMoveEvent(e);
-        if (!elem.isPropogative()) {
+    for (CachedPriority elem : this.targets) {
+      if (elem.getElement().hitTest(e)) {
+        elem.getElement().dispatchMoveEvent(e);
+        if (!elem.getElement().isPropogative()) {
           break;
         }
       }
@@ -187,6 +194,40 @@ public class EventManager {
 
   public void unregistareTarget(BaseElement elem) {
     this.registared.remove(elem);
+  }
+  
+  private static class CachedPriority {
+	  
+	  private final BaseElement element;
+	  private final int priority;
+	  
+	/**
+	 * <p>
+	 * Cached constructor.
+	 * </p>
+	 * <br/>
+	 * @param elem
+	 */
+	CachedPriority(BaseElement elem) {
+		this.element = elem;
+		this.priority = elem.getPriority();
+    }
+	
+	/**
+	 * @return unwrapped instance of {@link BaseElement}
+	 */
+	BaseElement getElement(){
+		return this.element;
+	}
+	
+	/**
+	 * @return pre-computed value of priority
+	 */
+	int getPriority(){
+		return this.priority;
+	}
+	
+	  
   }
 
 }
