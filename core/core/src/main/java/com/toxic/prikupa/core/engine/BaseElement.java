@@ -159,6 +159,8 @@ public class BaseElement {
     }
   }
 
+  
+  //ANTS_TAG : call this method just during paint method, if necessary, determining by appropriated flag.
   void renderer() {
     this.canvasInit = false;
     float elemWidth = this.size.x * this.layer.scaleX();
@@ -503,7 +505,7 @@ public class BaseElement {
         this.holdCancel = null;
       }
       // ANTS_TAG : this parameter should be passed from holder handler
-      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, 100, new Runnable() {
+      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, 1000 , new Runnable() {
 
         @Override
         public void run() {
@@ -559,9 +561,8 @@ public class BaseElement {
     while (!this.children.isEmpty() && this.children.get(index).depth() > child.depth()) {
       index++;
     }
-
+    
     this.children.add(index, child);
-
   }
 
   public void removeChild(BaseElement child) {
@@ -709,7 +710,7 @@ public class BaseElement {
 
   @Override
   public String toString() {
-    return "The element id = " + this.id + ", position :[" + this.layer.tx() + ":" + this.layer.ty() + "] size : ["
+    return "The element id = " + this.id + ", position :[" + this.layer.tx() + ":" + this.layer.ty() + "], size : ["
       + width() + ":" + height() + "]";
   }
 
@@ -745,6 +746,7 @@ public class BaseElement {
     int priority = 0;
     BaseElement parentTemp = getParent();
     if (parentTemp == null) {
+      log.warn("The element : " + this + " hasn't parent!");
       return 0;
     }
     BaseElement child = this;
@@ -753,6 +755,7 @@ public class BaseElement {
       child = parentTemp;
       parentTemp = child.getParent();
       if (parentTemp == null) {
+        log.warn("The element : " + this + " is containted in inactive parent element.");
         return 0;
       }
     }
@@ -1187,6 +1190,7 @@ public class BaseElement {
     return this.layer.ty();
   }
 
+  //ANTS_TAG : here is mistake : the link to parent is null!
   public BaseElement getParent() {
     return this.parent;
   }
@@ -1243,6 +1247,10 @@ public class BaseElement {
     if (child == null) {
       log.error("You've try get index of null element, in the object : " + toString());
       return -1;
+    }
+    
+    if(!this.children.contains(child)){
+      throw new IllegalStateException("The element : " + this + " doesn't contain child : " + child);
     }
 
     return this.children.indexOf(child);

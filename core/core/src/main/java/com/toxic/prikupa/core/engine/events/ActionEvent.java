@@ -11,8 +11,6 @@ package com.toxic.prikupa.core.engine.events;
  */
 public interface ActionEvent {
 
-  // ANTS_TAG : implement me!
-
   /**
    * <p>
    * Returns location of event relative to X axis.

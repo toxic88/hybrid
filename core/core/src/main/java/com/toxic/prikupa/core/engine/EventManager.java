@@ -26,7 +26,7 @@ import com.toxic.prikupa.core.engine.util.LoggerFactory;
  * 
  */
 public class EventManager {
-  
+
   final static Logger log = LoggerFactory.getLogger(EventManager.class.getName());
 
   // ANTS_TAG : should also organize additional event for handle policy of out
@@ -63,27 +63,19 @@ public class EventManager {
   }
 
   private final Set<BaseElement> registared = new HashSet<BaseElement>();
-  
-  private Set<CachedPriority> used;
+
+  private final Set<CachedPriority> used = new HashSet<CachedPriority>();
 
   final Queue<CachedPriority> targets = new PriorityQueue<CachedPriority>(12, new Comparator<CachedPriority>() {
 
     @Override
     public int compare(CachedPriority o1, CachedPriority o2) {
 
-      if (o1 == null) {
-        return 1;
-      }
-
-      if (o2 == null) {
-        return 1;
-      }
-      
-      if(o1.getPriority()>o2.getPriority()){
+      if (o1.getPriority() > o2.getPriority()) {
         return -1;
       }
-      
-      if(o1.getPriority()<o2.getPriority()){
+
+      if (o1.getPriority() < o2.getPriority()) {
         return 1;
       }
 
@@ -109,6 +101,7 @@ public class EventManager {
     @Override
     public void onPointerStart(Event event) {
       event.flags().setPreventDefault(true);
+      event.flags().setPropagationStopped(false);
       EventManager.this.targets.clear();
       EventManager.this.dispatchStartEvent(new ActionEventImpl(event));
     }
@@ -116,6 +109,7 @@ public class EventManager {
     @Override
     public void onPointerEnd(Event event) {
       event.flags().setPreventDefault(true);
+      event.flags().setPropagationStopped(false);
       EventManager.this.dispatchSelect(new ActionEventImpl(event));
       EventManager.this.targets.clear();
     }
@@ -123,12 +117,14 @@ public class EventManager {
     @Override
     public void onPointerDrag(Event event) {
       event.flags().setPreventDefault(true);
+      event.flags().setPropagationStopped(false);
       dispatchMove(new ActionEventImpl(event));
     }
 
     @Override
     public void onPointerCancel(Event event) {
       event.flags().setPreventDefault(true);
+      event.flags().setPropagationStopped(false);
       dispatchCancel(new ActionEventImpl(event));
       EventManager.this.targets.clear();
     }
@@ -141,7 +137,8 @@ public class EventManager {
         this.targets.add(new CachedPriority(elem));
       }
     }
-    this.used = new HashSet<CachedPriority>();
+    log.warn("oredering of notifiedqueue : " + this.targets.toString());
+    this.used.clear();
     for (CachedPriority elem : this.targets) {
       elem.getElement().dispatchEventStart(e);
       this.used.add(elem);
@@ -154,11 +151,9 @@ public class EventManager {
 
   void dispatchCancel(ActionEvent e) {
     for (CachedPriority elem : this.targets) {
-      if (elem.getElement().hitTest(e)) {
-    	  elem.getElement().dispatchCancelEvent(e);
-        if (!elem.getElement().isPropogative()) {
-          break;
-        }
+      elem.getElement().dispatchCancelEvent(e);
+      if (!elem.getElement().isPropogative()) {
+        break;
       }
     }
     this.targets.clear();
@@ -167,7 +162,7 @@ public class EventManager {
   void dispatchSelect(ActionEvent e) {
     for (CachedPriority elem : this.targets) {
       if (elem.getElement().hitTest(e)) {
-    	  elem.getElement().dispatchSelectEvent(e);
+        elem.getElement().dispatchSelectEvent(e);
         if (!elem.getElement().isPropogative()) {
           break;
         }
@@ -195,39 +190,53 @@ public class EventManager {
   public void unregistareTarget(BaseElement elem) {
     this.registared.remove(elem);
   }
-  
+
+  /**
+   * <p>
+   * Goal of this class cached priority for discrete time.
+   * </p>
+   * <br/>
+   * 
+   * @author Strelock
+   * 
+   */
   private static class CachedPriority {
-	  
-	  private final BaseElement element;
-	  private final int priority;
-	  
-	/**
-	 * <p>
-	 * Cached constructor.
-	 * </p>
-	 * <br/>
-	 * @param elem
-	 */
-	CachedPriority(BaseElement elem) {
-		this.element = elem;
-		this.priority = elem.getPriority();
+
+    private final BaseElement element;
+    private final int priority;
+
+    /**
+     * <p>
+     * Cached constructor.
+     * </p>
+     * <br/>
+     * 
+     * @param elem
+     */
+    CachedPriority(BaseElement elem) {
+      this.element = elem;
+      this.priority = elem.getPriority();
     }
-	
-	/**
-	 * @return unwrapped instance of {@link BaseElement}
-	 */
-	BaseElement getElement(){
-		return this.element;
-	}
-	
-	/**
-	 * @return pre-computed value of priority
-	 */
-	int getPriority(){
-		return this.priority;
-	}
-	
-	  
+
+    /**
+     * @return unwrapped instance of {@link BaseElement}
+     */
+    BaseElement getElement() {
+      return this.element;
+    }
+
+    /**
+     * @return pre-computed value of priority
+     */
+    int getPriority() {
+      return this.priority;
+    }
+    
+    @Override
+    public String toString(){
+      return this.element.toString() + ", priority : " + this.priority;
+    }
+
   }
 
 }
