@@ -35,7 +35,6 @@ class HtmlCanvas extends AbstractHtmlCanvas {
         return canvas;
     }
 
-    // ANTS_TAG : this is slow method, we can use more rapid approach...
     // ANTS_TAG : test this feature!
     @Override
     public Canvas clear() {
