@@ -159,8 +159,8 @@ public class BaseElement {
     }
   }
 
-  
-  //ANTS_TAG : call this method just during paint method, if necessary, determining by appropriated flag.
+  // ANTS_TAG : call this method just during paint method, if necessary,
+  // determining by appropriated flag.
   void renderer() {
     this.canvasInit = false;
     float elemWidth = this.size.x * this.layer.scaleX();
@@ -353,50 +353,18 @@ public class BaseElement {
     }
   }
 
-  /**
-   * <p>
-   * Determines weather current Element has at least one assign Handler
-   * </p>
-   * <br/>
-   * 
-   * @return true if Element has at least one handler
-   */
   public boolean hasHandlers() {
     return !(this.selectHandler == null && this.moveHandler == null && this.holdHandler == null);
   }
 
-  /**
-   * <p>
-   * Determines weather current Element has assigned {@link HoldHandler}
-   * </p>
-   * <br/>
-   * 
-   * @return true if Element has assigned {@link HoldHandler}
-   */
   public boolean hasHoldHandlers() {
     return this.holdHandler != null;
   }
 
-  /**
-   * <p>
-   * Determines weather current Element has assigned {@link SelectHandler}
-   * </p>
-   * <br/>
-   * 
-   * @return true if Element has assigned {@link SelectHandler}
-   */
   public boolean hasSelectHandlers() {
     return this.selectHandler != null;
   }
 
-  /**
-   * <p>
-   * Determines weather current Element has assigned {@link MoveHandler}
-   * </p>
-   * <br/>
-   * 
-   * @return true if Element has assigned {@link MoveHandler}
-   */
   public boolean hasMoveHandlers() {
     return this.moveHandler != null;
   }
@@ -477,7 +445,8 @@ public class BaseElement {
     this.previousEvent = this.currentEvent;
     this.currentEvent = e;
     if (this.moveHandler != null
-      && new Point(BaseElement.this.previousEvent.getX(), BaseElement.this.previousEvent.getY()).distance(e.getX(), e.getY()) > EventManager.RADIUS_HIT) {
+      && new Point(BaseElement.this.previousEvent.getX(), BaseElement.this.previousEvent.getY()).distance(e.getX(),
+        e.getY()) > EventManager.RADIUS_HIT) {
       if (this.holdCancel != null) {
         this.holdCancel.cancel();
         this.holdCancel = null;
@@ -505,13 +474,13 @@ public class BaseElement {
         this.holdCancel = null;
       }
       // ANTS_TAG : this parameter should be passed from holder handler
-      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, 1000 , new Runnable() {
+      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, 1000, new Runnable() {
 
         @Override
         public void run() {
           if (BaseElement.this.currentEvent != null
-            && (new Point(BaseElement.this.currentEvent.getX(), BaseElement.this.currentEvent.getY()).distance(event.getX(),
-              event.getY()) < EventManager.RADIUS_HIT)) {
+            && (new Point(BaseElement.this.currentEvent.getX(), BaseElement.this.currentEvent.getY()).distance(
+              event.getX(), event.getY()) < EventManager.RADIUS_HIT)) {
             BaseElement.this.holdHandler.onHold(BaseElement.this.currentEvent);
           }
           else {
@@ -561,7 +530,7 @@ public class BaseElement {
     while (!this.children.isEmpty() && this.children.get(index).depth() > child.depth()) {
       index++;
     }
-    
+
     this.children.add(index, child);
   }
 
@@ -627,13 +596,6 @@ public class BaseElement {
       throw new IllegalArgumentException("You try scale negative value ! scale : " + scale);
     }
     this.layer.setScale(scale, scale);
-  }
-
-  public void scale(float x, float y) {
-    if (x <= 0 || y <= 0) {
-      throw new IllegalArgumentException("Scale couldn't be have negative values!");
-    }
-    this.layer.setScale(x, y);
   }
 
   public Point position() {
@@ -734,19 +696,11 @@ public class BaseElement {
     renderer();
   }
 
-  /**
-   * <p>
-   * Absolute index of ordering {@link BaseElement}s according to depth.
-   * </p>
-   * <br/>
-   * 
-   * @return
-   */
   public int getPriority() {
     int priority = 0;
     BaseElement parentTemp = getParent();
     if (parentTemp == null) {
-      if(isRoot()){
+      if (isRoot()) {
         return 0;
       }
       log.warn("The element : " + this + " hasn't parent! priority -1.");
@@ -766,6 +720,8 @@ public class BaseElement {
     return priority;
   }
 
+  //ANTS_TAG : continue from here.
+  
   public final CancelHandler animateShake(final float amplitudeX, final float amplitudeY, final Interpolator mode,
     final float duration) {
     if (mode == null) {
@@ -1251,12 +1207,12 @@ public class BaseElement {
       log.error("You've try get index of null element, in the object : " + toString());
       return -1;
     }
-    
-    if(!this.children.contains(child)){
+
+    if (!this.children.contains(child)) {
       throw new IllegalStateException("The element : " + this + " doesn't contain child : " + child);
     }
 
-    return this.children.indexOf(child)+1;
+    return this.children.indexOf(child) + 1;
   }
 
   public void drawText(String value) {
