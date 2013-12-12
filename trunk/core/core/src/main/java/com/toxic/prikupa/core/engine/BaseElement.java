@@ -746,18 +746,22 @@ public class BaseElement {
     int priority = 0;
     BaseElement parentTemp = getParent();
     if (parentTemp == null) {
-      log.warn("The element : " + this + " hasn't parent!");
-      return 0;
+      if(isRoot()){
+        return 0;
+      }
+      log.warn("The element : " + this + " hasn't parent! priority -1.");
+      return -1;
     }
     BaseElement child = this;
+    priority += parentTemp.getRealDepth(child);
     while (!parentTemp.isRoot()) {
-      priority += parentTemp.getRealDepth(child);
       child = parentTemp;
       parentTemp = child.getParent();
       if (parentTemp == null) {
-        log.warn("The element : " + this + " is containted in inactive parent element.");
-        return 0;
+        log.warn("The element : " + this + " is containted in inactive parent element. priority -1");
+        return -1;
       }
+      priority += parentTemp.getRealDepth(child);
     }
     return priority;
   }
@@ -1190,7 +1194,6 @@ public class BaseElement {
     return this.layer.ty();
   }
 
-  //ANTS_TAG : here is mistake : the link to parent is null!
   public BaseElement getParent() {
     return this.parent;
   }
@@ -1253,7 +1256,7 @@ public class BaseElement {
       throw new IllegalStateException("The element : " + this + " doesn't contain child : " + child);
     }
 
-    return this.children.indexOf(child);
+    return this.children.indexOf(child)+1;
   }
 
   public void drawText(String value) {

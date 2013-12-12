@@ -51,7 +51,6 @@ public class PrikupaGame extends Game.Default {
 
   @Override
   public void init() {
-    log.debug("Start game!");
     final Scene main = new Scene();
     // ANTS_TAG : provide this feature to have possibility pause game,
     // during tabs for example switched PlayN.platform.setLifeCycle()
@@ -80,7 +79,6 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(ActionEvent e) {
-        log.warn("clipped on select " + e.toString());
         BaseElement redQuad = new BaseElement();
         redQuad.setSize(WIDTH, HEIGHT);
         redQuad.setOrigin(WIDTH / 2f, HEIGHT / 2f);
@@ -99,7 +97,7 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onMove(ActionEvent e) {
-        log.warn("main : on drug " + e.toString());
+        //NOOP
       }
 
     });
@@ -107,7 +105,6 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(ActionEvent e) {
-        log.warn("main on select " + e.toString());
         final BaseElement elem = new BaseElement();
         elem.setSize(WIDTH, HEIGHT);
         elem.setPropogative(false);
@@ -142,9 +139,7 @@ public class PrikupaGame extends Game.Default {
 
           @Override
           public void onHold(ActionEvent eventHold) {
-            PlayN.log().warn("on hold event : " + eventHold.toString());
             if (this.cancel != null) {
-              PlayN.log().warn("Previous shake event doesn't properly ended" + "\nWill forced it.");
               this.cancel.cancel();
             }
             this.cancel = elem.animateShake(3.0f, 3.0f, Interpolator.EASE_IN_BACK, 100);

@@ -137,7 +137,6 @@ public class EventManager {
         this.targets.add(new CachedPriority(elem));
       }
     }
-    log.warn("oredering of notifiedqueue : " + this.targets.toString());
     this.used.clear();
     for (CachedPriority elem : this.targets) {
       elem.getElement().dispatchEventStart(e);
@@ -173,6 +172,7 @@ public class EventManager {
 
   void dispatchMove(ActionEvent e) {
     // ANTS_TAG : should think up about out of boundary case!
+    this.used.clear();
     for (CachedPriority elem : this.targets) {
       if (elem.getElement().hitTest(e)) {
         elem.getElement().dispatchMoveEvent(e);
