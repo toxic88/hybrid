@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.toxic.prikupa</groupId>
-		<artifactId>prikupa</artifactId>
+		<groupId>com.toxic</groupId>
+		<artifactId>application</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>prikupa-android</artifactId>
+	<artifactId>android</artifactId>
 	<packaging>apk</packaging>
 	<name>PrikupaGame Android</name>
 
@@ -23,8 +23,8 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.toxic.prikupa</groupId>
-			<artifactId>prikupa-core</artifactId>
+			<groupId>com.toxic</groupId>
+			<artifactId>core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 

@@ -7,8 +7,8 @@
     <version>1.7.2</version>
   </parent>
 
-  <groupId>com.toxic.prikupa</groupId>
-  <artifactId>prikupa</artifactId>
+  <groupId>com.toxic</groupId>
+  <artifactId>application</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>PrikupaGame Metaproject</name>
