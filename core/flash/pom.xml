@@ -3,38 +3,38 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.toxic.prikupa</groupId>
-		<artifactId>prikupa</artifactId>
+		<groupId>com.toxic</groupId>
+		<artifactId>application</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>prikupa-flash</artifactId>
+	<artifactId>flash</artifactId>
 	<packaging>war</packaging>
 	<name>PrikupaGame Flash</name>
 
 	<properties>
-		<gwt.module>com.toxic.prikupa.PrikupaGameFlash</gwt.module>
+		<gwt.module>com.toxic.PrikupaGameFlash</gwt.module>
 		<gwt.name>prikupaflash</gwt.name>
 		<flexsdk.dir>${project.build.directory}\flex4sdk</flexsdk.dir>
 	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.toxic.prikupa</groupId>
-			<artifactId>prikupa-core</artifactId>
+			<groupId>com.toxic</groupId>
+			<artifactId>core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.toxic.prikupa</groupId>
-			<artifactId>prikupa-core</artifactId>
+			<groupId>com.toxic</groupId>
+			<artifactId>core</artifactId>
 			<version>${project.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 
 		<dependency>
-			<groupId>com.toxic.prikupa</groupId>
-			<artifactId>prikupa-assets</artifactId>
+			<groupId>com.toxic</groupId>
+			<artifactId>assets</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 
