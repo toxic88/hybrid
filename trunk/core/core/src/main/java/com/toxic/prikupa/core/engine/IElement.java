@@ -1,7 +1,9 @@
 package com.toxic.prikupa.core.engine;
 
 import pythagoras.f.Point;
+import tripleplay.util.Interpolator;
 
+import com.toxic.prikupa.core.engine.handlers.CancelHandler;
 import com.toxic.prikupa.core.engine.handlers.HoldHandler;
 import com.toxic.prikupa.core.engine.handlers.MoveHandler;
 import com.toxic.prikupa.core.engine.handlers.SelectHandler;
@@ -146,7 +148,7 @@ public interface IElement {
    * 
    * @param child
    */
-  public abstract void addChild(BaseElement child);
+  public abstract void addChild(IElement child);
 
   /**
    * <p>
@@ -156,7 +158,7 @@ public interface IElement {
    * 
    * @param child
    */
-  public abstract void removeChild(BaseElement child);
+  public abstract void removeChild(IElement child);
 
   /**
    * <p>
@@ -287,10 +289,10 @@ public interface IElement {
    * @return
    */
   public abstract boolean isActive();
-  
+
   /**
    * <p>
-   * Absolute index of ordering {@link BaseElement}s according to depth.
+   * Absolute index of ordering {@link IElement}s according to depth.
    * </p>
    * <br/>
    * 
@@ -368,4 +370,310 @@ public interface IElement {
    */
   public abstract void setDepth(float depth);
 
+  /**
+   * <p>
+   * Animate element randomly shifted it.
+   * </p>
+   * <br/>
+   * 
+   * @param amplitudeX
+   *          maximum amplitude of shift relative X axis
+   * @param amplitudeY
+   *          maximum amplitude of shift relative Y axis
+   * @param mode
+   *          animation behavior
+   * @param duration
+   *          time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel
+   *         animation.
+   */
+  public abstract CancelHandler animateShake(final float amplitudeX, final float amplitudeY, final Interpolator mode,
+    final float duration);
+
+  /**
+   * <p>
+   * Simple animation transition to supplied point.
+   * </p>
+   * <br/>
+   * 
+   * @param x
+   *          location relative to axis X
+   * @param y
+   *          location relative to axis Y
+   * @param mode
+   *          the animation behavior mode
+   * @param duration
+   *          time in milliseconds
+   * 
+   * @return {@link CancelHandler} instance that ,has possibility cancel
+   *         animation.
+   */
+  public abstract CancelHandler animateTransition(final float x, final float y, final Interpolator mode,
+    final float duration);
+
+  /**
+   * <p>
+   * Provide creation of complicated animation through the
+   * {@link CustomAnimation} instance.
+   * </p>
+   * <br/>
+   * 
+   * @param action
+   *          {@link CustomAnimation} object , that will be periodically
+   *          executed through the {@link CustomAnimation#uppdate(float)}
+   *          method.
+   * @param mode
+   *          the animation behavior mode
+   * @param duration
+   *          time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel
+   *         animation.
+   */
+  public abstract CancelHandler animateAction(final CustomAnimation action, final Interpolator mode, final int duration);
+
+  /**
+   * <p>
+   * Animate rotation of element to supplied value of angle in radiant.
+   * </p>
+   * <br/>
+   * 
+   * @param angle
+   *          value of angle in radiant
+   * @param mode
+   *          the animation behavior mode
+   * @param duration
+   *          time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel
+   *         animation.
+   */
+  public abstract CancelHandler animateRotate(final float angle, final Interpolator mode, final int duration);
+
+  /**
+   * <p>
+   * Change alpha parameter from current to supplied subsequently time in
+   * milliseconds.
+   * </p>
+   * <br/>
+   * 
+   * @param to
+   *          value of alpha parameter in the end of animation.
+   * @param mode
+   *          the animation behavior mode
+   * @param duration
+   *          time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel
+   *         animation.
+   */
+  public abstract CancelHandler animateOpacity(final float to, final Interpolator mode, final int duration);
+
+  /**
+   * <p>
+   * Stop all currently executed animation.
+   * </p>
+   * <br/>
+   */
+  public abstract void stopAnimation();
+
+  /**
+   * <p>
+   * Stop current animated shake animation if it is executing now.
+   * </p>
+   * <br/>
+   */
+  public abstract void stopShakeAnimation();
+
+  /**
+   * <p>
+   * Stop current animated transition animation if it is executing now.
+   * </p>
+   * <br/>
+   */
+  public abstract void stopTransitionAnimation();
+  
+  /**
+   * <p>
+   * Stop current animated custom animation if it is executing now.
+   * </p> 
+   * <br/>
+   */
+  public abstract void stopActionAnimation();
+
+  /**
+   * <p>
+   * Stop current rotate transition animation if it is executing now.
+   * </p>
+   * <br/>
+   */
+  public abstract void stopRotateAnimation();
+
+  /**
+   * <p>
+   * Stop current rotate opacity animation if it is executing now.
+   * </p>
+   * <br/>
+   */
+  public abstract void stopOpacityAnimation();
+
+  /**
+   * <p>
+   * Determine weather current element is animating now.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract boolean isAnimated();
+
+  /**
+   * <p>
+   * Determine weather current element is clipped.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract boolean isClipped();
+
+  /**
+   * <p>
+   * Set current element be clipped, that will restrict drawing element and
+   * background out of it boundaries.
+   * </p>
+   * <br/>
+   * 
+   * @param flag
+   */
+  public abstract void setClipped(boolean flag);
+
+  /**
+   * <p>
+   * Set current element draw text in it according to {@link TextFormat} object.
+   * </p>
+   * <br/>
+   * 
+   * @param format
+   */
+  public abstract void setTextFromat(TextFormat format);
+
+  /**
+   * <p>
+   * Width of element.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float width();
+
+  /**
+   * <p>
+   * Height of element.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float height();
+
+  /**
+   * <p>
+   * Opacity of element.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float alpha();
+
+  /**
+   * <p>
+   * The x value of origin point of element. Relative origin point all children
+   * element will be positioned.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float originX();
+
+  /**
+   * <p>
+   * The y value of origin point of element. Relative origin point all children
+   * element will be positioned.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float originY();
+
+  /**
+   * <p>
+   * The x position of element. Relative position point element will be
+   * positioned into parent.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float positionX();
+  
+  /**
+   * <p>
+   * Remove all children from this element. 
+   * </p> 
+   * <br/>
+   */
+  public abstract void removeChildren();
+  
+  /**
+   * <p>
+   * The y position of element. Relative position point element will be
+   * positioned into parent.
+   * </p>
+   * <br/>
+   * 
+   * @return
+   */
+  public abstract float positionY();
+  
+  /**
+   * @return The parent element of this element.
+   */
+  public abstract IElement getParent();
+  
+  /**
+   * @return determine visibility of element.
+   */
+  public abstract boolean visible();
+  
+  /**
+   * @return determine weather element will be propagate event to the underground elements.
+   */
+  public abstract boolean isPropagative();
+
+  /**
+   * <p>
+   *  Set propagate event to underground elements. 
+   * </p> 
+   * <br/>
+   * @param propogativeIn
+   */
+  public abstract void setPropagative(boolean propogativeIn);
+  
+  /**
+   * @return weather this instance of {@link IElement} is Root - Scene
+   *         element.
+   */
+  public abstract boolean isRoot();
+  
+  /**
+   * <p>
+   * Draws input text into element. 
+   * </p> 
+   * <br/>
+   * @param value
+   */
+  public abstract void drawText(String value);
+  
 }

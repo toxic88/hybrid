@@ -8,8 +8,9 @@ import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
 import com.toxic.prikupa.core.engine.Backgound;
-import com.toxic.prikupa.core.engine.BaseElement;
 import com.toxic.prikupa.core.engine.CustomAnimation;
+import com.toxic.prikupa.core.engine.DataProvider;
+import com.toxic.prikupa.core.engine.IElement;
 import com.toxic.prikupa.core.engine.Scene;
 import com.toxic.prikupa.core.engine.TextFormat;
 import com.toxic.prikupa.core.engine.events.ActionEvent;
@@ -58,7 +59,7 @@ public class PrikupaGame extends Game.Default {
     main.setId("main");
     // main.setDebug(true);
     main.setBackGround(new Backgound("images/towerdefense.png"));
-    final BaseElement clipped = new BaseElement();
+    final IElement clipped = DataProvider.createElement();
     clipped.setId("clipped");
     clipped.setClipped(true);
     clipped.setSize(400, 400);
@@ -68,7 +69,7 @@ public class PrikupaGame extends Game.Default {
     clipped.setBackGround(new Backgound(0x870000FF));
 
     main.addChild(clipped);
-    clipped.setPropogative(false);
+    clipped.setPropagative(false);
     // clipped.setDebug(true);
     TextFormat format = new TextFormat(PlayN.graphics().createFont("italic48", Style.ITALIC, 48), Alignment.CENTER);
     // format.setMargin(150f, 50f);
@@ -79,7 +80,7 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(ActionEvent e) {
-        BaseElement redQuad = new BaseElement();
+        IElement redQuad = DataProvider.createElement();
         redQuad.setSize(WIDTH, HEIGHT);
         redQuad.setOrigin(WIDTH / 2f, HEIGHT / 2f);
         redQuad.setPosition(e.getX() - main.width() / 2f + 200, e.getY() - main.height() / 2f + 200);
@@ -105,9 +106,9 @@ public class PrikupaGame extends Game.Default {
 
       @Override
       public void onSelect(ActionEvent e) {
-        final BaseElement elem = new BaseElement();
+        final IElement elem = DataProvider.createElement();
         elem.setSize(WIDTH, HEIGHT);
-        elem.setPropogative(false);
+        elem.setPropagative(false);
         elem.setId("Tween-Shake element!");
         // ANTS_TAG : investigate rotation of clipped elements!
         // elem.setClipped(true);
