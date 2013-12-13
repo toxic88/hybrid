@@ -141,7 +141,7 @@ public class EventManager {
     for (CachedPriority elem : this.targets) {
       elem.getElement().dispatchEventStart(e);
       this.used.add(elem);
-      if (!elem.getElement().isPropogative()) {
+      if (!elem.getElement().isPropagative()) {
         break;
       }
     }
@@ -151,7 +151,7 @@ public class EventManager {
   void dispatchCancel(ActionEvent e) {
     for (CachedPriority elem : this.targets) {
       elem.getElement().dispatchCancelEvent(e);
-      if (!elem.getElement().isPropogative()) {
+      if (!elem.getElement().isPropagative()) {
         break;
       }
     }
@@ -162,7 +162,7 @@ public class EventManager {
     for (CachedPriority elem : this.targets) {
       if (elem.getElement().hitTest(e)) {
         elem.getElement().dispatchSelectEvent(e);
-        if (!elem.getElement().isPropogative()) {
+        if (!elem.getElement().isPropagative()) {
           break;
         }
       }
@@ -176,7 +176,7 @@ public class EventManager {
     for (CachedPriority elem : this.targets) {
       if (elem.getElement().hitTest(e)) {
         elem.getElement().dispatchMoveEvent(e);
-        if (!elem.getElement().isPropogative()) {
+        if (!elem.getElement().isPropagative()) {
           break;
         }
       }

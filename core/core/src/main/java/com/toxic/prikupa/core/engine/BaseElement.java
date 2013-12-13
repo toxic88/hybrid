@@ -35,7 +35,7 @@ import com.toxic.prikupa.core.engine.util.TimerUtility;
  * @author Strelock
  * 
  */
-public class BaseElement {
+class BaseElement implements IElement {
 
   final static Logger log = LoggerFactory.getLogger(BaseElement.class.getName());
 
@@ -286,6 +286,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void setBackGround(Backgound bkgroundIn) {
     if (this.bkground != null && this.bkground.getImage() != null) {
       this.bkground.getImage().releaseImage();
@@ -308,6 +309,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void addSelectHandler(SelectHandler handly) {
     if (this.selectHandler != null) {
       removeSelectHandler();
@@ -316,6 +318,7 @@ public class BaseElement {
     EventManager.getInstanse().registareTarget(this);
   }
 
+  @Override
   public void addHoldHandler(HoldHandler handly) {
     if (this.holdHandler != null) {
       removeHoldHandler();
@@ -324,6 +327,7 @@ public class BaseElement {
     EventManager.getInstanse().registareTarget(this);
   }
 
+  @Override
   public void addMoveHandler(MoveHandler handly) {
     if (this.moveHandler != null) {
       removeMoveHandler();
@@ -332,6 +336,7 @@ public class BaseElement {
     EventManager.getInstanse().registareTarget(this);
   }
 
+  @Override
   public void removeHandlers() {
     EventManager.getInstanse().unregistareTarget(this);
     this.selectHandler = null;
@@ -339,6 +344,7 @@ public class BaseElement {
     this.holdHandler = null;
   }
 
+  @Override
   public void removeSelectHandler() {
     this.selectHandler = null;
     if (this.moveHandler == null && this.holdHandler == null) {
@@ -346,6 +352,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void removeHoldHandler() {
     this.holdHandler = null;
     if (this.moveHandler == null && this.selectHandler == null) {
@@ -353,22 +360,27 @@ public class BaseElement {
     }
   }
 
+  @Override
   public boolean hasHandlers() {
     return !(this.selectHandler == null && this.moveHandler == null && this.holdHandler == null);
   }
 
+  @Override
   public boolean hasHoldHandlers() {
     return this.holdHandler != null;
   }
 
+  @Override
   public boolean hasSelectHandlers() {
     return this.selectHandler != null;
   }
 
+  @Override
   public boolean hasMoveHandlers() {
     return this.moveHandler != null;
   }
 
+  @Override
   public void removeMoveHandler() {
     if (this.moveHandler == null) {
       EventManager.getInstanse().unregistareTarget(this);
@@ -504,24 +516,26 @@ public class BaseElement {
     log.warn("The previous event has been interrapted! Recieve touch cancel event!" + e.toString());
   }
 
-  public void addChild(BaseElement child) {
+  @Override
+  public void addChild(IElement child) {
     if (child == null) {
       log.error("You try add empty element. The operation will be skipped.");
       throw new IllegalArgumentException("You try add empty element. The operation will be skipped.");
     }
+    BaseElement baseChild = (BaseElement) child;
     if (this.children.contains(child)) {
       log.error("Element is already child of this element : " + this.toString());
       throw new IllegalArgumentException("Element is already child of this element : " + this.toString());
     }
-    if (child.layer.parent() != null) {
+    if (baseChild.layer.parent() != null) {
       log.warn("The element is alreay has parent!");
-      GroupLayer parentTemp = child.layer.parent();
-      parentTemp.remove(child.layer);
+      GroupLayer parentTemp = baseChild.layer.parent();
+      parentTemp.remove(baseChild.layer);
     }
-    child.parent = this;
-    this.layer.add(child.layer);
-    addOnRightPlace(child);
-    child.enableElements();
+    baseChild.parent = this;
+    this.layer.add(baseChild.layer);
+    addOnRightPlace(baseChild);
+    baseChild.enableElements();
   }
 
   private void addOnRightPlace(BaseElement child) {
@@ -534,19 +548,26 @@ public class BaseElement {
     this.children.add(index, child);
   }
 
-  public void removeChild(BaseElement child) {
-    if (child.layer.parent() != null && child.layer.parent() == this.layer) {
-      GroupLayer parentTemp = child.layer.parent();
-      parentTemp.remove(child.layer);
+  @Override
+  public void removeChild(IElement child) {
+    if (child == null) {
+      log.error("You try add empty element. The operation will be skipped.");
+      throw new IllegalArgumentException("You try add empty element. The operation will be skipped.");
+    }
+    BaseElement baseChild = (BaseElement) child;
+    if (baseChild.layer.parent() != null && baseChild.layer.parent() == this.layer) {
+      GroupLayer parentTemp = baseChild.layer.parent();
+      parentTemp.remove(baseChild.layer);
       this.children.remove(child);
-      child.parent = null;
-      child.disableElements();
+      baseChild.parent = null;
+      baseChild.disableElements();
     }
     else {
       log.warn("The element has another parent!");
     }
   }
 
+  @Override
   public void removeChildren() {
     List<BaseElement> list = new ArrayList<BaseElement>(this.children.size());
     list.addAll(this.children);
@@ -556,31 +577,38 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void removeFromParent() {
     GroupLayer parentTemp = this.layer.parent();
     parentTemp.remove(this.layer);
   }
 
+  @Override
   public void setId(String string) {
     this.id = string;
   }
 
+  @Override
   public void setPosition(float x, float y) {
     this.layer.setTranslation(x, y);
   }
 
+  @Override
   public void setOrigin(float x, float y) {
     this.layer.setOrigin(x, y);
   }
 
+  @Override
   public void setRotation(float angle) {
     this.layer.setRotation(angle);
   }
 
+  @Override
   public void setVisible(boolean flag) {
     this.layer.setVisible(flag);
   }
 
+  @Override
   public void setScale(float x, float y) {
     if (x <= 0.05f || y <= 0.05f) {
       log.warn("You try scale negative values ! X : " + x + " , Y : " + y);
@@ -590,6 +618,7 @@ public class BaseElement {
     this.layer.setScale(x, y);
   }
 
+  @Override
   public void setScale(float scale) {
     if (scale <= 0.05f) {
       log.warn("You try scale negative value ! scale : " + scale);
@@ -598,14 +627,17 @@ public class BaseElement {
     this.layer.setScale(scale, scale);
   }
 
+  @Override
   public Point position() {
     return new Point(this.layer.tx(), this.layer.ty());
   }
 
+  @Override
   public Point scale() {
     return new Point(this.layer.scaleX(), this.layer.scaleY());
   }
 
+  @Override
   public void setWidth(float width) {
     if (this.backGround != null) {
       this.backGround.setWidth(width);
@@ -613,6 +645,7 @@ public class BaseElement {
     this.size.x = width / this.layer.scaleX();
   }
 
+  @Override
   public void setHeight(float height) {
     if (this.backGround != null) {
       this.backGround.setHeight(height);
@@ -620,6 +653,7 @@ public class BaseElement {
     this.size.y = height / this.layer.scaleY();
   }
 
+  @Override
   public void setSize(float x, float y) {
     if (x <= 0 || y <= 0) {
       log.warn("Couldn't setting up negative argument!");
@@ -636,6 +670,7 @@ public class BaseElement {
     this.size.y = y / this.layer.scaleY();
   }
 
+  @Override
   public void setDepth(float depth) {
     this.layer.setDepth(depth);
     BaseElement parentTemp = this.parent;
@@ -643,10 +678,12 @@ public class BaseElement {
     parentTemp.addChild(this);
   }
 
+  @Override
   public float depth() {
     return this.layer.depth();
   }
 
+  @Override
   public void setAplha(float alpha) {
     if (alpha >= 0.0f && alpha <= 1.0f) {
       this.layer.setAlpha(alpha);
@@ -657,6 +694,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public boolean isActive() {
     Layer tempLayer = this.layer;
     while (tempLayer.visible() && tempLayer.parent() != null) {
@@ -691,11 +729,13 @@ public class BaseElement {
     return false;
   }
 
+  @Override
   public void setDebug(boolean flag) {
     this.debug = flag;
     renderer();
   }
 
+  @Override
   public int getPriority() {
     int priority = 0;
     BaseElement parentTemp = getParent();
@@ -720,8 +760,7 @@ public class BaseElement {
     return priority;
   }
 
-  //ANTS_TAG : continue from here.
-  
+  @Override
   public final CancelHandler animateShake(final float amplitudeX, final float amplitudeY, final Interpolator mode,
     final float duration) {
     if (mode == null) {
@@ -775,19 +814,7 @@ public class BaseElement {
     return cancel;
   }
 
-  /**
-   * <p>
-   * Simple animation transition to supplied point
-   * </p>
-   * <br/>
-   * 
-   * @param x
-   *          location relative to axis X
-   * @param y
-   *          location relative to axis Y
-   * @param mode
-   *          the animation behavior mode
-   */
+  @Override
   public final CancelHandler animateTransition(final float x, final float y, final Interpolator mode,
     final float duration) {
     if (mode == null) {
@@ -836,6 +863,7 @@ public class BaseElement {
     return cancel;
   }
 
+  @Override
   public final CancelHandler animateAction(final CustomAnimation action, final Interpolator mode, final int duration) {
     if (mode == null) {
       log.error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
@@ -895,6 +923,7 @@ public class BaseElement {
     return cancel;
   }
 
+  @Override
   public final CancelHandler animateRotate(final float angle, final Interpolator mode, final int duration) {
     if (mode == null) {
       PlayN.log().error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
@@ -942,6 +971,7 @@ public class BaseElement {
     return cancel;
   }
 
+  @Override
   public final CancelHandler animateOpacity(final float to, final Interpolator mode, final int duration) {
     if (mode == null) {
       log.error("You have tried animate element : " + this.toString() + "\n" + "with empty Interpolator.");
@@ -993,13 +1023,8 @@ public class BaseElement {
     this.animStoppers.put(AnimationType.OPACITY, cancel);
     return cancel;
   }
-
-  /**
-   * <p>
-   * Stop all currently executed animation.
-   * </p>
-   * <br/>
-   */
+  
+  @Override
   public void stopAnimation() {
     for (AnimationType type : this.animStoppers.keySet()) {
       if (this.animStoppers.get(type) != null) {
@@ -1009,6 +1034,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void stopShakeAnimation() {
     if (this.animStoppers.get(AnimationType.SHAKE) != null) {
       this.animStoppers.get(AnimationType.SHAKE).cancel();
@@ -1016,6 +1042,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void stopTransitionAnimation() {
     if (this.animStoppers.get(AnimationType.TRANSITION) != null) {
       this.animStoppers.get(AnimationType.TRANSITION).cancel();
@@ -1023,6 +1050,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void stopActionAnimation() {
     if (this.animStoppers.get(AnimationType.CUSTOM) != null) {
       this.animStoppers.get(AnimationType.CUSTOM).cancel();
@@ -1030,6 +1058,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void stopRotateAnimation() {
     if (this.animStoppers.get(AnimationType.ROTATE) != null) {
       this.animStoppers.get(AnimationType.ROTATE).cancel();
@@ -1037,6 +1066,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void stopOpacityAnimation() {
     if (this.animStoppers.get(AnimationType.OPACITY) != null) {
       this.animStoppers.get(AnimationType.OPACITY).cancel();
@@ -1044,6 +1074,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public boolean isAnimated() {
     for (AnimationType type : this.animStoppers.keySet()) {
       if (this.animStoppers.get(type) != null) {
@@ -1067,10 +1098,12 @@ public class BaseElement {
     OPACITY, ROTATE, CUSTOM, TRANSITION, SHAKE;
   }
 
+  @Override
   public boolean isClipped() {
     return (this.layer instanceof GroupLayer.Clipped);
   }
 
+  @Override
   public void setClipped(boolean flag) {
     if (flag && !(this.layer instanceof GroupLayer.Clipped)) {
       log.info("Create clipped");
@@ -1111,6 +1144,7 @@ public class BaseElement {
     }
   }
 
+  @Override
   public void setTextFromat(TextFormat format) {
     if (format.getFormat().shouldWrap() || format.getFormat().wrapWidth > width()) {
       this.textFormatInner = new playn.core.TextFormat(format.getFormat().font, height(), format.getFormat().align);
@@ -1122,55 +1156,62 @@ public class BaseElement {
     renderer();
   }
 
+  @Override
   public float width() {
     return this.size.x * this.layer.scaleX();
   }
 
+  @Override
   public float height() {
     return this.size.y * this.layer.scaleY();
   }
 
+  @Override
   public float alpha() {
     return this.layer.alpha();
   }
 
+  @Override
   public float originX() {
     return this.layer.originX();
   }
 
+  @Override
   public float originY() {
     return this.layer.originY();
   }
 
+  @Override
   public float positionX() {
     return this.layer.tx();
   }
 
+  @Override
   public float positionY() {
     return this.layer.ty();
   }
 
+  @Override
   public BaseElement getParent() {
     return this.parent;
   }
 
+  @Override
   public boolean visible() {
     return this.layer.visible();
   }
 
-  public boolean isPropogative() {
+  @Override
+  public boolean isPropagative() {
     return this.propogative;
   }
 
-  public void setPropogative(boolean propogativeIn) {
+  @Override
+  public void setPropagative(boolean propogativeIn) {
     this.propogative = propogativeIn;
   }
 
-  /**
-   * @return weather this instance of {@link BaseElement} is Root - Scene
-   *         element.
-   */
-  @SuppressWarnings("static-method")
+  @Override
   public boolean isRoot() {
     return false;
   }
@@ -1215,6 +1256,7 @@ public class BaseElement {
     return this.children.indexOf(child) + 1;
   }
 
+  @Override
   public void drawText(String value) {
     this.text = value;
     renderer();

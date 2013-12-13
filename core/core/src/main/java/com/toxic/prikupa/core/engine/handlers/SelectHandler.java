@@ -3,7 +3,6 @@
  */
 package com.toxic.prikupa.core.engine.handlers;
 
-import com.toxic.prikupa.core.engine.BaseElement;
 import com.toxic.prikupa.core.engine.events.ActionEvent;
 
 /**
