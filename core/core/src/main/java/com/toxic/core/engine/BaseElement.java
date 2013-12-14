@@ -30,6 +30,7 @@ import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
+import com.toxic.core.engine.resources.ITextFormat;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
@@ -99,7 +100,7 @@ class BaseElement implements IElement {
 
   private boolean canvasInit = false;
 
-  private TextFormat textFormat;
+  private ITextFormat textFormat;
 
   private String text;
 
@@ -205,7 +206,7 @@ class BaseElement implements IElement {
     if (this.text != null && !this.text.isEmpty() && this.textFormat != null) {
       initTempSizeCanvas();
       DRAWABLE_CANVAS.canvas().setFillColor(this.textFormat.getColor());
-      if (!this.textFormat.isMargin()) {
+      if (!((TextFormat) this.textFormat).isMargin()) {
         if (this.textFormatInner != null) {
 
           TextLayout lauoyt = PlayN.graphics().layoutText(this.text, this.textFormatInner);
@@ -232,7 +233,7 @@ class BaseElement implements IElement {
 
         }
         else {
-          TextLayout lauoyt = PlayN.graphics().layoutText(this.text, this.textFormat.getFormat());
+          TextLayout lauoyt = PlayN.graphics().layoutText(this.text, ((TextFormat) this.textFormat).getFormat());
 
           switch (this.textFormatInner.align) {
             case LEFT:
@@ -263,7 +264,7 @@ class BaseElement implements IElement {
 
         }
         else {
-          TextLayout lauoyt = PlayN.graphics().layoutText(this.text, this.textFormat.getFormat());
+          TextLayout lauoyt = PlayN.graphics().layoutText(this.text, ((TextFormat) this.textFormat).getFormat());
           DRAWABLE_CANVAS.canvas().fillText(lauoyt, this.textFormat.getMarginLeft(), this.textFormat.getMarginTop());
         }
       }
@@ -492,21 +493,22 @@ class BaseElement implements IElement {
         this.holdCancel = null;
       }
       // ANTS_TAG : this parameter should be passed from holder handler
-      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, EventManager.TIME_EVERY_HOLD , new Runnable() {
+      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD,
+        EventManager.TIME_EVERY_HOLD, new Runnable() {
 
-        @Override
-        public void run() {
-          if (BaseElement.this.currentEvent != null
-            && (new Point(BaseElement.this.currentEvent.getX(), BaseElement.this.currentEvent.getY()).distance(
-              event.getX(), event.getY()) < EventManager.RADIUS_HIT)) {
-            BaseElement.this.holdHandler.onHold(BaseElement.this.currentEvent);
+          @Override
+          public void run() {
+            if (BaseElement.this.currentEvent != null
+              && (new Point(BaseElement.this.currentEvent.getX(), BaseElement.this.currentEvent.getY()).distance(
+                event.getX(), event.getY()) < EventManager.RADIUS_HIT)) {
+              BaseElement.this.holdHandler.onHold(BaseElement.this.currentEvent);
+            }
+            else {
+              BaseElement.this.holdCancel.cancel();
+              BaseElement.this.holdCancel = null;
+            }
           }
-          else {
-            BaseElement.this.holdCancel.cancel();
-            BaseElement.this.holdCancel = null;
-          }
-        }
-      });
+        });
     }
   }
 
@@ -1151,9 +1153,10 @@ class BaseElement implements IElement {
   }
 
   @Override
-  public void setTextFromat(TextFormat format) {
-    if (format.getFormat().shouldWrap() || format.getFormat().wrapWidth > width()) {
-      this.textFormatInner = new playn.core.TextFormat(format.getFormat().font, height(), format.getFormat().align);
+  public void setTextFromat(ITextFormat format) {
+    if (((TextFormat) format).getFormat().shouldWrap() || ((TextFormat) format).getFormat().wrapWidth > width()) {
+      this.textFormatInner = new playn.core.TextFormat(((TextFormat) format).getFormat().font, height(),
+        ((TextFormat) format).getFormat().align);
     }
     else {
       this.textFormatInner = null;

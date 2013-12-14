@@ -1,11 +1,17 @@
 package com.toxic.core.engine;
 
+import playn.core.Font.Style;
+import playn.core.TextFormat.Alignment;
+
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
+import com.toxic.core.engine.resources.IFont;
 import com.toxic.core.engine.resources.IImage;
+import com.toxic.core.engine.resources.ITextFormat;
 import com.toxic.core.engine.util.AppTimer;
 import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.log.LogFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * <p>
@@ -13,6 +19,10 @@ import com.toxic.core.engine.util.log.LogFactory;
  * </p>
  * <br/>
  * 
+ * @author Strelock
+ * 
+ */
+/**
  * @author Strelock
  * 
  */
@@ -71,6 +81,42 @@ public class DataProvider {
   public static IScene createScene() {
     checkConditions();
     return new Scene();
+  }
+
+  /**
+   * <p>
+   * Create instance of {@link IFont}.
+   * </p>
+   * <br/>
+   * 
+   * @param id
+   *          {@link String} identifier of element
+   * @param style
+   *          {@link Style} of font text
+   * @param size
+   *          size of font
+   * @return {@link IFont} object
+   */
+  public static IFont createFont(String id, Style style, float size) {
+    return new TextFont(id, style, size);
+  }
+  
+  /**
+   * <p>
+   * Create instance of {@link IFont}.
+   * </p>
+   * <br/>
+   * 
+   * @param id
+   *          {@link String} identifier of element
+   * @param style
+   *          {@link Style} of font text
+   * @param size
+   *          size of font
+   * @return {@link IFont} object
+   */
+  public static ITextFormat createTextFormat(IFont font, Alignment alignment) {
+    return new TextFormat(font, alignment);
   }
 
   /**

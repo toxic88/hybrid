@@ -3,19 +3,21 @@
  */
 package com.toxic.core.engine;
 
-import playn.core.Font;
 import playn.core.TextFormat.Alignment;
+
+import com.toxic.core.engine.resources.IFont;
+import com.toxic.core.engine.resources.ITextFormat;
 
 /**
  * <p>
- *   
+ *   Encapsulated implementation of {@link ITextFormat}.
  * </p>
  * <br/>
  * 
  * @author Strelock
  * 
  */
-public final class TextFormat {
+final class TextFormat implements ITextFormat {
 
   // ANTS_TAG : implement fully margin and create auto-sizing layout.
 
@@ -53,8 +55,8 @@ public final class TextFormat {
    * </p>
    * <br/>
    */
-  public TextFormat(Font font) {
-    this.textFormat = new playn.core.TextFormat(font, Float.MAX_VALUE, Alignment.LEFT);
+  public TextFormat(IFont font) {
+    this.textFormat = new playn.core.TextFormat(((TextFont) font).getFont(), Float.MAX_VALUE, Alignment.LEFT);
     this.color = 0xFFFFFFFF;
   }
 
@@ -63,8 +65,8 @@ public final class TextFormat {
    * </p>
    * <br/>
    */
-  public TextFormat(Font font, int textColor) {
-    this.textFormat = new playn.core.TextFormat(font, Float.MAX_VALUE, Alignment.LEFT);
+  public TextFormat(IFont font, int textColor) {
+    this.textFormat = new playn.core.TextFormat(((TextFont) font).getFont(), Float.MAX_VALUE, Alignment.LEFT);
     this.color = textColor;
   }
 
@@ -93,8 +95,8 @@ public final class TextFormat {
    * </p>
    * <br/>
    */
-  public TextFormat(Font font, Alignment align) {
-    this.textFormat = new playn.core.TextFormat(font, Float.MAX_VALUE, align);
+  public TextFormat(IFont font, Alignment align) {
+    this.textFormat = new playn.core.TextFormat(((TextFont) font).getFont(), Float.MAX_VALUE, align);
     this.color = 0xFFFFFFFF;
   }
 
@@ -103,8 +105,8 @@ public final class TextFormat {
    * </p>
    * <br/>
    */
-  public TextFormat(Font font, Alignment align, int textColor) {
-    this.textFormat = new playn.core.TextFormat(font, Float.MAX_VALUE, align);
+  public TextFormat(IFont font, Alignment align, int textColor) {
+    this.textFormat = new playn.core.TextFormat(((TextFont) font).getFont(), Float.MAX_VALUE, align);
     this.color = textColor;
   }
 
@@ -118,15 +120,17 @@ public final class TextFormat {
    * </p>
    * <br/>
    */
-  public TextFormat(Font font, float wrapWidth, Alignment align) {
-    this.textFormat = new playn.core.TextFormat(font, wrapWidth, align);
+  public TextFormat(IFont font, float wrapWidth, Alignment align) {
+    this.textFormat = new playn.core.TextFormat(((TextFont) font).getFont(), wrapWidth, align);
     this.color = 0xFFFFFFFF;
   }
 
+  @Override
   public int getColor() {
     return this.color;
   }
 
+  @Override
   public void setMargin(float top, float right, float bottom, float left) {
     this.marginTop = top;
     this.marginRight = right;
@@ -134,6 +138,7 @@ public final class TextFormat {
     this.marginLeft = left;
   }
 
+  @Override
   public void setMargin(float horizontal, float vertical) {
     this.marginTop = vertical;
     this.marginRight = horizontal;
@@ -141,18 +146,22 @@ public final class TextFormat {
     this.marginLeft = horizontal;
   }
 
+  @Override
   public float getMarginTop() {
     return this.marginTop;
   }
 
+  @Override
   public float getMarginRight() {
     return this.marginRight;
   }
 
+  @Override
   public float getMarginBottom() {
     return this.marginBottom;
   }
 
+  @Override
   public float getMarginLeft() {
     return this.marginLeft;
   }
