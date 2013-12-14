@@ -22,12 +22,12 @@ public class BaseGame extends Game.Default {
   
   final static Logger log = LoggerFactory.getLogger(BaseGame.class.getName());
   
-  private static Context CONTEXT;
   
   private static final float WIDTH = 50;
   private static final float HEIGHT = 50;
   private static final int UPDATE_RATE = 30;
   private final Clock.Source clock = new Clock.Source(UPDATE_RATE);
+  private Context context;
 
   /**
    *
@@ -39,7 +39,8 @@ public class BaseGame extends Game.Default {
    */
   public BaseGame(Context con) {
     super(UPDATE_RATE);
-    CONTEXT = con;
+    this.context = con;
+    DataProvider.setApplication(this);
     LoggerFactory.setLogLevel(LogLevel.WARN);
     LoggerFactory.setPrintTime(true);
   }
@@ -161,15 +162,14 @@ public class BaseGame extends Game.Default {
   }
   
   /**
-   *
    * <p>
    * Context of application.
    * </p> 
    * <br/>
    * @return instance of {@link Context}
    */
-  public static Context getContext(){
-    return CONTEXT;
+  Context getContext(){
+    return context;
   }
   
 }
