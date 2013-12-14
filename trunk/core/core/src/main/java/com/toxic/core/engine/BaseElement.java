@@ -29,7 +29,6 @@ import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
 import com.toxic.core.engine.util.Logger;
 import com.toxic.core.engine.util.LoggerFactory;
-import com.toxic.core.engine.util.TimerUtility;
 
 /**
  * @author Strelock

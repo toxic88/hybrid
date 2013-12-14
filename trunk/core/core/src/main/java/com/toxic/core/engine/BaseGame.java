@@ -16,7 +16,6 @@ import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.LogLevel;
 import com.toxic.core.engine.util.Logger;
 import com.toxic.core.engine.util.LoggerFactory;
-import com.toxic.core.engine.util.TimerUtility;
 
 public class BaseGame extends Game.Default {
   
@@ -155,7 +154,7 @@ public class BaseGame extends Game.Default {
   @Override
   public void paint(float alpha) {
     this.clock.paint(alpha);
-    TimerUtility.getInstance().update();
+    TimerUtility.get().update();
     if (Scene.getCurrentScene() != null) {
       Scene.update(this.clock);
     }
@@ -169,7 +168,7 @@ public class BaseGame extends Game.Default {
    * @return instance of {@link Context}
    */
   Context getContext(){
-    return context;
+    return this.context;
   }
   
 }
