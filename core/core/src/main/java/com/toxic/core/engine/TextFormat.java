@@ -7,10 +7,15 @@ import playn.core.Font;
 import playn.core.TextFormat.Alignment;
 
 /**
+ * <p>
+ *   
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
-public class TextFormat {
+public final class TextFormat {
 
   // ANTS_TAG : implement fully margin and create auto-sizing layout.
 

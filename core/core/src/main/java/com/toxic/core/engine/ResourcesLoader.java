@@ -15,12 +15,17 @@ import playn.core.util.Callback;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
+ * <p>
+ * Encapsulated implementation of loading process and memory manegmenent.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
-public class Resources {
+class ResourcesLoader {
 
-  final static Logger log = DataProvider.getLogFactory().getLogger(Resources.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(ResourcesLoader.class.getName());
 
   static int callbacks_counter = 0;
 
@@ -137,7 +142,7 @@ public class Resources {
   }
 
   static class TextCallback implements Callback<String> {
-    
+
     final static Logger logText = DataProvider.getLogFactory().getLogger(TextCallback.class.getName());
 
     private final String path;
@@ -169,7 +174,7 @@ public class Resources {
 
   }
 
-  public static Image getImage(String path) {
+  static Image getImage(String path) {
     if (images.get(path) == null) {
       if (PlayN.platformType() == Type.HTML || PlayN.platformType() == Type.FLASH) {
         images.put(path, new ImageResource(PlayN.assets().getImage(path)));
@@ -186,7 +191,7 @@ public class Resources {
     return images.get(path).image;
   }
 
-  public static Sound getSound(String path) {
+  static Sound getSound(String path) {
     if (audio.get(path) == null) {
       audio.put(path, new AudioResource(PlayN.assets().getSound(path)));
     }
@@ -196,7 +201,7 @@ public class Resources {
     return audio.get(path).getAudio();
   }
 
-  public static String getText(String path, final Callback<String> callback) {
+  static String getText(String path, final Callback<String> callback) {
     if (text.get(path) == null) {
       PlayN.assets().getText(path, new TextCallback(path, callback));
       callbacks_counter++;
@@ -207,7 +212,7 @@ public class Resources {
     return text.get(path).getText();
   }
 
-  public static void release(String path) {
+  static void release(String path) {
     if (images.get(path) != null) {
       images.get(path).decrease();
       if (images.get(path).count() <= 0) {

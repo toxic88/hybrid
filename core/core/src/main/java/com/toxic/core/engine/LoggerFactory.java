@@ -9,18 +9,18 @@ import playn.core.PlayN;
 
 /**
  * <p>
- *  Implementation of log factory.
+ * Implementation of log factory.
  * </p>
  * <br/>
  * 
  * @author Strelock
  * 
  */
-class LoggerFactory implements LogFactory {
+final class LoggerFactory implements LogFactory {
 
   private static LoggerFactory instance;
 
-  LogLevel level ;
+  LogLevel level;
 
   boolean shouldPrintTime = false;
 
@@ -33,17 +33,18 @@ class LoggerFactory implements LogFactory {
   private LoggerFactory() {
     PlayN.log().setMinLevel(Level.DEBUG);
   }
-  
+
   /**
    * <p>
-   * Initializing method. 
-   * </p> 
+   * Initializing method.
+   * </p>
    * <br/>
+   * 
    * @return
    */
-  static LoggerFactory get(){
-    if(instance==null){
-      instance= new LoggerFactory();
+  static LoggerFactory get() {
+    if (instance == null) {
+      instance = new LoggerFactory();
     }
     return instance;
   }
@@ -60,10 +61,10 @@ class LoggerFactory implements LogFactory {
   public void setPrintTime(boolean flag) {
     get().shouldPrintTime = flag;
   }
-  
+
   @Override
-  public Logger getLogger(String className){
-    if(className== null || className.trim().isEmpty()){
+  public Logger getLogger(String className) {
+    if (className == null || className.trim().isEmpty()) {
       throw new IllegalArgumentException("You have tried create logger of empty class!");
     }
     return new LoggerImpl(className);

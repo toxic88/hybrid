@@ -15,16 +15,21 @@ import playn.core.PlayN;
 import playn.core.Pointer;
 import playn.core.Pointer.Event;
 
+import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
+ * <p>
+ * Response for proper manegmnent of events in proper order.
+ * </p>
+ * <br/>
  * 
  * @author Strelock
  * 
  */
-public class EventManager {
+public final class EventManager {
 
   final static Logger log = DataProvider.getLogFactory().getLogger(EventManager.class.getName());
 
@@ -36,15 +41,25 @@ public class EventManager {
   // ANTS_TAG : think up about case, when start event on upper layer, but
   // subsequently moved to more higher layer...
   // ANTS_TAG : what should be in this case?
+  // ANTS_TAG : provide possibility of custom event handling.
 
   /**
    * <p>
    * Time before will be called {@link HoldHandler} instance, that exist on
-   * active {@link BaseElement} .
+   * active {@link IElement} .
    * </p>
    * <br/>
    */
   public static int TIME_TO_NOTIFY_HOLD = 600;
+  
+  /**
+   * <p>
+   * Time of stopping before next periodically executing {@link HoldHandler} instance, that exist on
+   * active {@link IElement} .
+   * </p>
+   * <br/>
+   */
+  public static int TIME_EVERY_HOLD = 1000;
 
   /**
    * <p>
@@ -230,9 +245,9 @@ public class EventManager {
     int getPriority() {
       return this.priority;
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
       return this.element.toString() + ", priority : " + this.priority;
     }
 

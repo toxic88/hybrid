@@ -13,7 +13,7 @@ import com.toxic.core.engine.handlers.CancelHandler;
  * @author Strelock
  * 
  */
-class CancelAction implements CancelHandler {
+final class CancelAction implements CancelHandler {
 
   private final Handle handler;
 
