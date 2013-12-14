@@ -14,7 +14,7 @@
   <name>PrikupaGame Java</name>
 
   <properties>
-    <mainClass>com.toxic.java.PrikupaGameJava</mainClass>
+    <mainClass>com.toxic.java.BaseGameJava</mainClass>
   </properties>
 
   <dependencies>
