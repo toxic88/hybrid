@@ -13,7 +13,7 @@
 	<name>PrikupaGame Flash</name>
 
 	<properties>
-		<gwt.module>com.toxic.BaseGameFlash</gwt.module>
+		<gwt.module>com.toxic.BaseApplicationFlash</gwt.module>
 		<gwt.name>prikupaflash</gwt.name>
 		<flexsdk.dir>${project.build.directory}\flex4sdk</flexsdk.dir>
 	</properties>
