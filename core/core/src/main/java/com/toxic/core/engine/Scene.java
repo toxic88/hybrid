@@ -19,7 +19,7 @@ import playn.core.util.Clock;
  * @author Strelock
  * 
  */
-public final class Scene extends BaseElement {
+final class Scene extends BaseElement implements IScene {
 
   private static Set<Scene> stack = new HashSet<Scene>();
   private static Scene current;
@@ -39,12 +39,7 @@ public final class Scene extends BaseElement {
     this.setSize(PlayN.graphics().width(), PlayN.graphics().height());
   }
 
-  /**
-   * <p>
-   * Activate current scene on screen.
-   * </p>
-   * <br/>
-   */
+  @Override
   public void activate() {
     if (current != null) {
       PlayN.graphics().rootLayer().remove(current.layer);

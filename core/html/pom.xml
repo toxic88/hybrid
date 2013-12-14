@@ -13,7 +13,7 @@
 	<name>PrikupaGame HTML</name>
 
 	<properties>
-		<gwt.module>com.toxic.PrikupaGame</gwt.module>
+		<gwt.module>com.toxic.BaseGame</gwt.module>
 		<gwt.name>prikupa</gwt.name>
 		<!-- Desired Google App Engine SDK version -->
 		<gae.version>1.6.1</gae.version>

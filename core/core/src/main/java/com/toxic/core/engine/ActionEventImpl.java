@@ -2,7 +2,6 @@ package com.toxic.core.engine;
 
 import playn.core.Pointer.Event;
 
-import com.toxic.core.PrikupaGame;
 import com.toxic.core.engine.events.ActionEvent;
 
 /**
@@ -57,7 +56,7 @@ class ActionEventImpl implements ActionEvent {
   
   @Override
   public String toString(){
-    return "The event element occureted at : ["+this.x+":"+this.y+"] time : " + PrikupaGame.getContext().convertMillseconds(this.time) + " .";
+    return "The event element occureted at : ["+this.x+":"+this.y+"] time : " + BaseGame.getContext().convertMillseconds(this.time) + " .";
   }
 
 }

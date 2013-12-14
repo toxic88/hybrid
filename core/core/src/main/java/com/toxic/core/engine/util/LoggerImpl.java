@@ -2,7 +2,7 @@ package com.toxic.core.engine.util;
 
 import playn.core.PlayN;
 
-import com.toxic.core.PrikupaGame;
+import com.toxic.core.engine.BaseGame;
 
 /**
  * @author Strelock
@@ -33,7 +33,7 @@ class LoggerImpl implements Logger {
    * @return
    */
   private static String getFormatedTime() {
-    return PrikupaGame.getContext().getCurrentTime();
+    return BaseGame.getContext().getCurrentTime();
   }
 
   /**
