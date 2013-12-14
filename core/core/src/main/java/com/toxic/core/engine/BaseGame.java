@@ -7,6 +7,7 @@ import playn.core.TextFormat.Alignment;
 import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
 import com.toxic.core.engine.events.ActionEvent;
@@ -28,6 +29,7 @@ public class BaseGame extends Game.Default {
   private static final int UPDATE_RATE = 30;
   private final Clock.Source clock = new Clock.Source(UPDATE_RATE);
   private Context context;
+  private IApplication application;
 
   /**
    *
@@ -36,17 +38,20 @@ public class BaseGame extends Game.Default {
    * </p> 
    * <br/>
    * @param con instance of {@link Context}
+   * @param app instance of {@link IApplication}
    */
-  public BaseGame(Context con) {
+  public BaseGame(Context con, IApplication app) {
     super(UPDATE_RATE);
     this.context = con;
+    this.application = app;
     DataProvider.setApplication(this);
     DataProvider.getLogFactory().setLogLevel(LogLevel.WARN);
     DataProvider.getLogFactory().setPrintTime(true);
   }
 
   @Override
-  public void init() {
+  public final void init() {
+    this.application.init();
     final IScene main = DataProvider.createScene();
     // ANTS_TAG : provide this feature to have possibility pause game,
     // during tabs for example switched PlayN.platform.setLifeCycle()
@@ -148,12 +153,13 @@ public class BaseGame extends Game.Default {
   }
   
   @Override
-  public void update(int delta) {
+  public final void update(int delta) {
     this.clock.update(delta);
+    this.application.update(delta);
   }
 
   @Override
-  public void paint(float alpha) {
+  public final void paint(float alpha) {
     this.clock.paint(alpha);
     TimerUtility.get().update();
     if (Scene.getCurrentScene() != null) {
@@ -168,7 +174,7 @@ public class BaseGame extends Game.Default {
    * <br/>
    * @return instance of {@link Context}
    */
-  Context getContext(){
+  final Context getContext(){
     return this.context;
   }
   
