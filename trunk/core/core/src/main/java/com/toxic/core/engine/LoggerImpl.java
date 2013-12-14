@@ -1,8 +1,9 @@
-package com.toxic.core.engine.util;
+package com.toxic.core.engine;
 
 import playn.core.PlayN;
 
-import com.toxic.core.engine.DataProvider;
+import com.toxic.core.engine.util.log.LogLevel;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * @author Strelock

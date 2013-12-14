@@ -22,13 +22,13 @@ import tripleplay.anim.Animation;
 import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * @author Strelock
@@ -36,7 +36,7 @@ import com.toxic.core.engine.util.LoggerFactory;
  */
 class BaseElement implements IElement {
 
-  final static Logger log = LoggerFactory.getLogger(BaseElement.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(BaseElement.class.getName());
 
   // ANTS_TAG : create smart caching of reusable cached images - why we should
   // it create again!

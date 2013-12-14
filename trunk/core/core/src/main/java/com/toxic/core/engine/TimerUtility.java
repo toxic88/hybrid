@@ -10,8 +10,7 @@ import tripleplay.util.Timer;
 
 import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.util.AppTimer;
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * <p>
@@ -24,7 +23,7 @@ import com.toxic.core.engine.util.LoggerFactory;
  */
 class TimerUtility implements AppTimer {
 
-  private static final Logger log = LoggerFactory.getLogger(TimerUtility.class.getName());
+  private static final Logger log = DataProvider.getLogFactory().getLogger(TimerUtility.class.getName());
 
   private static final TimerUtility instance = new TimerUtility();
 

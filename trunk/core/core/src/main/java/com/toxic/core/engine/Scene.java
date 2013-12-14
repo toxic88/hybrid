@@ -6,6 +6,8 @@ package com.toxic.core.engine;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.toxic.core.engine.base.IScene;
+
 import playn.core.PlayN;
 import playn.core.util.Clock;
 
