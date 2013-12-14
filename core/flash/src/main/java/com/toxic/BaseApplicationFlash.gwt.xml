@@ -10,5 +10,5 @@
 
 	<public path="resources" />
 
-	<entry-point class='com.toxic.flash.BaseGameFlash' />
+	<entry-point class='com.toxic.flash.BaseApplicationFlash' />
 </module>
