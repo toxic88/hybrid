@@ -1,14 +1,16 @@
 package com.toxic.core.engine.base;
 
+import playn.core.TextFormat;
 import pythagoras.f.Point;
 import tripleplay.util.Interpolator;
 
-import com.toxic.core.engine.TextFormat;
+import com.toxic.core.engine.EventManager;
 import com.toxic.core.engine.animation.CustomAnimation;
 import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
+import com.toxic.core.engine.resources.ITextFormat;
 
 /**
  * <p>
@@ -555,7 +557,7 @@ public interface IElement {
    * 
    * @param format
    */
-  public abstract void setTextFromat(TextFormat format);
+  public abstract void setTextFromat(ITextFormat format);
 
   /**
    * <p>

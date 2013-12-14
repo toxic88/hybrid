@@ -17,17 +17,19 @@ import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
+import com.toxic.core.engine.resources.ITextFormat;
 import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.log.LogLevel;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
  * <p>
- *   
+ * The inner object of logic engine.
  * </p>
  * <br/>
+ * 
  * @author Strelock
- *
+ * 
  */
 public final class BaseGame extends Game.Default {
 
@@ -84,7 +86,8 @@ public final class BaseGame extends Game.Default {
     main.addChild(clipped);
     clipped.setPropagative(false);
     // clipped.setDebug(true);
-    TextFormat format = new TextFormat(PlayN.graphics().createFont("italic48", Style.ITALIC, 48), Alignment.CENTER);
+    ITextFormat format = DataProvider.createTextFormat(DataProvider.createFont("italic48", Style.ITALIC, 48),
+      Alignment.CENTER);
     // format.setMargin(150f, 50f);
     clipped.setTextFromat(format);
     clipped.drawText("some value\ntest \nmore text!!!!!!");
