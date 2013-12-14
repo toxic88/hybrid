@@ -8,5 +8,5 @@
 
 	<public path="resources" />
 
-	<entry-point class='com.toxic.html.BaseGameHtml' />
+	<entry-point class='com.toxic.html.BaseApplicationHtml' />
 </module>
