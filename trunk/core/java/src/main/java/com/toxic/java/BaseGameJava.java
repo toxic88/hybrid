@@ -4,16 +4,28 @@ import playn.core.PlayN;
 import playn.java.JavaPlatform;
 
 import com.toxic.core.engine.BaseGame;
+import com.toxic.core.engine.base.IApplication;
 
 public class BaseGameJava {
 
   public static void main(String[] args) {
     JavaPlatform.Config config = new JavaPlatform.Config();
-    config.height=720;
-    config.width=1280;
-//    config.emulateTouch= true;
+    config.height = 720;
+    config.width = 1280;
+    // config.emulateTouch= true;
     // use config to customize the Java platform, if needed
     JavaPlatform.register(config);
-    PlayN.run(new BaseGame(new JavaContext()));
+    PlayN.run(new BaseGame(new JavaContext(), new IApplication() {
+
+      @Override
+      public void update(int delta) {
+        // NOOP
+      }
+
+      @Override
+      public void init() {
+        // NOOP
+      }
+    }));
   }
 }
