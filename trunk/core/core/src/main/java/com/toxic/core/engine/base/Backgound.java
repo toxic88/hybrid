@@ -8,11 +8,18 @@ import com.toxic.core.engine.resources.IImage;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
+ * <p>
+ * Responsible for behavior of background. This object could be bounded witn
+ * {@link IElement} through the {@link IElement#setBackGround(Backgound)}
+ * method.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
 public final class Backgound {
-  
+
   final static Logger log = DataProvider.getLogFactory().getLogger(Backgound.class.getName());
 
   /**

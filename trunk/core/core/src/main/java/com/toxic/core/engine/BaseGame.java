@@ -7,6 +7,7 @@ import playn.core.TextFormat.Alignment;
 import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.animation.CustomAnimation;
 import com.toxic.core.engine.base.Backgound;
 import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.base.IElement;
@@ -20,7 +21,15 @@ import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.log.LogLevel;
 import com.toxic.core.engine.util.log.Logger;
 
-public class BaseGame extends Game.Default {
+/**
+ * <p>
+ *   
+ * </p>
+ * <br/>
+ * @author Strelock
+ *
+ */
+public final class BaseGame extends Game.Default {
 
   static Logger log;
 

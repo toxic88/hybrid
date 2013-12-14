@@ -21,7 +21,7 @@ import com.toxic.core.engine.util.log.Logger;
  * @author Strelock
  * 
  */
-class TimerUtility implements AppTimer {
+final class TimerUtility implements AppTimer {
 
   private static final Logger log = DataProvider.getLogFactory().getLogger(TimerUtility.class.getName());
 

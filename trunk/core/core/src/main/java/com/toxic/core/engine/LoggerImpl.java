@@ -9,7 +9,7 @@ import com.toxic.core.engine.util.log.Logger;
  * @author Strelock
  * 
  */
-class LoggerImpl implements Logger {
+final class LoggerImpl implements Logger {
 
   private final String className;
 

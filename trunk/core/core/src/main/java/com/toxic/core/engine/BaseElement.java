@@ -22,6 +22,7 @@ import tripleplay.anim.Animation;
 import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.animation.CustomAnimation;
 import com.toxic.core.engine.base.Backgound;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.events.ActionEvent;
@@ -54,6 +55,7 @@ class BaseElement implements IElement {
   // create object, that keeping in memory, and has been already create...
   // ANTS_TAG : provide smart auto-caching engine
   // ANTS_TAG : investigate Workers performance benefits.
+  // ANTS_TAG : provide sounds
 
   private static final float LINE_WIDTH = 5.0f;
 
@@ -490,7 +492,7 @@ class BaseElement implements IElement {
         this.holdCancel = null;
       }
       // ANTS_TAG : this parameter should be passed from holder handler
-      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, 1000, new Runnable() {
+      this.holdCancel = TimerUtility.getInstance().atThenEvery(EventManager.TIME_TO_NOTIFY_HOLD, EventManager.TIME_EVERY_HOLD , new Runnable() {
 
         @Override
         public void run() {

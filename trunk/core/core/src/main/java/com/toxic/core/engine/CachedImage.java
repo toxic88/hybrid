@@ -16,7 +16,7 @@ import com.toxic.core.engine.resources.IImage;
  * @author Strelock
  * 
  */
-class CachedImage implements IImage {
+final class CachedImage implements IImage {
 
   private final String path;
   private Image image;
@@ -27,17 +27,17 @@ class CachedImage implements IImage {
   }
 
   static CachedImage build(String path) {
-    return new CachedImage(path, Resources.getImage(path));
+    return new CachedImage(path, ResourcesLoader.getImage(path));
   }
 
   void releaseImage() {
-    Resources.release(this.path);
+    ResourcesLoader.release(this.path);
     this.image = null;
   }
 
   Image getImage() {
     if (this.image == null) {
-      this.image = Resources.getImage(this.path);
+      this.image = ResourcesLoader.getImage(this.path);
     }
     return this.image;
   }
