@@ -1,8 +1,12 @@
-package com.toxic.core.engine;
+package com.toxic.core.engine.base;
 
 import pythagoras.f.Point;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.Backgound;
+import com.toxic.core.engine.CustomAnimation;
+import com.toxic.core.engine.EventManager;
+import com.toxic.core.engine.TextFormat;
 import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;

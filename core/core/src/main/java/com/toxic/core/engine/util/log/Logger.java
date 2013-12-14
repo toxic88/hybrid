@@ -1,4 +1,4 @@
-package com.toxic.core.engine.util;
+package com.toxic.core.engine.util.log;
 
 /**
  * <p>

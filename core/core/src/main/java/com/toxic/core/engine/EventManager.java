@@ -17,8 +17,7 @@ import playn.core.Pointer.Event;
 
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.HoldHandler;
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * 
@@ -27,7 +26,7 @@ import com.toxic.core.engine.util.LoggerFactory;
  */
 public class EventManager {
 
-  final static Logger log = LoggerFactory.getLogger(EventManager.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(EventManager.class.getName());
 
   // ANTS_TAG : should also organize additional event for handle policy of out
   // of bounce

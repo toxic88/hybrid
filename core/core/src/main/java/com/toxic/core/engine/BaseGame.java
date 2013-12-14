@@ -7,19 +7,20 @@ import playn.core.TextFormat.Alignment;
 import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.base.IElement;
+import com.toxic.core.engine.base.IScene;
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.CancelHandler;
 import com.toxic.core.engine.handlers.HoldHandler;
 import com.toxic.core.engine.handlers.MoveHandler;
 import com.toxic.core.engine.handlers.SelectHandler;
 import com.toxic.core.engine.util.Context;
-import com.toxic.core.engine.util.LogLevel;
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.LogLevel;
+import com.toxic.core.engine.util.log.Logger;
 
 public class BaseGame extends Game.Default {
   
-  final static Logger log = LoggerFactory.getLogger(BaseGame.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(BaseGame.class.getName());
   
   
   private static final float WIDTH = 50;
@@ -40,8 +41,8 @@ public class BaseGame extends Game.Default {
     super(UPDATE_RATE);
     this.context = con;
     DataProvider.setApplication(this);
-    LoggerFactory.setLogLevel(LogLevel.WARN);
-    LoggerFactory.setPrintTime(true);
+    DataProvider.getLogFactory().setLogLevel(LogLevel.WARN);
+    DataProvider.getLogFactory().setPrintTime(true);
   }
 
   @Override

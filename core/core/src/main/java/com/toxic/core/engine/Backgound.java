@@ -3,8 +3,7 @@
  */
 package com.toxic.core.engine;
 
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * @author Strelock
@@ -12,7 +11,7 @@ import com.toxic.core.engine.util.LoggerFactory;
  */
 public final class Backgound {
   
-  final static Logger log = LoggerFactory.getLogger(Backgound.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(Backgound.class.getName());
 
   /**
    * <p>

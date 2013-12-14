@@ -12,8 +12,7 @@ import playn.core.PlayN;
 import playn.core.Sound;
 import playn.core.util.Callback;
 
-import com.toxic.core.engine.util.Logger;
-import com.toxic.core.engine.util.LoggerFactory;
+import com.toxic.core.engine.util.log.Logger;
 
 /**
  * @author Strelock
@@ -21,7 +20,7 @@ import com.toxic.core.engine.util.LoggerFactory;
  */
 public class Resources {
 
-  final static Logger log = LoggerFactory.getLogger(Resources.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(Resources.class.getName());
 
   static int callbacks_counter = 0;
 
@@ -139,7 +138,7 @@ public class Resources {
 
   static class TextCallback implements Callback<String> {
     
-    final static Logger logText = LoggerFactory.getLogger(TextCallback.class.getName());
+    final static Logger logText = DataProvider.getLogFactory().getLogger(TextCallback.class.getName());
 
     private final String path;
     private final Callback<String> callback;

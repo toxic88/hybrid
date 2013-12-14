@@ -1,17 +1,22 @@
-package com.toxic.core.engine.util;
+package com.toxic.core.engine;
+
+import com.toxic.core.engine.util.log.LogFactory;
+import com.toxic.core.engine.util.log.LogLevel;
+import com.toxic.core.engine.util.log.Logger;
 
 import playn.core.Log.Level;
 import playn.core.PlayN;
 
 /**
  * <p>
+ *  Implementation of log factory.
  * </p>
  * <br/>
  * 
  * @author Strelock
  * 
  */
-public class LoggerFactory {
+class LoggerFactory implements LogFactory {
 
   private static LoggerFactory instance;
 
@@ -43,45 +48,21 @@ public class LoggerFactory {
     return instance;
   }
 
-  /**
-   * <p>
-   * Setting global logic level, to prevent print less of settled level
-   * messages.
-   * </p>
-   * <br/>
-   * 
-   * @param logLevel
-   */
-  public static void setLogLevel(LogLevel logLevel) {
+  @Override
+  public void setLogLevel(LogLevel logLevel) {
     if (logLevel == null) {
       throw new IllegalArgumentException("You have specified empty log level!");
     }
     get().level = logLevel;
   }
 
-  /**
-   * <p>
-   * Determines weather logging process should also contains time of printing
-   * message.
-   * </p>
-   * <br/>
-   * <b>By default : false .</b> <br/>
-   * 
-   * @param flag
-   */
-  public static void setPrintTime(boolean flag) {
+  @Override
+  public void setPrintTime(boolean flag) {
     get().shouldPrintTime = flag;
   }
   
-  /**
-   * <p>
-   * Return logger for corresponding className
-   * </p> 
-   * <br/>
-   * @param className
-   * @return
-   */
-  public static Logger getLogger(String className){
+  @Override
+  public Logger getLogger(String className){
     if(className== null || className.trim().isEmpty()){
       throw new IllegalArgumentException("You have tried create logger of empty class!");
     }
