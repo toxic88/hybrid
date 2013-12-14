@@ -8,10 +8,15 @@ import java.util.Date;
 import com.toxic.core.engine.util.Context;
 
 /**
+ * <p>
+ * Java implementation of {@link Context} interface.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
-public class JavaContext implements Context {
+class JavaContext implements Context {
 
   private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
 
