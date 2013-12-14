@@ -51,12 +51,4 @@ public interface AppTimer {
    */
   public abstract CancelHandler atThenEvery(int initialMillis, int repeatMillis, Runnable action);
 
-  /**
-   * <p>
-   * Check weather necessary execute any pending task.
-   * </p>
-   * <br/>
-   */
-  public abstract void update();
-
 }

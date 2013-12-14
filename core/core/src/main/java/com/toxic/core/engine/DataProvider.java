@@ -1,5 +1,6 @@
 package com.toxic.core.engine;
 
+import com.toxic.core.engine.util.AppTimer;
 import com.toxic.core.engine.util.Context;
 
 /**
@@ -76,6 +77,18 @@ public class DataProvider {
   public static Context getContext(){
     checkConditions();
     return instance.application.getContext();
+  }
+  
+  /**
+   * <p>
+   *  Returns instance of {@link AppTimer}.
+   * </p> 
+   * <br/>
+   * @return
+   */
+  public static AppTimer getTimer(){
+    checkConditions();
+    return TimerUtility.getInstance();
   }
 
 }

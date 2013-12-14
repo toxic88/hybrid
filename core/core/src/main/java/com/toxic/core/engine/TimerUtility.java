@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.toxic.core.engine.util;
+package com.toxic.core.engine;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,6 +9,9 @@ import java.util.Map;
 import tripleplay.util.Timer;
 
 import com.toxic.core.engine.handlers.CancelHandler;
+import com.toxic.core.engine.util.AppTimer;
+import com.toxic.core.engine.util.Logger;
+import com.toxic.core.engine.util.LoggerFactory;
 
 /**
  * <p>
@@ -19,13 +22,23 @@ import com.toxic.core.engine.handlers.CancelHandler;
  * @author Strelock
  * 
  */
-public class TimerUtility implements AppTimer {
+class TimerUtility implements AppTimer {
 
   private static final Logger log = LoggerFactory.getLogger(TimerUtility.class.getName());
 
   private static final TimerUtility instance = new TimerUtility();
 
+  /**
+   * @return instance of {@link AppTimer}
+   */
   public static AppTimer getInstance() {
+    return instance;
+  }
+  
+  /**
+   * @return hidden method provided package visibility.
+   */
+  static TimerUtility get() {
     return instance;
   }
 
@@ -68,7 +81,12 @@ public class TimerUtility implements AppTimer {
     this.cancels.remove(handle);
   }
 
-  @Override
+  /**
+   * <p>
+   * Check weather necessary execute any pending task.
+   * </p>
+   * <br/>
+   */
   public void update() {
     this.timer.update();
     int size = this.cancels.size();
