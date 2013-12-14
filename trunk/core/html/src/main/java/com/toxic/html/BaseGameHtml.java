@@ -7,6 +7,7 @@ import playn.html.HtmlPlatform;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.toxic.core.engine.BaseGame;
+import com.toxic.core.engine.base.IApplication;
 
 public class BaseGameHtml extends HtmlGame {
 
@@ -43,6 +44,17 @@ public class BaseGameHtml extends HtmlGame {
         // config.experimentalFullscreen = true;
         HtmlPlatform platform = HtmlPlatform.register(config);
         platform.assets().setPathPrefix("prikupa/");
-        PlayN.run(new BaseGame(new HtmlContext()));
+        PlayN.run(new BaseGame(new HtmlContext(), new IApplication() {
+
+          @Override
+          public void update(int delta) {
+            // NOOP
+          }
+
+          @Override
+          public void init() {
+            // NOOP
+          }
+        }));
     }
 }
