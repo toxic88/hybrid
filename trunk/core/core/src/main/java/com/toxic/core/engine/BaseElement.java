@@ -22,6 +22,7 @@ import tripleplay.anim.Animation;
 import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.base.Backgound;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.CancelHandler;
@@ -139,11 +140,11 @@ class BaseElement implements IElement {
       && this.bkground != null
       && !this.bkground.isResize()
       && this.bkground.getImage() != null
-      && this.bkground.getImage().getImage().isReady()
-      && (DRAWABLE_CANVAS.width() != this.bkground.getImage().getImage().width() || DRAWABLE_CANVAS.height() != this.bkground
-        .getImage().getImage().height())) {
-      DRAWABLE_CANVAS = PlayN.graphics().createImage(this.bkground.getImage().getImage().width(),
-        this.bkground.getImage().getImage().height());
+      && ((CachedImage) this.bkground.getImage()).getImage().isReady()
+      && (DRAWABLE_CANVAS.width() != ((CachedImage) this.bkground.getImage()).getImage().width() || DRAWABLE_CANVAS
+        .height() != ((CachedImage) this.bkground.getImage()).getImage().height())) {
+      DRAWABLE_CANVAS = PlayN.graphics().createImage(((CachedImage) this.bkground.getImage()).getImage().width(),
+        ((CachedImage) this.bkground.getImage()).getImage().height());
       this.canvasInit = true;
     }
     else if (DRAWABLE_CANVAS.width() != elemWidth || DRAWABLE_CANVAS.height() != elemHeight) {
@@ -170,26 +171,30 @@ class BaseElement implements IElement {
         DRAWABLE_CANVAS.canvas().setFillColor(this.bkground.getColor());
         DRAWABLE_CANVAS.canvas().fillRect(0, 0, elemWidth, elemHeight);
       }
-      if (this.bkground.getImage() != null && this.bkground.getImage().getImage().isReady()) {
+      if (this.bkground.getImage() != null && ((CachedImage) this.bkground.getImage()).getImage().isReady()) {
         initTempSizeCanvas();
         if (this.bkground.isResize()) {
-          DRAWABLE_CANVAS.canvas().drawImage(this.bkground.getImage().getImage(), 0, 0, elemWidth, elemHeight);
+          DRAWABLE_CANVAS.canvas().drawImage(((CachedImage) this.bkground.getImage()).getImage(), 0, 0, elemWidth,
+            elemHeight);
         }
         else {
-          this.bkground.getImage().getImage().setRepeat(this.bkground.isRepeatX(), this.bkground.isRepeatY());
-          if (this.bkground.getImage().getImage().width() < elemWidth
-            || this.bkground.getImage().getImage().height() < elemHeight) {
-            DRAWABLE_CANVAS.canvas().drawImage(this.bkground.getImage().getImage(), 0, 0,
-              this.bkground.getImage().getImage().width(), this.bkground.getImage().getImage().height());
+          ((CachedImage) this.bkground.getImage()).getImage().setRepeat(this.bkground.isRepeatX(),
+            this.bkground.isRepeatY());
+          if (((CachedImage) this.bkground.getImage()).getImage().width() < elemWidth
+            || ((CachedImage) this.bkground.getImage()).getImage().height() < elemHeight) {
+            DRAWABLE_CANVAS.canvas().drawImage(((CachedImage) this.bkground.getImage()).getImage(), 0, 0,
+              ((CachedImage) this.bkground.getImage()).getImage().width(),
+              ((CachedImage) this.bkground.getImage()).getImage().height());
           }
           else {
             if (isClipped()) {
-              DRAWABLE_CANVAS.canvas().drawImage(this.bkground.getImage().getImage(), 0, 0, elemWidth, elemHeight, 0,
-                0, this.bkground.getImage().getImage().width(), this.bkground.getImage().getImage().height());
+              DRAWABLE_CANVAS.canvas().drawImage(((CachedImage) this.bkground.getImage()).getImage(), 0, 0, elemWidth,
+                elemHeight, 0, 0, ((CachedImage) this.bkground.getImage()).getImage().width(),
+                ((CachedImage) this.bkground.getImage()).getImage().height());
             }
             else {
-              DRAWABLE_CANVAS.canvas().drawImage(this.bkground.getImage().getImage(), 0, 0, DRAWABLE_CANVAS.width(),
-                DRAWABLE_CANVAS.height());
+              DRAWABLE_CANVAS.canvas().drawImage(((CachedImage) this.bkground.getImage()).getImage(), 0, 0,
+                DRAWABLE_CANVAS.width(), DRAWABLE_CANVAS.height());
             }
           }
         }
@@ -288,16 +293,16 @@ class BaseElement implements IElement {
   @Override
   public void setBackGround(Backgound bkgroundIn) {
     if (this.bkground != null && this.bkground.getImage() != null) {
-      this.bkground.getImage().releaseImage();
+      ((CachedImage) this.bkground.getImage()).releaseImage();
     }
     this.bkground = bkgroundIn;
     if (this.bkground != null) {
       if (this.bkground.getImage() != null) {
-        if (this.bkground.getImage().getImage().isReady()) {
+        if (((CachedImage) this.bkground.getImage()).getImage().isReady()) {
           renderer();
         }
         else {
-          this.bkground.getImage().getImage().addCallback(this.callback);
+          ((CachedImage) this.bkground.getImage()).getImage().addCallback(this.callback);
         }
       }
       else {
@@ -392,7 +397,7 @@ class BaseElement implements IElement {
       EventManager.getInstanse().unregistareTarget(this);
     }
     if (this.bkground != null && this.bkground.getImage() != null) {
-      this.bkground.getImage().releaseImage();
+      ((CachedImage) this.bkground.getImage()).releaseImage();
     }
     for (BaseElement elem : this.children) {
       elem.disableElements();
@@ -1022,7 +1027,7 @@ class BaseElement implements IElement {
     this.animStoppers.put(AnimationType.OPACITY, cancel);
     return cancel;
   }
-  
+
   @Override
   public void stopAnimation() {
     for (AnimationType type : this.animStoppers.keySet()) {
