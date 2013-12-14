@@ -13,11 +13,33 @@ import com.toxic.core.engine.util.Context;
  */
 public class DataProvider {
 
-  // private static DataProvider instance;
-  //
-  // private DataProvider() {
-  // //NOP
-  // }
+   private static DataProvider instance;
+   
+   private BaseGame application;
+  
+   private DataProvider() {
+   //NOP
+   }
+   
+   /**
+   * <p>
+   * Weather game has been properly loaded. 
+   * </p> 
+   * <br/>
+   * @return
+   */
+  private static void checkConditions(){
+     if (!(instance!=null && instance.application!=null)){
+       throw new UnsupportedOperationException("The application hasn't been loaded!");
+     }
+   }
+   
+   static void setApplication(BaseGame app){
+     if(instance==null){
+       instance = new DataProvider();
+     }
+     instance.application=app;
+   }
 
   /**
    * <p>
@@ -28,6 +50,7 @@ public class DataProvider {
    * @return
    */
   public static IElement createElement() {
+    checkConditions();
     return new BaseElement();
   }
   
@@ -39,11 +62,20 @@ public class DataProvider {
    * @return
    */
   public static IScene createScene(){
+    checkConditions();
     return new Scene();
   }
   
-//  public static Context getContext(){
-//    return ;
-//  }
+  /**
+  * <p>
+  * Context of application.
+  * </p> 
+  * <br/>
+  * @return instance of {@link Context}
+  */
+  public static Context getContext(){
+    checkConditions();
+    return instance.application.getContext();
+  }
 
 }

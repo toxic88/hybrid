@@ -56,7 +56,7 @@ class ActionEventImpl implements ActionEvent {
   
   @Override
   public String toString(){
-    return "The event element occureted at : ["+this.x+":"+this.y+"] time : " + BaseGame.getContext().convertMillseconds(this.time) + " .";
+    return "The event element occureted at : ["+this.x+":"+this.y+"] time : " + DataProvider.getContext().convertMillseconds(this.time) + " .";
   }
 
 }
