@@ -30,7 +30,7 @@ public class DataProvider {
 
   private static DataProvider instance;
 
-  private BaseGame application;
+  private BaseApp application;
 
   private DataProvider() {
     // NOP
@@ -50,7 +50,7 @@ public class DataProvider {
     }
   }
 
-  static void setApplication(BaseGame app) {
+  static void setApplication(BaseApp app) {
     if (instance == null) {
       instance = new DataProvider();
     }
