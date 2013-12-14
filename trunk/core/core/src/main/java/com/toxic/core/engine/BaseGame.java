@@ -20,10 +20,9 @@ import com.toxic.core.engine.util.log.LogLevel;
 import com.toxic.core.engine.util.log.Logger;
 
 public class BaseGame extends Game.Default {
-  
-  final static Logger log = DataProvider.getLogFactory().getLogger(BaseGame.class.getName());
-  
-  
+
+  static Logger log;
+
   private static final float WIDTH = 50;
   private static final float HEIGHT = 50;
   private static final int UPDATE_RATE = 30;
@@ -32,13 +31,16 @@ public class BaseGame extends Game.Default {
   private IApplication application;
 
   /**
-   *
+   * 
    * <p>
    * Default application of game engine.
-   * </p> 
+   * </p>
    * <br/>
-   * @param con instance of {@link Context}
-   * @param app instance of {@link IApplication}
+   * 
+   * @param con
+   *          instance of {@link Context}
+   * @param app
+   *          instance of {@link IApplication}
    */
   public BaseGame(Context con, IApplication app) {
     super(UPDATE_RATE);
@@ -51,6 +53,7 @@ public class BaseGame extends Game.Default {
 
   @Override
   public final void init() {
+    log = DataProvider.getLogFactory().getLogger(BaseGame.class.getName());
     this.application.init();
     final IScene main = DataProvider.createScene();
     // ANTS_TAG : provide this feature to have possibility pause game,
@@ -87,8 +90,8 @@ public class BaseGame extends Game.Default {
         redQuad.setRotation((float) (Math.PI * 2f * PlayN.random()));
         redQuad.setBackGround(new Backgound(0xFFFF0000));
         clipped.addChild(redQuad);
-        redQuad.animateTransition(e.getX() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2),
-          e.getY() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2), Interpolator.EASE_INOUT, 1500);
+        redQuad.animateTransition(e.getX() + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2), e.getY()
+          + (PlayN.random() * MAX_RANGE - MAX_RANGE / 2), Interpolator.EASE_INOUT, 1500);
         redQuad.animateRotate((float) (Math.PI * 2.f), Interpolator.EASE_OUT_BACK, 1500);
         redQuad.animateOpacity(0.2f, Interpolator.LINEAR, 700);
       }
@@ -98,7 +101,7 @@ public class BaseGame extends Game.Default {
 
       @Override
       public void onMove(ActionEvent e) {
-        //NOOP
+        // NOOP
       }
 
     });
@@ -151,7 +154,7 @@ public class BaseGame extends Game.Default {
     });
     main.activate();
   }
-  
+
   @Override
   public final void update(int delta) {
     this.clock.update(delta);
@@ -166,16 +169,17 @@ public class BaseGame extends Game.Default {
       Scene.update(this.clock);
     }
   }
-  
+
   /**
    * <p>
    * Context of application.
-   * </p> 
+   * </p>
    * <br/>
+   * 
    * @return instance of {@link Context}
    */
-  final Context getContext(){
+  final Context getContext() {
     return this.context;
   }
-  
+
 }
