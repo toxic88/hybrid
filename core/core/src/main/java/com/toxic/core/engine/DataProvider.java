@@ -2,6 +2,7 @@ package com.toxic.core.engine;
 
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
+import com.toxic.core.engine.resources.IImage;
 import com.toxic.core.engine.util.AppTimer;
 import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.log.LogFactory;
@@ -111,6 +112,21 @@ public class DataProvider {
   public static LogFactory getLogFactory() {
     checkConditions();
     return LoggerFactory.get();
+  }
+
+  /**
+   * <p>
+   * Load image from specified path.
+   * </p>
+   * <br/>
+   * 
+   * @param path
+   *          location of image relative assets
+   * @return {@link IImage} instance
+   */
+  public static IImage getImage(String path) {
+    checkConditions();
+    return CachedImage.build(path);
   }
 
 }

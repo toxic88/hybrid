@@ -5,11 +5,18 @@ package com.toxic.core.engine;
 
 import playn.core.Image;
 
+import com.toxic.core.engine.resources.IImage;
+
 /**
+ * <p>
+ * Encapsulated instance of image object.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
  * 
  */
-public class CachedImage {
+class CachedImage implements IImage {
 
   private final String path;
   private Image image;
@@ -19,16 +26,16 @@ public class CachedImage {
     this.image = im;
   }
 
-  public static CachedImage build(String path) {
+  static CachedImage build(String path) {
     return new CachedImage(path, Resources.getImage(path));
   }
 
-  public void releaseImage() {
+  void releaseImage() {
     Resources.release(this.path);
     this.image = null;
   }
 
-  public Image getImage() {
+  Image getImage() {
     if (this.image == null) {
       this.image = Resources.getImage(this.path);
     }
@@ -41,6 +48,7 @@ public class CachedImage {
       + "The url of image is : " + this.path;
   }
 
+  @Override
   public String getPath() {
     return this.path;
   }

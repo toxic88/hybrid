@@ -7,6 +7,7 @@ import playn.core.TextFormat.Alignment;
 import playn.core.util.Clock;
 import tripleplay.util.Interpolator;
 
+import com.toxic.core.engine.base.Backgound;
 import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;

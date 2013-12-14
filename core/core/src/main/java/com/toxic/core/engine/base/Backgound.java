@@ -1,8 +1,10 @@
 /**
  * 
  */
-package com.toxic.core.engine;
+package com.toxic.core.engine.base;
 
+import com.toxic.core.engine.DataProvider;
+import com.toxic.core.engine.resources.IImage;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
@@ -26,7 +28,7 @@ public final class Backgound {
     REPEATX, REPEATY, RESIZE;
   }
 
-  private final CachedImage image;
+  private final IImage image;
 
   private final boolean repeatX;
 
@@ -59,7 +61,7 @@ public final class Backgound {
   }
 
   public Backgound(String path) {
-    this.image = CachedImage.build(path);
+    this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
     this.resize = true;
@@ -67,7 +69,7 @@ public final class Backgound {
   }
 
   public Backgound(String path, int bgColor) {
-    this.image = CachedImage.build(path);
+    this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
     this.resize = true;
@@ -75,7 +77,7 @@ public final class Backgound {
   }
 
   public Backgound(String path, int bgColor, boolean stretch) {
-    this.image = CachedImage.build(path);
+    this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
     this.resize = stretch;
@@ -83,14 +85,14 @@ public final class Backgound {
   }
 
   public Backgound(String path, boolean stretch) {
-    this.image = CachedImage.build(path);
+    this.image = DataProvider.getImage(path);
     this.resize = stretch;
     this.repeatX = false;
     this.repeatY = false;
     this.color = 0;
   }
 
-  public Backgound(CachedImage imageIn) {
+  public Backgound(IImage imageIn) {
     this.image = imageIn;
     this.resize = true;
     this.repeatX = false;
@@ -98,7 +100,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  public Backgound(CachedImage imageIn, boolean resizeIn) {
+  public Backgound(IImage imageIn, boolean resizeIn) {
     this.image = imageIn;
     this.resize = resizeIn;
     this.repeatX = false;
@@ -146,7 +148,7 @@ public final class Backgound {
     this.resize = copy.resize;
   }
 
-  private Backgound(Backgound copy, CachedImage imageIn) {
+  private Backgound(Backgound copy, IImage imageIn) {
     this.color = copy.color;
     this.image = imageIn;
     this.repeatX = copy.repeatX;
@@ -178,11 +180,11 @@ public final class Backgound {
     return new Backgound(this, resizeIn, KeyType.RESIZE);
   }
 
-  public final CachedImage getImage() {
+  public final IImage getImage() {
     return this.image;
   }
 
-  public final Backgound setImage(CachedImage image) {
+  public final Backgound setImage(IImage image) {
     return new Backgound(this, image);
   }
 
