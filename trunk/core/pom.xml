@@ -35,6 +35,10 @@
     <gwt.draft>false</gwt.draft>
   </properties>
   
+  <dependencyManagement>
+   <!-- define here proper version of current archetype -->
+  </dependencyManagement>
+  
   <build>
   <pluginManagement>
       <plugins>
