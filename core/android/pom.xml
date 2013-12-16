@@ -10,7 +10,7 @@
 
 	<artifactId>android</artifactId>
 	<packaging>apk</packaging>
-	<name>PrikupaGame Android</name>
+	<name>Application Android</name>
 
 	<properties>
 		<sign.keystore>game.keystore</sign.keystore>
