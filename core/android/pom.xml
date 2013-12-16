@@ -25,19 +25,16 @@
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-android</artifactId>
-			<version>${playn.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-android-nativelib</artifactId>
-			<version>1.0</version>
 			<scope>runtime</scope>
 			<type>so</type>
 		</dependency>
@@ -45,9 +42,9 @@
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>${android.version}</version>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>

@@ -15,47 +15,39 @@
 	<properties>
 		<gwt.module>com.toxic.BaseApplication</gwt.module>
 		<gwt.name>prikupa</gwt.name>
-		<!-- Desired Google App Engine SDK version -->
-		<gae.version>1.6.1</gae.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>assets</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-html</artifactId>
-			<version>${playn.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-html</artifactId>
-			<version>${playn.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 
 		<dependency>
 			<groupId>com.threerings</groupId>
 			<artifactId>tripleplay</artifactId>
-			<version>${playn.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 
@@ -64,26 +56,22 @@
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${gae.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-labs</artifactId>
-			<version>${gae.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-testing</artifactId>
-			<version>${gae.version}</version>
 			<scope>test</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-stubs</artifactId>
-			<version>${gae.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- End Google App Engine dependencies -->

@@ -27,16 +27,168 @@
 
   <properties>
     <playn.version>1.7.2</playn.version>
+    <android.nativelib>1.0</android.nativelib>
     <gwt.loglevel>INFO</gwt.loglevel>
     <gwt.outputstyle>DETAILED</gwt.outputstyle>
     <gwt.version>2.5.1</gwt.version>
     <gwt.workers>4</gwt.workers>
     <gwt.xdisable>true</gwt.xdisable>
     <gwt.draft>false</gwt.draft>
+    <!-- Desired Google App Engine SDK version -->
+    <gae.version>1.6.1</gae.version>
   </properties>
   
   <dependencyManagement>
-   <!-- define here proper version of current archetype -->
+    <dependencies>
+    
+        <dependency>
+	      <groupId>com.toxic</groupId>
+	      <artifactId>core</artifactId>
+	      <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>android</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>html</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>flash</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>assets</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>ios</artifactId>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-core</artifactId>
+            <version>${playn.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-android</artifactId>
+            <version>${playn.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-html</artifactId>
+            <version>${playn.version}</version>
+        </dependency>
+        
+        <dependency>
+	      <groupId>com.googlecode.playn</groupId>
+	      <artifactId>playn-java</artifactId>
+	      <version>${playn.version}</version>
+	    </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-android-nativelib</artifactId>
+            <version>${android.nativelib}</version>
+            <scope>runtime</scope>
+            <type>so</type>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-flash</artifactId>
+            <version>${playn.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>${android.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
+            <version>${playn.version}</version>
+        </dependency>
+        
+        <dependency>
+	      <groupId>com.googlecode.playn</groupId>
+	      <artifactId>playn-ios</artifactId>
+	      <version>${playn.version}</version>
+	    </dependency>
+	    
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>core</artifactId>
+          <classifier>sources</classifier>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+          <groupId>com.toxic</groupId>
+          <artifactId>html</artifactId>
+          <classifier>sources</classifier>
+          <version>${project.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-html</artifactId>
+            <version>${playn.version}</version>
+            <classifier>sources</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
+            <version>${playn.version}</version>
+            <classifier>sources</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>${gae.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-labs</artifactId>
+            <version>${gae.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-testing</artifactId>
+            <version>${gae.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-stubs</artifactId>
+            <version>${gae.version}</version>
+            <scope>test</scope>
+        </dependency>
+        
+    </dependencies>
   </dependencyManagement>
   
   <build>
