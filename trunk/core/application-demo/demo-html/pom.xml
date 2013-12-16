@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>html</artifactId>
+    <artifactId>demo-html</artifactId>
     <packaging>war</packaging>
     <name>ApplicationDemo HTML</name>
 
@@ -23,12 +23,12 @@
     
         <dependency>
             <groupId>com.toxic.demo</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>demo-core</artifactId>
         </dependency>
         
         <dependency>
             <groupId>com.toxic.demo</groupId>
-            <artifactId>core</artifactId>
+            <artifactId>demo-core</artifactId>
             <classifier>sources</classifier>
         </dependency>
     
@@ -45,7 +45,7 @@
 
         <dependency>
             <groupId>com.toxic.demo</groupId>
-            <artifactId>assets</artifactId>
+            <artifactId>demo-assets</artifactId>
         </dependency>
 
         <dependency>

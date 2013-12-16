@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>ios</artifactId>
+  <artifactId>demo-ios</artifactId>
   <packaging>dll</packaging>
   <name>ApplicationDemo iOS</name>
 
@@ -17,7 +17,7 @@
   
     <dependency>
       <groupId>com.toxic.demo</groupId>
-      <artifactId>core</artifactId>
+      <artifactId>demo-core</artifactId>
     </dependency>
   
     <dependency>
