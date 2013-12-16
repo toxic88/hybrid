@@ -10,5 +10,5 @@
 
 	<artifactId>assets</artifactId>
 	<packaging>jar</packaging>
-	<name>PrikupaGame Assets</name>
+	<name>Application Assets</name>
 </project>
