@@ -68,12 +68,6 @@
 
 			<dependency>
 				<groupId>com.toxic</groupId>
-				<artifactId>assets</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-
-			<dependency>
-				<groupId>com.toxic</groupId>
 				<artifactId>ios</artifactId>
 				<version>${project.version}</version>
 			</dependency>
@@ -237,39 +231,6 @@
 
 	<profiles>
 		<profile>
-			<id>java</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<modules>
-				<module>java</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>android</id>
-			<modules>
-				<module>android</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>ios</id>
-			<modules>
-				<module>ios</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>html</id>
-			<modules>
-				<module>html</module>
-			</modules>
-		</profile>
-		<profile>
-			<id>flash</id>
-			<modules>
-				<module>flash</module>
-			</modules>
-		</profile>
-		<profile>
 			<id>application-demo</id>
 			<modules>
 				<module>application-demo</module>
@@ -277,7 +238,11 @@
 		</profile>
 	</profiles>
 	<modules>
-		<module>assets</module>
 		<module>core</module>
+		<module>flash</module>
+		<module>html</module>
+		<module>android</module>
+		<module>java</module>
+		<module>ios</module>
 	</modules>
 </project>

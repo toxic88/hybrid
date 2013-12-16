@@ -16,9 +16,9 @@
 	<url>http://code.google.com/p/own-finance</url>
 
 	<scm>
-		<connection>scm:svn:https://code.google.com/p/own-finance</connection>
-		<developerConnection>scm:svn:https://code.google.com/p/own-finance</developerConnection>
-		<url>http://code.google.com/p/own-finance</url>
+		<connection>scm:svn:http://code.google.com/p/own-finance/trunk/core/application-demo/</connection>
+		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/core/application-demo/</developerConnection>
+		<url>http://code.google.com/p/own-finance/trunk/core/application-demo/</url>
 	</scm>
 
 	<issueManagement>
