@@ -29,6 +29,62 @@
 	<properties>
 		<toxic.version>1.0-SNAPSHOT</toxic.version>
 	</properties>
+	
+	<dependencyManagement>
+	   <dependencies>
+	       
+            <dependency>
+		      <groupId>com.toxic.demo</groupId>
+		      <artifactId>core</artifactId>
+		      <version>${project.version}</version>
+		    </dependency>
+		    
+		    <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>android</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>assets</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>html</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>ios</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>java</artifactId>
+              <version>${project.version}</version>
+            </dependency>
+		    
+		    <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>html</artifactId>
+              <classifier>sources</classifier>
+              <version>${project.version}</version>
+            </dependency>
+		    
+		    <dependency>
+              <groupId>com.toxic.demo</groupId>
+              <artifactId>core</artifactId>
+              <classifier>sources</classifier>
+              <version>${project.version}</version>
+            </dependency>
+
+	   </dependencies>
+	</dependencyManagement>
 
 	<profiles>
 		<profile>

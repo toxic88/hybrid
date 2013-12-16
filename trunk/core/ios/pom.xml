@@ -17,14 +17,13 @@
     <dependency>
       <groupId>com.toxic</groupId>
       <artifactId>core</artifactId>
-      <version>${project.version}</version>
     </dependency>
 
     <dependency>
       <groupId>com.googlecode.playn</groupId>
       <artifactId>playn-ios</artifactId>
-      <version>${playn.version}</version>
     </dependency>
+    
   </dependencies>
 
   <build>

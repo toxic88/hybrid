@@ -26,25 +26,21 @@
 		<dependency>
 			<groupId>com.toxic.demo</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>android</artifactId>
-			<version>${toxic.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${toxic.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-android</artifactId>
-			<version>${playn.version}</version>
 		</dependency>
 
 		<dependency>
@@ -58,7 +54,6 @@
 		<dependency>
 			<groupId>com.google.android</groupId>
 			<artifactId>android</artifactId>
-			<version>${android.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>

@@ -10,23 +10,20 @@
 
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
-    <name>PrikupaGame Core</name>
+    <name>ApplicationDemo Core</name>
 
     <dependencies>
         <dependency>
             <groupId>com.toxic</groupId>
             <artifactId>core</artifactId>
-            <version>${toxic.version}</version>
         </dependency>
         <dependency>
             <groupId>com.googlecode.playn</groupId>
             <artifactId>playn-core</artifactId>
-            <version>${playn.version}</version>
         </dependency>
         <dependency>
             <groupId>com.threerings</groupId>
             <artifactId>tripleplay</artifactId>
-            <version>${playn.version}</version>
         </dependency>
     </dependencies>
 

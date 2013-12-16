@@ -22,26 +22,22 @@
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
-			<version>${project.version}</version>
 			<classifier>sources</classifier>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>assets</artifactId>
-			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-flash</artifactId>
-			<version>${playn.version}</version>
 		</dependency>
 	</dependencies>
 
