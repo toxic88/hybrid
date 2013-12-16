@@ -10,7 +10,7 @@
 
 	<artifactId>html</artifactId>
 	<packaging>war</packaging>
-	<name>PrikupaGame HTML</name>
+	<name>Application HTML</name>
 
 	<properties>
 		<gwt.module>com.toxic.BaseApplication</gwt.module>
