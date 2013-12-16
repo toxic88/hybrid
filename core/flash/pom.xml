@@ -10,11 +10,11 @@
 
 	<artifactId>flash</artifactId>
 	<packaging>war</packaging>
-	<name>PrikupaGame Flash</name>
+	<name>Application Flash</name>
 
 	<properties>
 		<gwt.module>com.toxic.BaseApplicationFlash</gwt.module>
-		<gwt.name>prikupaflash</gwt.name>
+		<gwt.name>Application flash</gwt.name>
 		<flexsdk.dir>${project.build.directory}\flex4sdk</flexsdk.dir>
 	</properties>
 
