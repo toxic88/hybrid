@@ -73,6 +73,12 @@
 			</dependency>
 
 			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>java</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
 				<groupId>com.googlecode.playn</groupId>
 				<artifactId>playn-core</artifactId>
 				<version>${playn.version}</version>
