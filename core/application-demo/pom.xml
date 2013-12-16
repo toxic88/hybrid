@@ -35,50 +35,50 @@
 	       
             <dependency>
 		      <groupId>com.toxic.demo</groupId>
-		      <artifactId>core</artifactId>
+		      <artifactId>demo-core</artifactId>
 		      <version>${project.version}</version>
 		    </dependency>
 		    
 		    <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>android</artifactId>
+              <artifactId>demo-android</artifactId>
               <version>${project.version}</version>
             </dependency>
             
             <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>assets</artifactId>
+              <artifactId>demo-assets</artifactId>
               <version>${project.version}</version>
             </dependency>
             
             <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>html</artifactId>
+              <artifactId>demo-html</artifactId>
               <version>${project.version}</version>
             </dependency>
             
             <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>ios</artifactId>
+              <artifactId>demo-ios</artifactId>
               <version>${project.version}</version>
             </dependency>
             
             <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>java</artifactId>
+              <artifactId>demo-java</artifactId>
               <version>${project.version}</version>
             </dependency>
 		    
 		    <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>html</artifactId>
+              <artifactId>demo-html</artifactId>
               <classifier>sources</classifier>
               <version>${project.version}</version>
             </dependency>
 		    
 		    <dependency>
               <groupId>com.toxic.demo</groupId>
-              <artifactId>core</artifactId>
+              <artifactId>demo-core</artifactId>
               <classifier>sources</classifier>
               <version>${project.version}</version>
             </dependency>
@@ -93,30 +93,30 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<modules>
-				<module>java</module>
+				<module>demo-java</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>android</id>
 			<modules>
-				<module>android</module>
+				<module>demo-android</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>ios</id>
 			<modules>
-				<module>ios</module>
+				<module>demo-ios</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>html</id>
 			<modules>
-				<module>html</module>
+				<module>demo-html</module>
 			</modules>
 		</profile>
 	</profiles>
 	<modules>
-		<module>assets</module>
-		<module>core</module>
+		<module>demo-assets</module>
+		<module>demo-core</module>
 	</modules>
 </project>

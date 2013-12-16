@@ -8,7 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>core</artifactId>
+    <artifactId>demo-core</artifactId>
     <packaging>jar</packaging>
     <name>ApplicationDemo Core</name>
 

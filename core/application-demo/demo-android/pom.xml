@@ -8,7 +8,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>android</artifactId>
+	<artifactId>demo-android</artifactId>
 	<packaging>apk</packaging>
 	<name>ApplicationDemo Android</name>
 
@@ -25,7 +25,7 @@
 
 		<dependency>
 			<groupId>com.toxic.demo</groupId>
-			<artifactId>core</artifactId>
+			<artifactId>demo-core</artifactId>
 		</dependency>
 
 		<dependency>
