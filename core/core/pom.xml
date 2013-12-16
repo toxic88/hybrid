@@ -10,7 +10,7 @@
 
 	<artifactId>core</artifactId>
 	<packaging>jar</packaging>
-	<name>PrikupaGame Core</name>
+	<name>Application Core</name>
 
 	<dependencies>
 		<dependency>
