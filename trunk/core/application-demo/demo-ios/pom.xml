@@ -24,6 +24,11 @@
       <groupId>com.toxic</groupId>
       <artifactId>core</artifactId>
     </dependency>
+    
+    <dependency>
+      <groupId>com.toxic</groupId>
+      <artifactId>ios</artifactId>
+    </dependency>
 
     <dependency>
       <groupId>com.googlecode.playn</groupId>
