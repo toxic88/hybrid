@@ -1,16 +1,32 @@
 package com.toxic.java.test;
 
-import com.toxic.core.engine.test.TestApplication;
-import com.toxic.java.BaseApplicationJava;
+import com.toxic.core.engine.base.IApplication;
+import com.toxic.core.engine.test.DemoApplication;
+import com.toxic.java.PlatfromJava;
 
 /**
+ * <p>
+ *  Test Java application.
+ * </p>
+ * <br/>
  * @author Strelock
  *
  */
-public class JavaTestApplication {
+public class JavaTestApplication extends PlatfromJava {
+
+  /**
+   * <p>
+   *  Default constructor of java platform.
+   * </p> 
+   * <br/>
+   * @param app instance of application
+   */
+  public JavaTestApplication(IApplication app) {
+    super(app);
+  }
 
   public static void main(String[] args) {
-    BaseApplicationJava.getInstance().start(new TestApplication());
+    (new JavaTestApplication(new DemoApplication())).start();
   }
 
 }
