@@ -14,7 +14,7 @@
 
     <properties>
         <gwt.module>com.toxic.BaseApplication</gwt.module>
-        <gwt.name>applicationdemo</gwt.name>
+        <gwt.name>demohtml</gwt.name>
         <!-- Desired Google App Engine SDK version -->
         <gae.version>1.6.1</gae.version>
     </properties>

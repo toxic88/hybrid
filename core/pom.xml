@@ -138,15 +138,15 @@
 			<dependency>
 				<groupId>com.toxic</groupId>
 				<artifactId>core</artifactId>
-				<classifier>sources</classifier>
 				<version>${project.version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 
 			<dependency>
 				<groupId>com.toxic</groupId>
 				<artifactId>html</artifactId>
-				<classifier>sources</classifier>
 				<version>${project.version}</version>
+				<classifier>sources</classifier>
 			</dependency>
 
 			<dependency>
