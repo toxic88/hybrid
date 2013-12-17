@@ -14,7 +14,7 @@
 
     <properties>
         <gwt.module>com.toxic.BaseApplication</gwt.module>
-        <gwt.name>application-demo</gwt.name>
+        <gwt.name>applicationdemo</gwt.name>
         <!-- Desired Google App Engine SDK version -->
         <gae.version>1.6.1</gae.version>
     </properties>
@@ -31,17 +31,12 @@
             <artifactId>demo-core</artifactId>
             <classifier>sources</classifier>
         </dependency>
-    
+        
         <dependency>
             <groupId>com.toxic</groupId>
             <artifactId>core</artifactId>
         </dependency>
         
-        <dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>html</artifactId>
-        </dependency>
-
         <dependency>
             <groupId>com.toxic</groupId>
             <artifactId>core</artifactId>
@@ -51,9 +46,14 @@
         <dependency>
             <groupId>com.toxic</groupId>
             <artifactId>html</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.toxic</groupId>
+            <artifactId>html</artifactId>
             <classifier>sources</classifier>
         </dependency>
-
+        
         <dependency>
             <groupId>com.toxic.demo</groupId>
             <artifactId>demo-assets</artifactId>
@@ -63,11 +63,16 @@
             <groupId>com.googlecode.playn</groupId>
             <artifactId>playn-html</artifactId>
         </dependency>
-
+        
         <dependency>
             <groupId>com.googlecode.playn</groupId>
             <artifactId>playn-html</artifactId>
             <classifier>sources</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
         </dependency>
 
         <dependency>
@@ -124,7 +129,7 @@
                 <version>8.0.0.v20110901</version>
                 <configuration>
                     <webApp>
-                        ${project.basedir}/target/${project.artifactId}-${project.version}
+                        ${project.basedir}/target/${gwt.name}
                     </webApp>
                 </configuration>
                 <executions>
