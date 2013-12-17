@@ -2,6 +2,7 @@
 <module rename-to="demohtml">
 	<inherits name="tripleplay.TriplePlay" />
 	<inherits name="ApplicationAssets" />
+	<inherits name="com.toxic.HtmlEngine" />
 
 	<source path="core" />
 	<source path="html" />
