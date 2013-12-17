@@ -19,13 +19,28 @@ import com.toxic.core.engine.handlers.SelectHandler;
 import com.toxic.core.engine.resources.ITextFormat;
 
 /**
+ * <p>
+ * The application logic example.
+ * </p>
+ * <br/>
+ * 
  * @author Strelock
- *
+ * 
  */
-public class TestApplication implements IApplication {
-  
+public class DemoApplication implements IApplication {
+
   private static final float WIDTH = 50;
   private static final float HEIGHT = 50;
+
+  /**
+   * <p>
+   * Default constructor.
+   * </p>
+   * <br/>
+   */
+  public DemoApplication() {
+    // NOOP
+  }
 
   @Override
   public void init() {
@@ -132,7 +147,7 @@ public class TestApplication implements IApplication {
 
   @Override
   public void update(int delta) {
-    //empty block
+    // empty block
   }
 
 }
