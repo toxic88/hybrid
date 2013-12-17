@@ -8,10 +8,12 @@ import java.util.Date;
 import com.toxic.core.engine.util.Context;
 
 /**
+ * <p></p>
+ * <br/>
  * @author Strelock
  *
  */
-public class AndroidContext implements Context {
+class AndroidContext implements Context {
   
   private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
 
