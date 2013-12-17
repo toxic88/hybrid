@@ -13,33 +13,21 @@
 	<name>Application HTML</name>
 
 	<dependencies>
+	
 		<dependency>
 			<groupId>com.toxic</groupId>
 			<artifactId>core</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>com.toxic</groupId>
-			<artifactId>core</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.playn</groupId>
-			<artifactId>playn-html</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.playn</groupId>
-			<artifactId>playn-html</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
-
-		<dependency>
-			<groupId>com.threerings</groupId>
-			<artifactId>tripleplay</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-html</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
+        </dependency>
 
 		<!-- Start Google App Engine dependencies -->
 		<!-- These can be removed if you don't wish to deploy to Google App Engine -->
