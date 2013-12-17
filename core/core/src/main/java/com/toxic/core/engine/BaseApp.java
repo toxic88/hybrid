@@ -4,6 +4,7 @@ import playn.core.Game;
 import playn.core.util.Clock;
 
 import com.toxic.core.engine.base.IApplication;
+import com.toxic.core.engine.base.IPlatform;
 import com.toxic.core.engine.util.Context;
 import com.toxic.core.engine.util.log.LogLevel;
 import com.toxic.core.engine.util.log.Logger;
@@ -23,8 +24,8 @@ public final class BaseApp extends Game.Default {
 
   private static final int UPDATE_RATE = 30;
   private final Clock.Source clock = new Clock.Source(UPDATE_RATE);
-  private Context context;
-  private IApplication application;
+  private final Context context;
+  private final IApplication application;
 
   /**
    * 
@@ -33,15 +34,13 @@ public final class BaseApp extends Game.Default {
    * </p>
    * <br/>
    * 
-   * @param con
-   *          instance of {@link Context}
-   * @param app
-   *          instance of {@link IApplication}
+   * @param platform
+   *          instance of {@link IPlatform}
    */
-  public BaseApp(Context con, IApplication app) {
+  public BaseApp(IPlatform platform) {
     super(UPDATE_RATE);
-    this.context = con;
-    this.application = app;
+    this.context = platform.getContext();
+    this.application = platform.getApp();
     DataProvider.setApplication(this);
     DataProvider.getLogFactory().setLogLevel(LogLevel.WARN);
     DataProvider.getLogFactory().setPrintTime(true);
