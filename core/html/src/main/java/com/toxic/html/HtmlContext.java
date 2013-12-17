@@ -6,7 +6,7 @@ import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.toxic.core.engine.util.Context;
 
 
-public class HtmlContext implements Context {
+final class HtmlContext implements Context {
 
   @Override
   public String getCurrentTime() {
