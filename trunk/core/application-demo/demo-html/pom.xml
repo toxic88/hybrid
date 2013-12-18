@@ -13,7 +13,7 @@
     <name>ApplicationDemo HTML</name>
 
     <properties>
-        <gwt.module>com.toxic.BaseApplication</gwt.module>
+        <gwt.module>com.toxic.DemoApplicationHtml</gwt.module>
         <gwt.name>demohtml</gwt.name>
         <!-- Desired Google App Engine SDK version -->
         <gae.version>1.6.1</gae.version>
@@ -108,6 +108,7 @@
     </dependencies>
 
     <build>
+        <finalName>${gwt.name}</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>

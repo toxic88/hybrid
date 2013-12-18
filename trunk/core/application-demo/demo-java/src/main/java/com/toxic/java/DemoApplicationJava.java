@@ -1,4 +1,4 @@
-package com.toxic.java.test;
+package com.toxic.java;
 
 import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.test.DemoApplication;
@@ -12,7 +12,7 @@ import com.toxic.java.PlatfromJava;
  * @author Strelock
  *
  */
-public class JavaTestApplication extends PlatfromJava {
+public class DemoApplicationJava extends PlatfromJava {
 
   /**
    * <p>
@@ -21,12 +21,12 @@ public class JavaTestApplication extends PlatfromJava {
    * <br/>
    * @param app instance of application
    */
-  public JavaTestApplication(IApplication app) {
+  public DemoApplicationJava(IApplication app) {
     super(app);
   }
 
   public static void main(String[] args) {
-    (new JavaTestApplication(new DemoApplication())).start();
+    (new DemoApplicationJava(new DemoApplication())).start();
   }
 
 }

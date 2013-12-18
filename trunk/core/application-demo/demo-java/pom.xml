@@ -14,7 +14,7 @@
   <name>ApplicationDemo Java</name>
 
   <properties>
-    <mainClass>com.toxic.java.test.JavaTestApplication</mainClass>
+    <mainClass>com.toxic.java.DemoApplicationJava</mainClass>
   </properties>
 
   <dependencies>
