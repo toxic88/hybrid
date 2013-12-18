@@ -11,7 +11,7 @@ import com.toxic.core.engine.test.DemoApplication;
  * @author Strelock
  *
  */
-public class BaseApplicationHtml extends ApplicationHtml {
+public class DemoApplicationHtml extends ApplicationHtml {
 
   @Override
   public void setApplication() {

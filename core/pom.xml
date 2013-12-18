@@ -192,6 +192,19 @@
 		</dependencies>
 	</dependencyManagement>
 
+	<repositories>
+		<repository>
+			<id>forplay-legacy</id>
+			<url>http://forplay.googlecode.com/svn/mavenrepo</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
 	<build>
 		<pluginManagement>
 			<plugins>

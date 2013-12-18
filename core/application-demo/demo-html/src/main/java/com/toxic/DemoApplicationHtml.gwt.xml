@@ -2,12 +2,12 @@
 <module rename-to="demohtml">
 	<inherits name="tripleplay.TriplePlay" />
 	<inherits name="ApplicationAssets" />
-	<inherits name="com.toxic.HtmlEngine" />
+	<inherits name="com.toxic.CoreApplication" />
 
 	<source path="core" />
 	<source path="html" />
 
 	<public path="resources" />
 
-	<entry-point class="com.toxic.html.BaseApplicationHtml" />
+	<entry-point class="com.toxic.html.DemoApplicationHtml" />
 </module>

@@ -4,6 +4,7 @@ import playn.core.PlayN;
 import playn.html.HtmlGame;
 import playn.html.HtmlPlatform;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.toxic.core.engine.BaseApp;
@@ -77,7 +78,7 @@ public abstract class ApplicationHtml extends HtmlGame {
     // config.mode = Mode.CANVAS;
     // config.experimentalFullscreen = true;
     HtmlPlatform platForm = HtmlPlatform.register(config);
-    platForm.assets().setPathPrefix("prikupa/");
+    platForm.assets().setPathPrefix(GWT.getModuleName()+"/");
     PlayN.run(new BaseApp(new PlatformHtml(this.application)));
   }
 
