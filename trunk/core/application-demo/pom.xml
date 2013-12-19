@@ -116,7 +116,7 @@
 		</profile>
 	</profiles>
 	<modules>
-		<module>demo-assets</module>
+		<module>assets</module>
 		<module>demo-core</module>
 	</modules>
 </project>
