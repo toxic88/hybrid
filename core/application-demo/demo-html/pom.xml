@@ -144,27 +144,6 @@
                 </executions>
             </plugin>
 
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.8</version>
-                <configuration>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>false</downloadJavadocs>
-                    <wtpversion>2.0</wtpversion>
-                    <additionalBuildcommands>
-                        <buildCommand>
-                            <name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
-                        </buildCommand>
-                    </additionalBuildcommands>
-                    <additionalProjectnatures>
-                        <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
-                        <!-- This nature can be removed if you don't wish to deploy to Google 
-                            App Engine -->
-                        <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
-                    </additionalProjectnatures>
-                </configuration>
-            </plugin>
-
             <!-- Start Google App Engine plugin configuration -->
             <!-- This can be removed if you don't wish to deploy to Google App Engine -->
             <plugin>
