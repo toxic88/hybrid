@@ -11,8 +11,9 @@
 
     <application
         android:debuggable="true"
+        android:hardwareAccelerated="true"
         android:icon="@drawable/icon"
-        android:label="@string/app_name" android:hardwareAccelerated="true">
+        android:label="@string/app_name" >
         <activity
             android:name="ApplicationAndroid"
             android:configChanges="keyboardHidden|orientation"
