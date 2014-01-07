@@ -15,66 +15,53 @@
  */
 package playn.html;
 
-import playn.core.Canvas;
-import playn.core.gl.Scale;
-import pythagoras.f.MathUtil;
-
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Document;
 
+import pythagoras.f.MathUtil;
+import playn.core.Canvas;
+import playn.core.gl.Scale;
+
 class HtmlCanvas extends AbstractHtmlCanvas {
 
-    private final CanvasElement canvas;
-    private final float         width, height;
+  private final CanvasElement canvas;
 
-    public static HtmlCanvas create(Scale scale, float width, float height) {
-        float sw = scale.scaledCeil(width), sh = scale.scaledCeil(height);
-        HtmlCanvas canvas = new HtmlCanvas(sw, sh);
-        canvas.scale(scale.factor, scale.factor);
-        return canvas;
-    }
+  public static HtmlCanvas create(Scale scale, float width, float height) {
+    float sw = scale.scaledCeil(width), sh = scale.scaledCeil(height);
+    HtmlCanvas canvas = new HtmlCanvas(sw, sh);
+    canvas.scale(scale.factor, scale.factor);
+    return canvas;
+  }
 
-    // ANTS_TAG : test this feature!
-    @Override
-    public Canvas clear() {
-        this.canvas.setWidth((int) this.width);;
-        this.canvas.setHeight((int) this.height);;
-        return this;
-    }
+  HtmlCanvas(Context2d ctx, float width, float height) {
+    this(ctx, null, width, height);
+  }
 
-    @Override
-    public final float width() {
-        return width;
-    }
+  CanvasElement canvas() {
+    return canvas;
+  }
+  
+  //ANTS_TAG : test this feature!
+  @Override
+  public Canvas clear() {
+      this.canvas.setWidth((int) this.width);;
+      this.canvas.setHeight((int) this.height);;
+      return this;
+  }
 
-    @Override
-    public final float height() {
-        return height;
-    }
+  private HtmlCanvas(float width, float height) {
+    this(Document.get().createCanvasElement(), width, height);
+  }
 
-    HtmlCanvas(Context2d ctx, float width, float height) {
-        this(ctx, null, width, height);
-    }
+  private HtmlCanvas(CanvasElement canvas, float width, float height) {
+    this(canvas.getContext2d(), canvas, width, height);
+    canvas.setWidth(MathUtil.iceil(width));
+    canvas.setHeight(MathUtil.iceil(height));
+  }
 
-    CanvasElement canvas() {
-        return canvas;
-    }
-
-    private HtmlCanvas(float width, float height) {
-        this(Document.get().createCanvasElement(), width, height);
-    }
-
-    private HtmlCanvas(CanvasElement canvas, float width, float height) {
-        this(canvas.getContext2d(), canvas, width, height);
-        canvas.setWidth(MathUtil.iceil(width));
-        canvas.setHeight(MathUtil.iceil(height));
-    }
-
-    private HtmlCanvas(Context2d ctx, CanvasElement canvas, float width, float height) {
-        super(ctx);
-        this.canvas = canvas;
-        this.width = width;
-        this.height = height;
-    }
+  private HtmlCanvas(Context2d ctx, CanvasElement canvas, float width, float height) {
+    super(ctx, width, height);
+    this.canvas = canvas;
+  }
 }
