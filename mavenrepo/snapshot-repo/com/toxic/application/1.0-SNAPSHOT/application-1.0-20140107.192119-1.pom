@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.googlecode.playn</groupId>
+		<artifactId>playn-project</artifactId>
+		<version>1.7.2</version>
+	</parent>
+
+	<groupId>com.toxic</groupId>
+	<artifactId>application</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Application Metaproject</name>
+	<url>http://code.google.com/p/own-finance/trunk/core</url>
+
+	<scm>
+		<connection>scm:svn:https://code.google.com/p/own-finance/trunk/core</connection>
+		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/core</developerConnection>
+		<url>http://code.google.com/p/own-finance/trunk/core</url>
+	</scm>
+	
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/own-finance/issues/list</url>
+	</issueManagement>
+
+	<properties>
+	    <!-- ANTS_TAG : provide java.sdk version 1.7  -->
+		<playn.version>1.8</playn.version>
+		<android.nativelib>1.0</android.nativelib>
+		<gwt.loglevel>INFO</gwt.loglevel>
+		<gwt.outputstyle>DETAILED</gwt.outputstyle>
+		<gwt.version>2.5.1</gwt.version>
+		<gwt.workers>4</gwt.workers>
+		<gwt.xdisable>true</gwt.xdisable>
+		<gwt.draft>false</gwt.draft>
+		<!-- Desired Google App Engine SDK version -->
+		<gae.version>1.6.1</gae.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>android</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>html</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>flash</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>ios</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>java</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-core</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-android</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-html</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-java</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-android-nativelib</artifactId>
+				<version>${android.nativelib}</version>
+				<scope>runtime</scope>
+				<type>so</type>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-flash</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android</artifactId>
+				<version>${android.version}</version>
+				<scope>provided</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.threerings</groupId>
+				<artifactId>tripleplay</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-ios</artifactId>
+				<version>${playn.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>core</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic</groupId>
+				<artifactId>html</artifactId>
+				<version>${project.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<dependency>
+				<groupId>com.googlecode.playn</groupId>
+				<artifactId>playn-html</artifactId>
+				<version>${playn.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<dependency>
+				<groupId>com.threerings</groupId>
+				<artifactId>tripleplay</artifactId>
+				<version>${playn.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-1.0-sdk</artifactId>
+				<version>${gae.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-labs</artifactId>
+				<version>${gae.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-testing</artifactId>
+				<version>${gae.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.appengine</groupId>
+				<artifactId>appengine-api-stubs</artifactId>
+				<version>${gae.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+	<repositories>
+		<repository>
+			<id>forplay-legacy</id>
+			<url>http://forplay.googlecode.com/svn/mavenrepo</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+            <id>maven2-repository.dev.java.net</id>
+            <name>Java.net Repository for Maven</name>
+            <url>http://download.java.net/maven/2/</url>
+        </repository>
+	</repositories>
+
+    <distributionManagement>
+        <repository>
+			<id>own-finance-repository</id>
+			<name>Maven Repository of google code</name>
+			<url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url>
+		</repository>
+		<snapshotRepository>
+			<id>own-finance-snapshot-repository</id>
+			<name>Maven Repository of google code (snapshot)</name>
+			<url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+    </distributionManagement>
+
+	<build>
+	   <extensions>
+	       <extension>
+    	       <groupId>org.jvnet.wagon-svn</groupId>
+    	       <artifactId>wagon-svn</artifactId>
+				<version>1.9</version>
+	       </extension>
+	   </extensions>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<version>2.9</version>
+					<configuration>
+						<downloadSources>true</downloadSources>
+						<downloadJavadocs>true</downloadJavadocs>
+						<wtpversion>2.0</wtpversion>
+						<forceRecheck>true</forceRecheck>
+						<limitProjectReferencesToWorkspace>true</limitProjectReferencesToWorkspace>
+						<lineLength>130</lineLength>
+						<useProjectReferences>false</useProjectReferences>
+						<additionalBuildcommands>
+							<buildCommand>
+								<name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
+							</buildCommand>
+						</additionalBuildcommands>
+						<additionalProjectnatures>
+							<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+							<!-- This nature can be removed if you don't wish to deploy to Google 
+                            App Engine -->
+                            <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
+						</additionalProjectnatures>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>gwt-maven-plugin</artifactId>
+					<version>${gwt.version}</version>
+					<configuration>
+						<force>true</force>
+						<strict>true</strict>
+						<failOnError>true</failOnError>
+						<extraJvmArgs>-Xmx1024M -Xss64M -Dgwt.usearchives=false</extraJvmArgs>
+						<logLevel>${gwt.loglevel}</logLevel>
+						<style>${gwt.outputstyle}</style>
+						<runTarget>${gwt.module}${gwt.modulesuffix}/index.html</runTarget>
+						<hostedWebapp>${project.build.directory}/www</hostedWebapp>
+						<draftCompile>${gwt.draft}</draftCompile>
+						<disableCastChecking>${gwt.xdisable}</disableCastChecking>
+						<disableClassMetadata>${gwt.xdisable}</disableClassMetadata>
+						<disableRunAsync>true</disableRunAsync>
+						<localWorkers>${gwt.workers}</localWorkers>
+						<modules>
+							<module>${gwt.module}</module>
+						</modules>
+						<inplace>${gwt.inplace}</inplace>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>com.google.gwt</groupId>
+							<artifactId>gwt-user</artifactId>
+							<version>${gwt.version}</version>
+						</dependency>
+						<dependency>
+							<groupId>com.google.gwt</groupId>
+							<artifactId>gwt-dev</artifactId>
+							<version>${gwt.version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<profile>
+			<id>application-demo</id>
+			<modules>
+				<module>application-demo</module>
+			</modules>
+		</profile>
+	</profiles>
+	<modules>
+		<module>core</module>
+		<module>flash</module>
+		<module>html</module>
+		<module>android</module>
+		<module>java</module>
+		<module>ios</module>
+	</modules>
+</project>
