@@ -14,6 +14,7 @@
 	<packaging>pom</packaging>
 	<name>Application Metaproject</name>
 	<url>http://code.google.com/p/own-finance/trunk/core</url>
+	<description>RAP project oriented for mobile and tables platforms.</description>
 
 	<scm>
 		<connection>scm:svn:https://code.google.com/p/own-finance/trunk/core</connection>
@@ -34,7 +35,7 @@
 		<gwt.outputstyle>DETAILED</gwt.outputstyle>
 		<gwt.version>2.5.1</gwt.version>
 		<gwt.workers>4</gwt.workers>
-		<gwt.xdisable>true</gwt.xdisable>
+		<gwt.xdisable>false</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
 		<!-- Desired Google App Engine SDK version -->
 		<gae.version>1.6.1</gae.version>
@@ -189,6 +190,32 @@
 				<version>${gae.version}</version>
 				<scope>test</scope>
 			</dependency>
+			
+			<dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-user</artifactId>
+              <version>${gwt.version}</version>
+              <classifier>sources</classifier>
+            </dependency>
+			
+			<dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-user</artifactId>
+              <version>${gwt.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-dev</artifactId>
+              <version>${gwt.version}</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt-dev</artifactId>
+              <version>${gwt.version}</version>
+              <classifier>sources</classifier>
+            </dependency>
 
 		</dependencies>
 	</dependencyManagement>
@@ -259,6 +286,21 @@
 	   </extensions>
 		<pluginManagement>
 			<plugins>
+			     <plugin>
+		          <artifactId>maven-compiler-plugin</artifactId>
+		          <version>2.3.2</version>
+		          <configuration>
+		            <source>1.7</source>
+		            <target>1.7</target>
+		            <showDeprecation>true</showDeprecation>
+		            <showWarnings>true</showWarnings>
+		            <compilerArgs>
+		              <arg>-Xlint</arg>
+		              <arg>-Xlint:-serial</arg>
+		              <arg>-Xlint:-path</arg>
+		            </compilerArgs>
+		          </configuration>
+		        </plugin>
 				<plugin>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<version>2.9</version>
