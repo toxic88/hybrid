@@ -9,5 +9,5 @@
 
 	<public path="resources" />
 
-	<entry-point class="com.toxic.html.DemoApplicationHtml" />
+	<entry-point class="com.toxic.html.demo.DemoApplicationHtml" />
 </module>
