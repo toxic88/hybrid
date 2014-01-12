@@ -19,7 +19,7 @@
 	<scm>
 		<connection>scm:svn:https://code.google.com/p/own-finance/trunk/application</connection>
 		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/application</developerConnection>
-		<url>http://code.google.com/p/own-finance/trunk/application</url>
+		<url>http://own-finance.googlecode.com/svn/trunk/application</url>
 	</scm>
 	
 	<issueManagement>
@@ -36,6 +36,7 @@
 		<gwt.workers>4</gwt.workers>
 		<gwt.xdisable>false</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
+		<javadoc.version>2.9.1</javadoc.version>
 		<!-- Desired Google App Engine SDK version -->
 		<gae.version>1.6.1</gae.version>
 	</properties>
@@ -215,9 +216,32 @@
               <version>${gwt.version}</version>
               <classifier>sources</classifier>
             </dependency>
-
+            
+            <dependency>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-javadoc-plugin</artifactId>
+			    <version>${javadoc.version}</version>
+			</dependency>
+			            
 		</dependencies>
 	</dependencyManagement>
+	
+	<reporting>
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-javadoc-plugin</artifactId>
+	        <configuration>
+	           <aggregate>true</aggregate>
+	           <defaultAuthor>Anton Soroka</defaultAuthor>
+	           <detail>true</detail>
+	           <detectJavaApiLink>true</detectJavaApiLink>
+	           <verbose>true</verbose>
+	           <windowtitle>Toxicity library java-docs API .</windowtitle>
+	        </configuration>
+	      </plugin>
+	    </plugins>
+	  </reporting>
 
 	<repositories>
 		<repository>
@@ -325,6 +349,19 @@
 					</configuration>
 				</plugin>
 				<plugin>
+		            <groupId>org.apache.maven.plugins</groupId>
+		            <artifactId>maven-javadoc-plugin</artifactId>
+		            <version>${javadoc.version}</version>
+		            <configuration>
+		              <aggregate>true</aggregate>
+		               <defaultAuthor>Anton Soroka</defaultAuthor>
+		               <detail>true</detail>
+		               <detectJavaApiLink>true</detectJavaApiLink>
+		               <verbose>true</verbose>
+		               <windowtitle>Toxicity library java-docs API .</windowtitle>
+		            </configuration>
+		        </plugin>
+				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>gwt-maven-plugin</artifactId>
 					<version>${gwt.version}</version>
@@ -362,6 +399,13 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+		<!--  mvn javadoc:javadoc  -->
+		<plugins>
+		  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+          </plugin>
+		</plugins>
 	</build>
 
 	<modules>
