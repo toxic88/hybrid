@@ -458,11 +458,13 @@ class BaseElement implements IElement {
    */
   void dispatchMoveEvent(final ActionEvent e) {
     if (this.initialEvent == null) {
+      log.warn("doesn't have init!");
       return;
     }
     // ANTS_TAG : this bug of uncontrolled out of boundary events
     this.previousEvent = this.currentEvent;
     this.currentEvent = e;
+    //ANTS_TAG : here is mistake.
     if (this.moveHandler != null
       && new Point(BaseElement.this.previousEvent.getX(), BaseElement.this.previousEvent.getY()).distance(e.getX(),
         e.getY()) > EventManager.RADIUS_HIT) {
