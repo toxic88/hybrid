@@ -68,7 +68,7 @@ public final class EventManager {
    * </p>
    * <br/>
    */
-  public static float RADIUS_HIT = 15.0f;
+  public static float RADIUS_HIT = 3.0f;
 
   private volatile static EventManager instanse = new EventManager();
 
