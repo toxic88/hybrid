@@ -548,6 +548,13 @@ class BaseElement implements IElement {
     baseChild.enableElements();
   }
 
+  @Override
+  public void addChildren(List<IElement> children) {
+	  for(IElement el : children){
+		  addChild(el);
+	  }
+  }
+  
   private void addOnRightPlace(BaseElement child) {
     int index = 0;
 
@@ -603,6 +610,16 @@ class BaseElement implements IElement {
     this.layer.setTranslation(x, y);
   }
 
+  @Override
+  public void setPositionX(float x) {
+  	this.layer.setTx(x);
+  }
+
+  @Override
+  public void setPositionY(float y) {
+	  this.layer.setTy(y);
+  }
+  
   @Override
   public void setOrigin(float x, float y) {
     this.layer.setOrigin(x, y);
