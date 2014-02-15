@@ -1,5 +1,7 @@
 package com.toxic.core.engine.base;
 
+import java.util.List;
+
 import playn.core.TextFormat;
 import pythagoras.f.Point;
 import tripleplay.util.Interpolator;
@@ -154,6 +156,21 @@ public interface IElement {
    */
   public abstract void addChild(IElement child);
 
+  
+  /**
+   * <p>
+   * Add child to current element. Child will be positioned relative to current
+   * element.
+   * </p>
+   * <p>
+   * <b>NOTE : if current element {@link IElement#isClipped()} rendering out of
+   * it size elements will be skipped.</b>
+   * </p>
+   * <br/>
+ * @param children
+ */
+public abstract void addChildren(List<IElement> children);
+  
   /**
    * <p>
    * Remove input argument element from current element.
@@ -193,6 +210,28 @@ public interface IElement {
    *          location relative Y axis
    */
   public abstract void setPosition(float x, float y);
+  
+  /**
+   * <p>
+   * Settled X axis position of current element
+   * </p>
+   * <br/>
+   * 
+   * @param x
+   *          location relative X axis
+   */
+  public abstract void setPositionX(float x);
+  
+  /**
+   * <p>
+   * Settled Y axis position of current element
+   * </p>
+   * <br/>
+   * 
+   * @param Y
+   *          location relative Y axis
+   */
+  public abstract void setPositionY(float y);
 
   /**
    * <p>
