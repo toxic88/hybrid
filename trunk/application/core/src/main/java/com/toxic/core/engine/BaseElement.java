@@ -3,7 +3,6 @@
  */
 package com.toxic.core.engine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,6 +17,7 @@ import playn.core.PlayN;
 import playn.core.TextLayout;
 import playn.core.util.Callback;
 import pythagoras.f.Point;
+import pythagoras.f.Rectangle;
 import tripleplay.anim.Animation;
 import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
@@ -70,7 +70,12 @@ class BaseElement implements IElement {
 
   private ImageLayer backGround;
 
-  private final Point size = new Point(1f, 1f);
+  private final Rectangle size = new Rectangle();
+
+  // Strelock : control size with children
+  private final Rectangle realSize = new Rectangle();
+
+  private final Map<BaseElement, Rectangle> outOfBordersChildren = new HashMap<>();
 
   private boolean propogative = false;
 
@@ -78,7 +83,7 @@ class BaseElement implements IElement {
 
   private BaseElement parent;
 
-  protected final List<BaseElement> children = new LinkedList<BaseElement>();
+  protected final List<BaseElement> children = new LinkedList<>();
 
   private final Callback<Image> callback = new Callback<Image>() {
 
@@ -115,7 +120,7 @@ class BaseElement implements IElement {
 
   CancelHandler holdCancel;
 
-  Map<AnimationType, CancelHandler> animStoppers = new HashMap<AnimationType, CancelHandler>();
+  Map<AnimationType, CancelHandler> animStoppers = new HashMap<>();
 
   ActionEvent initialEvent;
 
@@ -126,8 +131,8 @@ class BaseElement implements IElement {
   private final void initImageLayer() {
     if (this.backGround == null) {
       this.backGround = PlayN.graphics().createImageLayer();
-      this.backGround.setWidth(this.size.x * this.layer.scaleX());
-      this.backGround.setHeight(this.size.y * this.layer.scaleY());
+      this.backGround.setWidth(width());
+      this.backGround.setHeight(height());
       this.backGround.setDepth(Integer.MIN_VALUE);
       this.layer.add(this.backGround);
     }
@@ -137,8 +142,8 @@ class BaseElement implements IElement {
     if (this.canvasInit == true) {
       return;
     }
-    float elemWidth = this.size.x * this.layer.scaleX();
-    float elemHeight = this.size.y * this.layer.scaleY();
+    float elemWidth = width();
+    float elemHeight = height();
     if (!isClipped()
       && this.bkground != null
       && !this.bkground.isResize()
@@ -166,8 +171,8 @@ class BaseElement implements IElement {
   // determining by appropriated flag.
   void renderer() {
     this.canvasInit = false;
-    float elemWidth = this.size.x * this.layer.scaleX();
-    float elemHeight = this.size.y * this.layer.scaleY();
+    float elemWidth = width();
+    float elemHeight = height();
     if (this.bkground != null) {
       if (this.bkground.getColor() != 0) {
         initTempSizeCanvas();
@@ -464,7 +469,7 @@ class BaseElement implements IElement {
     // ANTS_TAG : this bug of uncontrolled out of boundary events
     this.previousEvent = this.currentEvent;
     this.currentEvent = e;
-    //ANTS_TAG : here is mistake.
+    // ANTS_TAG : here is mistake.
     if (this.moveHandler != null
       && new Point(BaseElement.this.previousEvent.getX(), BaseElement.this.previousEvent.getY()).distance(e.getX(),
         e.getY()) > EventManager.RADIUS_HIT) {
@@ -544,8 +549,56 @@ class BaseElement implements IElement {
     }
     baseChild.parent = this;
     this.layer.add(baseChild.layer);
+    checkChildLocation(baseChild);
     addOnRightPlace(baseChild);
     baseChild.enableElements();
+  }
+
+  /**
+   * <p>
+   * If child lay out of size element, track this.
+   * </p>
+   * <br/>
+   * 
+   * @param baseChild
+   */
+  void checkChildLocation(BaseElement baseChild) {
+    if (!isClipped()) {
+      if (this.outOfBordersChildren.containsKey(baseChild)) {
+        removeChildLocation(baseChild);
+      }
+      float x = baseChild.positionX() - baseChild.originX();
+      float y = baseChild.positionY() - baseChild.originY();
+      float width = baseChild.width();
+      float height = baseChild.height();
+      Rectangle childRect = new Rectangle(x, y, width, height);
+      log.debug("child rect : " + childRect );
+      if (!this.size.contains(childRect)) {
+        this.realSize.setBounds(this.realSize.union(childRect));
+        this.outOfBordersChildren.put(baseChild, childRect);
+      }
+      log.debug("size of map is : " + this.outOfBordersChildren.size() );
+    }
+  }
+
+  /**
+   * <p>
+   * Reduce rectangle of real size if child element were extremal.
+   * </p>
+   * <br/>
+   * 
+   * @param baseChild
+   */
+  void removeChildLocation(BaseElement baseChild) {
+    if (!isClipped()) {
+      if (this.outOfBordersChildren.containsKey(baseChild)) {
+        this.outOfBordersChildren.remove(baseChild);
+        this.realSize.setBounds(this.size);
+        for (BaseElement child : this.outOfBordersChildren.keySet()) {
+          this.realSize.setBounds(this.realSize.union(this.outOfBordersChildren.get(child)));
+        }
+      }
+    }
   }
 
   @Override
@@ -558,7 +611,7 @@ class BaseElement implements IElement {
   private void addOnRightPlace(BaseElement child) {
     int index = 0;
 
-    while (!this.children.isEmpty() && this.children.get(index).depth() > child.depth()) {
+    while (!this.children.isEmpty() && this.children.get(index).depth() >= child.depth()) {
       index++;
     }
 
@@ -578,6 +631,7 @@ class BaseElement implements IElement {
       this.children.remove(child);
       baseChild.parent = null;
       baseChild.disableElements();
+      removeChildLocation(baseChild);
     }
     else {
       log.warn("The element has another parent!");
@@ -586,18 +640,17 @@ class BaseElement implements IElement {
 
   @Override
   public void removeChildren() {
-    List<BaseElement> list = new ArrayList<BaseElement>(this.children.size());
+    List<BaseElement> list = new LinkedList<>();
     list.addAll(this.children);
     while (list.get(0) != null) {
-      this.removeChild(list.get(0));
+      removeChild(list.get(0));
       list.remove(0);
     }
   }
 
   @Override
   public void removeFromParent() {
-    GroupLayer parentTemp = this.layer.parent();
-    parentTemp.remove(this.layer);
+    getParent().removeChild(this);
   }
 
   @Override
@@ -607,26 +660,27 @@ class BaseElement implements IElement {
 
   @Override
   public void setPosition(float x, float y) {
-    this.layer.setTranslation(x, y);
+    if (positionX() != x || positionY() != y) {
+      this.layer.setTranslation(x, y);
+      if (getParent() != null) {
+        getParent().checkChildLocation(this);
+      }
+    }
   }
 
-  @Override
-  public void setPositionX(float x) {
-  	this.layer.setTx(x);
-  }
-
-  @Override
-  public void setPositionY(float y) {
-	  this.layer.setTy(y);
-  }
-  
   @Override
   public void setOrigin(float x, float y) {
-    this.layer.setOrigin(x, y);
+    if (originX()!=x || originY()!=y) {
+      this.layer.setOrigin(x, y);
+      if (getParent() != null) {
+        getParent().checkChildLocation(this);
+      }
+    }
   }
 
   @Override
   public void setRotation(float angle) {
+    // Strelock : should think up about this case!
     this.layer.setRotation(angle);
   }
 
@@ -641,17 +695,17 @@ class BaseElement implements IElement {
       log.warn("You try scale negative values ! X : " + x + " , Y : " + y);
       throw new IllegalArgumentException("You try scale negative values ! X : " + x + " , Y : " + y);
     }
-
-    this.layer.setScale(x, y);
+    if (scaleX() != x || scaleY() != y) {
+      this.layer.setScale(x, y);
+      if (getParent() != null) {
+        getParent().checkChildLocation(this);
+      }
+    }
   }
 
   @Override
   public void setScale(float scale) {
-    if (scale <= 0.05f) {
-      log.warn("You try scale negative value ! scale : " + scale);
-      throw new IllegalArgumentException("You try scale negative value ! scale : " + scale);
-    }
-    this.layer.setScale(scale, scale);
+    setScale(scale, scale);
   }
 
   @Override
@@ -666,18 +720,36 @@ class BaseElement implements IElement {
 
   @Override
   public void setWidth(float width) {
-    if (this.backGround != null) {
-      this.backGround.setWidth(width);
+    if (width <= 0 ) {
+      log.warn("Couldn't setting up negative argument!");
+      throw new IllegalArgumentException("Couldn't setting up negative argument!");
     }
-    this.size.x = width / this.layer.scaleX();
+    if ( this.size.width!=(width/scaleX())) {
+      if (this.backGround != null) {
+        this.backGround.setWidth(width);
+      }
+      this.size.width = width / scaleX();
+      if (getParent()!=null) {
+        getParent().checkChildLocation(this);
+      }
+    }
   }
 
   @Override
   public void setHeight(float height) {
-    if (this.backGround != null) {
-      this.backGround.setHeight(height);
+    if (height <= 0 ) {
+      log.warn("Couldn't setting up negative argument!");
+      throw new IllegalArgumentException("Couldn't setting up negative argument!");
     }
-    this.size.y = height / this.layer.scaleY();
+    if (this.size.height!=(height / scaleY())) {
+      if (this.backGround != null) {
+        this.backGround.setHeight(height);
+      }
+      this.size.height = height / scaleY();
+      if (getParent()!=null) {
+        getParent().checkChildLocation(this);
+      }
+    }
   }
 
   @Override
@@ -686,15 +758,20 @@ class BaseElement implements IElement {
       log.warn("Couldn't setting up negative argument!");
       throw new IllegalArgumentException("Couldn't setting up negative argument!");
     }
-    if (this.backGround != null) {
-      this.backGround.setWidth(x);
-      this.backGround.setHeight(y);
+    if (this.size.width!=(x/scaleX()) || this.size.height!=(y/scaleY()) ) {
+      if (this.backGround != null) {
+        this.backGround.setWidth(x);
+        this.backGround.setHeight(y);
+      }
+      if (this.layer instanceof GroupLayer.Clipped) {
+        ((GroupLayer.Clipped) this.layer).setSize(x, y);
+      }
+      this.size.width = x / this.layer.scaleX();
+      this.size.height = y / this.layer.scaleY();
+      if (getParent()!=null) {
+        getParent().checkChildLocation(this);
+      }
     }
-    if (this.layer instanceof GroupLayer.Clipped) {
-      ((GroupLayer.Clipped) this.layer).setSize(x, y);
-    }
-    this.size.x = x / this.layer.scaleX();
-    this.size.y = y / this.layer.scaleY();
   }
 
   @Override
@@ -774,7 +851,7 @@ class BaseElement implements IElement {
       return -1;
     }
     BaseElement child = this;
-    priority += parentTemp.getRealDepth(child);
+    priority = parentTemp.getRealDepth(child);
     while (!parentTemp.isRoot()) {
       child = parentTemp;
       parentTemp = child.getParent();
@@ -1186,12 +1263,12 @@ class BaseElement implements IElement {
 
   @Override
   public float width() {
-    return this.size.x * this.layer.scaleX();
+    return this.size.width * this.layer.scaleX();
   }
 
   @Override
   public float height() {
-    return this.size.y * this.layer.scaleY();
+    return this.size.height * this.layer.scaleY();
   }
 
   @Override
@@ -1270,7 +1347,7 @@ class BaseElement implements IElement {
     return false;
   }
 
-  float getRealDepth(BaseElement child) {
+  int getRealDepth(BaseElement child) {
 
     if (child == null) {
       log.error("You've try get index of null element, in the object : " + toString());
@@ -1284,10 +1361,66 @@ class BaseElement implements IElement {
     return this.children.indexOf(child) + 1;
   }
 
+  /**
+   * <p>
+   * Made two type of cache : image with and without children.
+   * </p>
+   * <br/>
+   */
+  void preload() {
+    // Strelock : implement me!
+    for (BaseElement child : this.children) {
+      child.preload();
+    }
+  }
+
+  /**
+   * <p>
+   * Release used resource objects.
+   * </p>
+   * <br/>
+   */
+  void releaseResources() {
+    // Strelock : implement me!
+    for (BaseElement child : this.children) {
+      child.releaseResources();
+    }
+  }
+
   @Override
   public void drawText(String value) {
     this.text = value;
     renderer();
+  }
+
+  @Override
+  public void setPositionX(float x) {
+    setPosition(x, positionX());
+  }
+
+  @Override
+  public void setPositionY(float y) {
+    setPosition(positionX(), y);
+  }
+
+  @Override
+  public float scaleX() {
+    return this.layer.scaleX();
+  }
+
+  @Override
+  public float scaleY() {
+    return this.layer.scaleY();
+  }
+
+  @Override
+  public void setOriginX(float x) {
+    setOrigin(x, originY());
+  }
+
+  @Override
+  public void setOriginY(float y) {
+    setOrigin(originX(), y);
   }
 
 }

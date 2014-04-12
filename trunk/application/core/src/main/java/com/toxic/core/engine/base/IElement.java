@@ -246,6 +246,30 @@ public abstract void addChildren(List<IElement> children);
    *          location of Y axis
    */
   public abstract void setOrigin(float x, float y);
+  
+  /**
+   * <p>
+   * Set origin of current element. Relative point of origin current element
+   * will be rotated and all child elements positioned.
+   * </p>
+   * <br/>
+   * 
+   * @param x
+   *          location of X axis
+   */
+  public abstract void setOriginX(float x);
+  
+  /**
+   * <p>
+   * Set origin of current element. Relative point of origin current element
+   * will be rotated and all child elements positioned.
+   * </p>
+   * <br/>
+   * 
+   * @param y
+   *          location of Y axis
+   */
+  public abstract void setOriginY(float y);
 
   /**
    * <p>
@@ -312,6 +336,24 @@ public abstract void addChildren(List<IElement> children);
    * @return {@link Point} object of scaling multiplier.
    */
   public abstract Point scale();
+  
+  /**
+   * <p>
+   * Determine current scaling multiplier of element relative to axis X.
+   * </p> 
+   * <br/>
+   * @return
+   */
+  public abstract float scaleX();
+  
+  /**
+   * <p>
+   * Determine current scaling multiplier of element relative to axis Y.
+   * </p> 
+   * <br/>
+   * @return
+   */
+  public abstract float scaleY();
 
   /**
    * <p>

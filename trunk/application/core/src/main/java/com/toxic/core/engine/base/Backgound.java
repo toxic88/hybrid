@@ -9,7 +9,7 @@ import com.toxic.core.engine.util.log.Logger;
 
 /**
  * <p>
- * Responsible for behavior of background. This object could be bounded witn
+ * Responsible for behavior of background. This object could be bounded with
  * {@link IElement} through the {@link IElement#setBackGround(Backgound)}
  * method.
  * </p>
@@ -19,6 +19,8 @@ import com.toxic.core.engine.util.log.Logger;
  * 
  */
 public final class Backgound {
+  
+  //ANTS_TAG : provide equals and hashCode functions here!
 
   final static Logger log = DataProvider.getLogFactory().getLogger(Backgound.class.getName());
 

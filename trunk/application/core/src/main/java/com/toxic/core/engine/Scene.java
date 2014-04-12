@@ -23,11 +23,11 @@ import playn.core.util.Clock;
  */
 final class Scene extends BaseElement implements IScene {
 
-  private static Set<Scene> stack = new HashSet<Scene>();
-  private static Scene current;
+  private static Set<Scene> STACK = new HashSet<>();
+  private static Scene CURRENT;
 
   public static Scene getCurrentScene() {
-    return current;
+    return CURRENT;
   }
 
   /**
@@ -37,29 +37,53 @@ final class Scene extends BaseElement implements IScene {
    * <br/>
    */
   public Scene() {
-    stack.add(this);
-    this.setSize(PlayN.graphics().width(), PlayN.graphics().height());
+    STACK.add(this);
+    setSize(PlayN.graphics().width(), PlayN.graphics().height());
   }
 
   @Override
   public void activate() {
-    if (current != null) {
-      PlayN.graphics().rootLayer().remove(current.layer);
-      current.disableElements();
+    if (CURRENT != null) {
+      PlayN.graphics().rootLayer().remove(CURRENT.layer);
+      CURRENT.disableElements();
+      CURRENT.unLoad();
     }
     PlayN.graphics().rootLayer().add(this.layer);
-    this.enableElements();
-    current = this;
+    initScene();
+    enableElements();
+    CURRENT = this;
   }
 
   @Override
   public boolean isRoot() {
     return true;
   }
+  
+  /**
+   * <p>
+   * Create cached instances of child elements.  
+   * </p> 
+   * <br/>
+   */
+  private void initScene() {
+    //Strelock : add here callbacks
+    preload();
+  }
+  
+  /**
+   * <p>
+   * Release unused resource objects. 
+   * </p> 
+   * <br/>
+   */
+  private void unLoad() {
+    //Strelock : add here callbacks!
+    releaseResources();
+  }
 
   /**
    * <p>
-   * Update current inner consistency.
+   * Update CURRENT inner consistency.
    * </p>
    * <br/>
    */
