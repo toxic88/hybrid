@@ -383,11 +383,11 @@
 						<force>true</force>
 						<strict>true</strict>
 						<failOnError>false</failOnError>
-						<extraJvmArgs>-Xmx1024M -Xss64M -Dgwt.usearchives=false</extraJvmArgs>
+						<extraJvmArgs>-Xmx1024M -Xss256M -Dgwt.usearchives=false</extraJvmArgs>
 						<logLevel>${gwt.loglevel}</logLevel>
 						<style>${gwt.outputstyle}</style>
-						<runTarget>${gwt.module}${gwt.modulesuffix}/index.html</runTarget>
-						<hostedWebapp>${project.build.directory}/www</hostedWebapp>
+						<runTarget>index.html</runTarget>
+						<hostedWebapp>${project.build.directory}/${gwt.name}</hostedWebapp>
 						<draftCompile>${gwt.draft}</draftCompile>
 						<disableCastChecking>${gwt.xdisable}</disableCastChecking>
 						<disableClassMetadata>${gwt.xdisable}</disableClassMetadata>
