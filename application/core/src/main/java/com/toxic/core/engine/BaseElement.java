@@ -602,8 +602,8 @@ class BaseElement implements IElement {
   }
 
   @Override
-  public void addChildren(List<IElement> children) {
-	  for(IElement el : children){
+  public void addChildren(List<IElement> inChildren) {
+	  for(IElement el : inChildren){
 		  addChild(el);
 	  }
   }

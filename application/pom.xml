@@ -32,7 +32,7 @@
 		<android.nativelib>1.0</android.nativelib>
 		<gwt.loglevel>INFO</gwt.loglevel>
 		<gwt.outputstyle>DETAILED</gwt.outputstyle>
-		<gwt.version>2.5.1</gwt.version>
+		<gwt.version>2.6.0</gwt.version>
 		<gwt.workers>4</gwt.workers>
 		<gwt.xdisable>false</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
@@ -382,7 +382,7 @@
 					<configuration>
 						<force>true</force>
 						<strict>true</strict>
-						<failOnError>true</failOnError>
+						<failOnError>false</failOnError>
 						<extraJvmArgs>-Xmx1024M -Xss64M -Dgwt.usearchives=false</extraJvmArgs>
 						<logLevel>${gwt.loglevel}</logLevel>
 						<style>${gwt.outputstyle}</style>
