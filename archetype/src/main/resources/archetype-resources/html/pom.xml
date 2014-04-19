@@ -10,7 +10,7 @@
 
     <artifactId>${artifactId}-html</artifactId>
     <packaging>war</packaging>
-    <name>${app.name} HTML</name>
+    <name>${appName} HTML</name>
 
     <properties>
         <gwt.module>${package}.${appClass}</gwt.module>
