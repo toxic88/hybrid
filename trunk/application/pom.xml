@@ -21,7 +21,7 @@
 		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/application</developerConnection>
 		<url>http://own-finance.googlecode.com/svn/trunk/application</url>
 	</scm>
-	
+
 	<issueManagement>
 		<system>Google Code</system>
 		<url>http://code.google.com/p/own-finance/issues/list</url>
@@ -29,12 +29,13 @@
 
 	<properties>
 		<playn.version>1.8</playn.version>
+		<android.maven.version>3.8.2</android.maven.version>
 		<android.nativelib>1.0</android.nativelib>
 		<gwt.loglevel>INFO</gwt.loglevel>
-		<gwt.outputstyle>DETAILED</gwt.outputstyle>
+		<gwt.outputstyle>PRETTY</gwt.outputstyle>
 		<gwt.version>2.6.0</gwt.version>
 		<gwt.workers>4</gwt.workers>
-		<gwt.xdisable>false</gwt.xdisable>
+		<gwt.xdisable>true</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
 		<javadoc.version>2.9.1</javadoc.version>
 		<!-- Desired Google App Engine SDK version -->
@@ -138,20 +139,6 @@
 			</dependency>
 
 			<dependency>
-				<groupId>com.toxic</groupId>
-				<artifactId>core</artifactId>
-				<version>${project.version}</version>
-				<classifier>sources</classifier>
-			</dependency>
-
-			<dependency>
-				<groupId>com.toxic</groupId>
-				<artifactId>html</artifactId>
-				<version>${project.version}</version>
-				<classifier>sources</classifier>
-			</dependency>
-
-			<dependency>
 				<groupId>com.googlecode.playn</groupId>
 				<artifactId>playn-html</artifactId>
 				<version>${playn.version}</version>
@@ -190,58 +177,58 @@
 				<version>${gae.version}</version>
 				<scope>test</scope>
 			</dependency>
-			
+
 			<dependency>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-user</artifactId>
-              <version>${gwt.version}</version>
-              <classifier>sources</classifier>
-            </dependency>
-			
-			<dependency>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-user</artifactId>
-              <version>${gwt.version}</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-dev</artifactId>
-              <version>${gwt.version}</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.google.gwt</groupId>
-              <artifactId>gwt-dev</artifactId>
-              <version>${gwt.version}</version>
-              <classifier>sources</classifier>
-            </dependency>
-            
-            <dependency>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-javadoc-plugin</artifactId>
-			    <version>${javadoc.version}</version>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+				<classifier>sources</classifier>
 			</dependency>
-			            
+
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-user</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-dev</artifactId>
+				<version>${gwt.version}</version>
+				<classifier>sources</classifier>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${javadoc.version}</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
-	
+
 	<reporting>
-	    <plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-javadoc-plugin</artifactId>
-	        <configuration>
-	           <aggregate>true</aggregate>
-	           <defaultAuthor>Anton Soroka</defaultAuthor>
-	           <detail>true</detail>
-	           <detectJavaApiLink>true</detectJavaApiLink>
-	           <verbose>true</verbose>
-	           <windowtitle>Toxicity library java-docs API .</windowtitle>
-	        </configuration>
-	      </plugin>
-	    </plugins>
-	  </reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<configuration>
+					<aggregate>true</aggregate>
+					<defaultAuthor>Anton Soroka</defaultAuthor>
+					<detail>true</detail>
+					<detectJavaApiLink>true</detectJavaApiLink>
+					<verbose>true</verbose>
+					<windowtitle>Toxicity library java-docs API .</windowtitle>
+				</configuration>
+			</plugin>
+		</plugins>
+	</reporting>
 
 	<repositories>
 		<repository>
@@ -255,38 +242,38 @@
 			</snapshots>
 		</repository>
 		<repository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net Repository for Maven</name>
-            <url>http://download.java.net/maven/2/</url>
-        </repository>
-        <repository>
-	      <snapshots>
-	        <enabled>false</enabled>
-	      </snapshots>
-	      <releases>
-	       <enabled>true</enabled>
-	       <updatePolicy>never</updatePolicy>
-	      </releases>
-	      <id>google code release</id>
-	      <name>Google Code Release Repository</name>
-	      <url>http://own-finance.googlecode.com/svn/mavenrepo/repo</url>
-	    </repository>
-	    <repository>
-          <snapshots>
-            <enabled>true</enabled>
-            <updatePolicy>always</updatePolicy>
-          </snapshots>
-          <releases>
-           <enabled>false</enabled>
-          </releases>
-          <id>google code snapshot</id>
-          <name>Google Code Snapshot Repository</name>
-          <url>http://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
-        </repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Repository for Maven</name>
+			<url>http://download.java.net/maven/2/</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<id>google code release</id>
+			<name>Google Code Release Repository</name>
+			<url>http://own-finance.googlecode.com/svn/mavenrepo/repo</url>
+		</repository>
+		<repository>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<id>google code snapshot</id>
+			<name>Google Code Snapshot Repository</name>
+			<url>http://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
+		</repository>
 	</repositories>
 
-    <distributionManagement>
-        <repository>
+	<distributionManagement>
+		<repository>
 			<id>own-finance-repository</id>
 			<name>Maven Repository of google code</name>
 			<url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url>
@@ -297,48 +284,82 @@
 			<url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
-    </distributionManagement>
+	</distributionManagement>
 
 	<build>
-	   <extensions>
-	       <extension>
-    	       <groupId>org.jvnet.wagon-svn</groupId>
-    	       <artifactId>wagon-svn</artifactId>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.java</include>
+					<include>**/*.class</include>
+					<include>**/*.gwt.xml</include>
+					<include>**/*.png</include>
+					<include>**/*.jpeg</include>
+					<include>**/*.jpg</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.java</include>
+					<include>**/*.class</include>
+					<include>**/*.gwt.xml</include>
+					<include>**/*.png</include>
+					<include>**/*.jpeg</include>
+					<include>**/*.jpg</include>
+					<include>**/*.js</include>
+					<include>**/*.html</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/webapp</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+		<extensions>
+			<extension>
+				<groupId>org.jvnet.wagon-svn</groupId>
+				<artifactId>wagon-svn</artifactId>
 				<version>1.9</version>
-	       </extension>
-	   </extensions>
+			</extension>
+		</extensions>
 		<pluginManagement>
 			<plugins>
-			     <plugin>
-		          <artifactId>maven-compiler-plugin</artifactId>
-		          <version>2.3.2</version>
-		          <configuration>
-		            <source>1.7</source>
-		            <target>1.7</target>
-		            <showDeprecation>true</showDeprecation>
-		            <showWarnings>true</showWarnings>
-		            <compilerArgs>
-		              <arg>-Xlint</arg>
-		              <arg>-Xlint:-serial</arg>
-		              <arg>-Xlint:-path</arg>
-		            </compilerArgs>
-		          </configuration>
-		        </plugin>
-		        <plugin>
-		          <groupId>org.apache.maven.plugins</groupId>
-		          <artifactId>maven-source-plugin</artifactId>
-		          <version>2.2.1</version>
-		          <executions>
-		              <execution>
-		                  <id>attach-sources</id>
-		                  <phase>package</phase>
-		                  <goals>
-		                      <goal>jar-no-fork</goal>
-		                  </goals>
-		              </execution>
-		          </executions>
-		        </plugin>
 				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.1</version>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+						<showDeprecation>true</showDeprecation>
+						<showWarnings>true</showWarnings>
+						<compilerArgs>
+							<arg>-Xlint</arg>
+							<arg>-Xlint:-serial</arg>
+							<arg>-Xlint:-path</arg>
+						</compilerArgs>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>2.2.1</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>package</phase>
+							<goals>
+								<goal>jar-no-fork</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>
 					<version>2.9</version>
 					<configuration>
@@ -349,32 +370,45 @@
 						<limitProjectReferencesToWorkspace>true</limitProjectReferencesToWorkspace>
 						<lineLength>130</lineLength>
 						<useProjectReferences>false</useProjectReferences>
-						<additionalBuildcommands>
-							<buildCommand>
-								<name>com.google.gwt.eclipse.core.gwtProjectValidator</name>
-							</buildCommand>
-						</additionalBuildcommands>
-						<additionalProjectnatures>
+						<buildcommands>
+							<buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+							<buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+							<buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
+							<buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+						</buildcommands>
+						<projectnatures>
+							<projectnature>org.eclipse.jdt.core.javanature</projectnature>
+							<projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
 							<projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
 							<!-- This nature can be removed if you don't wish to deploy to Google 
-                            App Engine -->
-                            <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
-						</additionalProjectnatures>
+								App Engine -->
+							<!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
+						</projectnatures>
+						<classpathContainers>
+							<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+							<classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+						</classpathContainers>
+						<excludes>
+							<exclude>com.google.gwt:gwt-servlet</exclude>
+							<exclude>com.google.gwt:gwt-user</exclude>
+							<exclude>com.google.gwt:gwt-dev</exclude>
+							<exclude>javax.validation:validation-api</exclude>
+						</excludes>
 					</configuration>
 				</plugin>
 				<plugin>
-		            <groupId>org.apache.maven.plugins</groupId>
-		            <artifactId>maven-javadoc-plugin</artifactId>
-		            <version>${javadoc.version}</version>
-		            <configuration>
-		              <aggregate>true</aggregate>
-		               <defaultAuthor>Anton Soroka</defaultAuthor>
-		               <detail>true</detail>
-		               <detectJavaApiLink>true</detectJavaApiLink>
-		               <verbose>true</verbose>
-		               <windowtitle>Toxicity library java-docs API .</windowtitle>
-		            </configuration>
-		        </plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>${javadoc.version}</version>
+					<configuration>
+						<aggregate>true</aggregate>
+						<defaultAuthor>Anton Soroka</defaultAuthor>
+						<detail>true</detail>
+						<detectJavaApiLink>true</detectJavaApiLink>
+						<verbose>true</verbose>
+						<windowtitle>Toxicity library java-docs API .</windowtitle>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>gwt-maven-plugin</artifactId>
@@ -392,10 +426,13 @@
 						<disableCastChecking>${gwt.xdisable}</disableCastChecking>
 						<disableClassMetadata>${gwt.xdisable}</disableClassMetadata>
 						<disableRunAsync>true</disableRunAsync>
+				        <workDir>${project.build.directory}/gwt-tempFiles</workDir>
 						<localWorkers>${gwt.workers}</localWorkers>
-						<modules>
-							<module>${gwt.module}</module>
-						</modules>
+						<gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
+						<optimizationLevel>9</optimizationLevel>
+						<!-- new configurations  -->
+						<detail>true</detail>
+						<saveSource>true</saveSource>
 						<inplace>${gwt.inplace}</inplace>
 					</configuration>
 					<dependencies>
@@ -413,16 +450,16 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
-		<!--  mvn javadoc:javadoc  -->
+		<!-- mvn javadoc:javadoc -->
 		<plugins>
-		  <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-javadoc-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-source-plugin</artifactId>
-          </plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+			</plugin>
 		</plugins>
 	</build>
 
