@@ -100,7 +100,7 @@ public class DataProvider {
   public static IFont createFont(String id, Style style, float size) {
     return new TextFont(id, style, size);
   }
-  
+
   /**
    * <p>
    * Create instance of {@link IFont}.
@@ -117,6 +117,24 @@ public class DataProvider {
    */
   public static ITextFormat createTextFormat(IFont font, Alignment alignment) {
     return new TextFormat(font, alignment);
+  }
+
+  /**
+   * <p>
+   * Create instance of {@link IFont}.
+   * </p>
+   * <br/>
+   * 
+   * @param id
+   *          {@link String} identifier of element
+   * @param style
+   *          {@link Style} of font text
+   * @param color
+   *          integer value like 0xAARRGGBB
+   * @return {@link IFont} object
+   */
+  public static ITextFormat createTextFormat(IFont font, Alignment align, int textColor) {
+    return new TextFormat(font, align, textColor);
   }
 
   /**
