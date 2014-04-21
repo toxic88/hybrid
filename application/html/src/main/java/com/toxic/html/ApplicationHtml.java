@@ -3,6 +3,7 @@ package com.toxic.html;
 import playn.core.PlayN;
 import playn.html.HtmlGame;
 import playn.html.HtmlPlatform;
+import playn.html.HtmlPlatform.Mode;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Document;
@@ -75,7 +76,7 @@ public abstract class ApplicationHtml extends HtmlGame {
   public final void start() {
     initSize();
     HtmlPlatform.Config config = new HtmlPlatform.Config();
-    // config.mode = Mode.CANVAS;
+     config.mode = Mode.CANVAS;
     // config.experimentalFullscreen = true;
     HtmlPlatform platForm = HtmlPlatform.register(config);
     platForm.assets().setPathPrefix(GWT.getModuleName()+"/");
