@@ -217,17 +217,17 @@ class BaseElement implements IElement {
 
           switch (this.textFormatInner.align) {
             case LEFT:
-              DRAWABLE_CANVAS.canvas().fillText(lauoyt, 0f, (elemHeight - lauoyt.height() / 2f));
+              DRAWABLE_CANVAS.canvas().fillText(lauoyt, 0f, (elemHeight - lauoyt.height()) / 2f);
               break;
 
             case CENTER:
               DRAWABLE_CANVAS.canvas().fillText(lauoyt, (elemWidth - lauoyt.width()) / 2f,
-                (elemHeight - lauoyt.height() / 2f));
+                (elemHeight - lauoyt.height()) / 2f);
               break;
 
             case RIGHT:
               DRAWABLE_CANVAS.canvas().fillText(lauoyt, (elemWidth - lauoyt.width()),
-                (elemHeight - lauoyt.height() / 2f));
+                (elemHeight - lauoyt.height()) / 2f);
               break;
 
             default:
