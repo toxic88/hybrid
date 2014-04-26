@@ -217,17 +217,17 @@ class BaseElement implements IElement {
 
           switch (this.textFormatInner.align) {
             case LEFT:
-              DRAWABLE_CANVAS.canvas().fillText(lauoyt, 0f, 0 + (elemHeight - lauoyt.height() / 2f));
+              DRAWABLE_CANVAS.canvas().fillText(lauoyt, 0f, (elemHeight - lauoyt.height() / 2f));
               break;
 
             case CENTER:
               DRAWABLE_CANVAS.canvas().fillText(lauoyt, (elemWidth - lauoyt.width()) / 2f,
-                0 + (elemHeight - lauoyt.height() / 2f));
+                (elemHeight - lauoyt.height() / 2f));
               break;
 
             case RIGHT:
               DRAWABLE_CANVAS.canvas().fillText(lauoyt, (elemWidth - lauoyt.width()),
-                0 + (elemHeight - lauoyt.height() / 2f));
+                (elemHeight - lauoyt.height() / 2f));
               break;
 
             default:
@@ -1250,7 +1250,7 @@ class BaseElement implements IElement {
   @Override
   public void setTextFromat(ITextFormat format) {
     if (((TextFormat) format).getFormat().shouldWrap() || ((TextFormat) format).getFormat().wrapWidth > width()) {
-      this.textFormatInner = new playn.core.TextFormat(((TextFormat) format).getFormat().font, height(),
+      this.textFormatInner = new playn.core.TextFormat(((TextFormat) format).getFormat().font, width(),
         ((TextFormat) format).getFormat().align);
     }
     else {
