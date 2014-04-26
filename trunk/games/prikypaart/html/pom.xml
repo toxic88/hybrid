@@ -141,7 +141,7 @@
                             <goal>run-exploded</goal>
                         </goals>
                     </execution>
-                </executions>
+		       </executions>
             </plugin>
 
             <!-- Start Google App Engine plugin configuration -->
