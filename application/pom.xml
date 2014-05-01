@@ -38,6 +38,10 @@
 		<gwt.xdisable>true</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
 		<javadoc.version>2.9.1</javadoc.version>
+		<maven.compiler.version>3.1</maven.compiler.version>
+		<maven.build.helper.version>1.8</maven.build.helper.version>
+		<maven.eclipse.version>2.9</maven.eclipse.version>
+		<maven.source.plugin>2.2.1</maven.source.plugin>
 		<!-- Desired Google App Engine SDK version -->
 		<gae.version>1.6.1</gae.version>
 	</properties>
@@ -328,10 +332,11 @@
 		</extensions>
 		<pluginManagement>
 			<plugins>
+
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>${maven.compiler.version}</version>
 					<configuration>
 						<source>1.7</source>
 						<target>1.7</target>
@@ -347,7 +352,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>2.2.1</version>
+					<version>${maven.source.plugin}</version>
 					<executions>
 						<execution>
 							<id>attach-sources</id>
@@ -361,7 +366,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-eclipse-plugin</artifactId>
-					<version>2.9</version>
+					<version>${maven.eclipse.version}</version>
 					<configuration>
 						<downloadSources>true</downloadSources>
 						<downloadJavadocs>true</downloadJavadocs>
@@ -425,12 +430,13 @@
 						<draftCompile>${gwt.draft}</draftCompile>
 						<disableCastChecking>${gwt.xdisable}</disableCastChecking>
 						<disableClassMetadata>${gwt.xdisable}</disableClassMetadata>
-						<disableRunAsync>true</disableRunAsync>
-				        <workDir>${project.build.directory}/gwt-tempFiles</workDir>
+						<disableRunAsync>false</disableRunAsync>
+						<bindAddress>${local.ip}</bindAddress>
+						<workDir>${project.build.directory}/gwt-tempFiles</workDir>
 						<localWorkers>${gwt.workers}</localWorkers>
 						<gwtSdkFirstInClasspath>true</gwtSdkFirstInClasspath>
 						<optimizationLevel>9</optimizationLevel>
-						<!-- new configurations  -->
+						<!-- new configurations -->
 						<detail>true</detail>
 						<saveSource>true</saveSource>
 						<inplace>${gwt.inplace}</inplace>
@@ -447,6 +453,22 @@
 							<version>${gwt.version}</version>
 						</dependency>
 					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${maven.build.helper.version}</version>
+					<executions>
+						<execution>
+							<id>get-local-ip</id>
+							<goals>
+								<goal>local-ip</goal>
+							</goals>
+							<!-- <configuration> -->
+							<!-- if not given, 'local.ip' name is used -->
+							<!-- </configuration> -->
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
 		</pluginManagement>
