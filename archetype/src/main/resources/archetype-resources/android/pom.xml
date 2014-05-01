@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-        <groupId>${groupId}</groupId>
-        <artifactId>${rootArtifactId}</artifactId>
-        <version>${version}</version>
-    </parent>
+		<groupId>${groupId}</groupId>
+		<artifactId>${rootArtifactId}</artifactId>
+		<version>${version}</version>
+	</parent>
 
 	<artifactId>${artifactId}-android</artifactId>
 	<packaging>apk</packaging>
@@ -29,14 +29,14 @@
 		</dependency>
 
 		<dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>android</artifactId>
-        </dependency>
+			<groupId>com.toxic</groupId>
+			<artifactId>android</artifactId>
+		</dependency>
 
-        <dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>core</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>com.toxic</groupId>
+			<artifactId>core</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>com.googlecode.playn</groupId>
@@ -115,6 +115,36 @@
 				</executions>
 			</plugin>
 		</plugins>
+
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                                        <artifactId>android-maven-plugin</artifactId>
+                                        <versionRange>[${android.maven.version},)</versionRange>
+                                        <goals>
+                                            <goal>consume-aar</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
 	</build>
 	<!-- run 'mvn package -Pandroid -Psign -Dkeystore.password=foo' to sign 
 		and align -->

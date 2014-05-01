@@ -27,20 +27,8 @@
         </dependency>
         
         <dependency>
-            <groupId>${groupId}</groupId>
-            <artifactId>${rootArtifactId}-core</artifactId>
-            <classifier>sources</classifier>
-        </dependency>
-        
-        <dependency>
             <groupId>com.toxic</groupId>
             <artifactId>core</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>core</artifactId>
-            <classifier>sources</classifier>
         </dependency>
         
         <dependency>
@@ -110,6 +98,10 @@
     <build>
         <finalName>${gwt.name}</finalName>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
@@ -187,6 +179,19 @@
                     <configuration>
                         <lifecycleMappingMetadata>
                             <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>org.codehaus.mojo</groupId>
+                                        <artifactId>build-helper-maven-plugin</artifactId>
+                                        <versionRange>${maven.build.helper.version}</versionRange>
+                                        <goals>
+                                            <goal>local-ip</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
                                 <pluginExecution>
                                     <pluginExecutionFilter>
                                         <groupId>net.kindleit</groupId>
