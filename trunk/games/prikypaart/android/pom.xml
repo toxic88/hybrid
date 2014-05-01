@@ -115,6 +115,34 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.m2e</groupId>
+                    <artifactId>lifecycle-mapping</artifactId>
+                    <version>1.0.0</version>
+                    <configuration>
+                        <lifecycleMappingMetadata>
+                            <pluginExecutions>
+                                <pluginExecution>
+                                    <pluginExecutionFilter>
+                                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                                        <artifactId>android-maven-plugin</artifactId>
+                                        <versionRange>[${android.maven.version},)</versionRange>
+                                        <goals>
+                                            <goal>consume-aar</goal>
+                                        </goals>
+                                    </pluginExecutionFilter>
+                                    <action>
+                                        <execute />
+                                    </action>
+                                </pluginExecution>
+                            </pluginExecutions>
+                        </lifecycleMappingMetadata>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
 	</build>
 	<!-- run 'mvn package -Pandroid -Psign -Dkeystore.password=foo' to sign 
 		and align -->

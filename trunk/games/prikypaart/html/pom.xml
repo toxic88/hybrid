@@ -39,19 +39,7 @@
         
         <dependency>
             <groupId>com.toxic</groupId>
-            <artifactId>core</artifactId>
-            <classifier>sources</classifier>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.toxic</groupId>
             <artifactId>html</artifactId>
-        </dependency>
-        
-        <dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>html</artifactId>
-            <classifier>sources</classifier>
         </dependency>
         
         <dependency>
