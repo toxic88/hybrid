@@ -54,11 +54,11 @@ final class CachedImage implements IImage {
   }
 
   @Override
-  public IImage getImage(float x, float y, float width, float height) {
+  public Image getSubImage(float x, float y, float width, float height) {
     if (this.image == null) {
       this.image = ResourcesLoader.getImage(this.path);
     }
-    return (IImage) this.image.subImage(x, y, width, height);
+    return this.image.subImage(x, y, width, height);
   }
 
 }

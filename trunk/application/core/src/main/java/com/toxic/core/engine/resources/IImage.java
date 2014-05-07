@@ -1,5 +1,7 @@
 package com.toxic.core.engine.resources;
 
+import playn.core.Image;
+
 /**
  * <p>
  * Representing image object API in this library.
@@ -33,6 +35,6 @@ public interface IImage {
    * @param height
    *          the height (in pixels) of the subimage.
    */
-  public IImage getImage(float x, float y, float width, float height);
+  public Image getSubImage(float x, float y, float width, float height);
 
 }
