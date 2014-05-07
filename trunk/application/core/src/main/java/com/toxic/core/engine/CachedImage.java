@@ -30,6 +30,10 @@ final class CachedImage implements IImage {
     return new CachedImage(path, ResourcesLoader.getImage(path));
   }
 
+  static CachedImage build(String path, float offsetX, float offsetY, float width, float height) {
+    return new CachedImage(path, ResourcesLoader.getImage(path).subImage(offsetX, offsetY, width, height));
+  }
+
   void releaseImage() {
     ResourcesLoader.release(this.path);
     this.image = null;

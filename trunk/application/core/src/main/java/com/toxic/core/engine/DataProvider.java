@@ -193,4 +193,26 @@ public class DataProvider {
     return CachedImage.build(path);
   }
 
+  /**
+   * <p>
+   * Load sub image from specified path with params
+   * </p>
+   * 
+   * @param path
+   *          - image path
+   * @param offsetX
+   *          - x axis offset
+   * @param offsetY
+   *          - y axis offset
+   * @param width
+   *          - sub image width
+   * @param height
+   *          - sub image height
+   * @return subImage of image from path
+   */
+  public static IImage getImage(String path, float offsetX, float offsetY, float width, float height) {
+    checkConditions();
+    return CachedImage.build(path, offsetX, offsetY, width, height);
+  }
+
 }
