@@ -102,6 +102,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
             </plugin>
+            
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>gwt-maven-plugin</artifactId>
@@ -114,6 +115,39 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <configuration>
+                        <buildcommands>
+                            <buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+                            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+                            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+                            <buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
+                            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+                        </buildcommands>
+                        <projectnatures>
+                            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                            <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+                            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+                            <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                            <!-- This nature can be removed if you don't wish to deploy to Google 
+                                App Engine -->
+                            <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
+                        </projectnatures>
+                        <classpathContainers>
+                            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                            <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+                        </classpathContainers>
+                        <excludes>
+                            <exclude>com.google.gwt:gwt-servlet</exclude>
+                            <exclude>com.google.gwt:gwt-user</exclude>
+                            <exclude>com.google.gwt:gwt-dev</exclude>
+                            <exclude>javax.validation:validation-api</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
 
             <!-- allows testing of HTML backend via: mvn integration-test -Phtml -->
             <plugin>
