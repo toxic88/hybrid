@@ -23,7 +23,7 @@ import tripleplay.anim.Animator;
 import tripleplay.util.Interpolator;
 
 import com.toxic.core.engine.animation.CustomAnimation;
-import com.toxic.core.engine.base.Backgound;
+import com.toxic.core.engine.base.Background;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.events.ActionEvent;
 import com.toxic.core.engine.handlers.CancelHandler;
@@ -78,7 +78,7 @@ class BaseElement implements IElement {
 
   private boolean propogative = false;
 
-  Backgound bkground;
+  Background bkground;
 
   private BaseElement parent;
 
@@ -298,7 +298,7 @@ class BaseElement implements IElement {
   }
 
   @Override
-  public void setBackGround(Backgound bkgroundIn) {
+  public void setBackGround(Background bkgroundIn) {
     if (this.bkground != null && this.bkground.getImage() != null) {
       ((CachedImage) this.bkground.getImage()).releaseImage();
     }
