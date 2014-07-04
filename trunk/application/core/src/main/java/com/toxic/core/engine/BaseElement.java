@@ -1399,7 +1399,7 @@ class BaseElement implements IElement {
 
   @Override
   public void setPositionX(float x) {
-    setPosition(x, positionX());
+    setPosition(x, positionY());
   }
 
   @Override
