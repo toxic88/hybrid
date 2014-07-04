@@ -156,7 +156,6 @@ public interface IElement {
    */
   public abstract void addChild(IElement child);
 
-  
   /**
    * <p>
    * Add child to current element. Child will be positioned relative to current
@@ -167,10 +166,11 @@ public interface IElement {
    * it size elements will be skipped.</b>
    * </p>
    * <br/>
- * @param children
- */
-public abstract void addChildren(List<IElement> children);
-  
+   * 
+   * @param children
+   */
+  public abstract void addChildren(List<IElement> children);
+
   /**
    * <p>
    * Remove input argument element from current element.
@@ -200,6 +200,15 @@ public abstract void addChildren(List<IElement> children);
 
   /**
    * <p>
+   * Return a current element string identifier.
+   * </p>
+   * <br/>
+   * 
+   */
+  public abstract String getId();
+
+  /**
+   * <p>
    * Settled position of current element
    * </p>
    * <br/>
@@ -210,7 +219,7 @@ public abstract void addChildren(List<IElement> children);
    *          location relative Y axis
    */
   public abstract void setPosition(float x, float y);
-  
+
   /**
    * <p>
    * Settled X axis position of current element
@@ -221,7 +230,7 @@ public abstract void addChildren(List<IElement> children);
    *          location relative X axis
    */
   public abstract void setPositionX(float x);
-  
+
   /**
    * <p>
    * Settled Y axis position of current element
@@ -246,7 +255,7 @@ public abstract void addChildren(List<IElement> children);
    *          location of Y axis
    */
   public abstract void setOrigin(float x, float y);
-  
+
   /**
    * <p>
    * Set origin of current element. Relative point of origin current element
@@ -258,7 +267,7 @@ public abstract void addChildren(List<IElement> children);
    *          location of X axis
    */
   public abstract void setOriginX(float x);
-  
+
   /**
    * <p>
    * Set origin of current element. Relative point of origin current element
@@ -336,21 +345,23 @@ public abstract void addChildren(List<IElement> children);
    * @return {@link Point} object of scaling multiplier.
    */
   public abstract Point scale();
-  
+
   /**
    * <p>
    * Determine current scaling multiplier of element relative to axis X.
-   * </p> 
+   * </p>
    * <br/>
+   * 
    * @return
    */
   public abstract float scaleX();
-  
+
   /**
    * <p>
    * Determine current scaling multiplier of element relative to axis Y.
-   * </p> 
+   * </p>
    * <br/>
+   * 
    * @return
    */
   public abstract float scaleY();
@@ -574,11 +585,11 @@ public abstract void addChildren(List<IElement> children);
    * <br/>
    */
   public abstract void stopTransitionAnimation();
-  
+
   /**
    * <p>
    * Stop current animated custom animation if it is executing now.
-   * </p> 
+   * </p>
    * <br/>
    */
   public abstract void stopActionAnimation();
@@ -638,7 +649,7 @@ public abstract void addChildren(List<IElement> children);
    * 
    * @param format
    */
-  public abstract void setTextFromat(ITextFormat format);
+  public abstract void setTextFormat(ITextFormat format);
 
   /**
    * <p>
@@ -702,15 +713,15 @@ public abstract void addChildren(List<IElement> children);
    * @return
    */
   public abstract float positionX();
-  
+
   /**
    * <p>
-   * Remove all children from this element. 
-   * </p> 
+   * Remove all children from this element.
+   * </p>
    * <br/>
    */
   public abstract void removeChildren();
-  
+
   /**
    * <p>
    * The y position of element. Relative position point element will be
@@ -721,44 +732,46 @@ public abstract void addChildren(List<IElement> children);
    * @return
    */
   public abstract float positionY();
-  
+
   /**
    * @return The parent element of this element.
    */
   public abstract IElement getParent();
-  
+
   /**
    * @return determine visibility of element.
    */
   public abstract boolean visible();
-  
+
   /**
-   * @return determine weather element will be propagate event to the underground elements.
+   * @return determine weather element will be propagate event to the
+   *         underground elements.
    */
   public abstract boolean isPropagative();
 
   /**
    * <p>
-   *  Set propagate event to underground elements. 
-   * </p> 
+   * Set propagate event to underground elements.
+   * </p>
    * <br/>
+   * 
    * @param propogativeIn
    */
   public abstract void setPropagative(boolean propogativeIn);
-  
+
   /**
-   * @return weather this instance of {@link IElement} is Root - Scene
-   *         element.
+   * @return weather this instance of {@link IElement} is Root - Scene element.
    */
   public abstract boolean isRoot();
-  
+
   /**
    * <p>
-   * Draws input text into element. 
-   * </p> 
+   * Draws input text into element.
+   * </p>
    * <br/>
+   * 
    * @param value
    */
   public abstract void drawText(String value);
-  
+
 }

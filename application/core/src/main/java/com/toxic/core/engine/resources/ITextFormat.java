@@ -5,7 +5,7 @@ import com.toxic.core.engine.base.IElement;
 /**
  * <p>
  * Represent text formating(behavior) on certain element. You can bind it
- * through the method : {@link IElement#setTextFromat(TextFormat)} .
+ * through the method : {@link IElement#setTextFormat(TextFormat)} .
  * </p>
  * <br/>
  * 
