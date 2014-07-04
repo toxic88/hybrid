@@ -28,13 +28,13 @@ public interface IElement {
 
   /**
    * <p>
-   * Setting up background as {@link Backgound} object.
+   * Setting up background as {@link Background} object.
    * </p>
    * <br/>
    * 
    * @param bkgroundIn
    */
-  public abstract void setBackGround(Backgound bkgroundIn);
+  public abstract void setBackGround(Background bkgroundIn);
 
   /**
    * <p>

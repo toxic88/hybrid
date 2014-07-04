@@ -10,7 +10,7 @@ import com.toxic.core.engine.util.log.Logger;
 /**
  * <p>
  * Responsible for behavior of background. This object could be bounded with
- * {@link IElement} through the {@link IElement#setBackGround(Backgound)}
+ * {@link IElement} through the {@link IElement#setBackGround(Background)}
  * method.
  * </p>
  * <br/>
@@ -18,11 +18,11 @@ import com.toxic.core.engine.util.log.Logger;
  * @author Strelock
  * 
  */
-public final class Backgound {
+public final class Background {
   
   //ANTS_TAG : provide equals and hashCode functions here!
 
-  final static Logger log = DataProvider.getLogFactory().getLogger(Backgound.class.getName());
+  final static Logger log = DataProvider.getLogFactory().getLogger(Background.class.getName());
 
   /**
    * <p>
@@ -53,7 +53,7 @@ public final class Backgound {
    * </p>
    * <br/>
    */
-  public Backgound() {
+  public Background() {
     this.image = null;
     this.repeatX = false;
     this.repeatY = false;
@@ -61,7 +61,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  public Backgound(int bgColor) {
+  public Background(int bgColor) {
     this.image = null;
     this.repeatX = false;
     this.repeatY = false;
@@ -69,7 +69,7 @@ public final class Backgound {
     this.color = bgColor;
   }
 
-  public Backgound(String path) {
+  public Background(String path) {
     this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
@@ -77,7 +77,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  public Backgound(String path, int bgColor) {
+  public Background(String path, int bgColor) {
     this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
@@ -85,7 +85,7 @@ public final class Backgound {
     this.color = bgColor;
   }
 
-  public Backgound(String path, int bgColor, boolean stretch) {
+  public Background(String path, int bgColor, boolean stretch) {
     this.image = DataProvider.getImage(path);
     this.repeatX = false;
     this.repeatY = false;
@@ -93,7 +93,7 @@ public final class Backgound {
     this.color = bgColor;
   }
 
-  public Backgound(String path, boolean stretch) {
+  public Background(String path, boolean stretch) {
     this.image = DataProvider.getImage(path);
     this.resize = stretch;
     this.repeatX = false;
@@ -101,7 +101,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  public Backgound(IImage imageIn) {
+  public Background(IImage imageIn) {
     this.image = imageIn;
     this.resize = true;
     this.repeatX = false;
@@ -109,7 +109,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  public Backgound(IImage imageIn, boolean resizeIn) {
+  public Background(IImage imageIn, boolean resizeIn) {
     this.image = imageIn;
     this.resize = resizeIn;
     this.repeatX = false;
@@ -117,7 +117,7 @@ public final class Backgound {
     this.color = 0;
   }
 
-  private Backgound(Backgound copy, boolean flag, KeyType type) {
+  private Background(Background copy, boolean flag, KeyType type) {
     this.color = copy.color;
     this.image = copy.image;
     switch (type) {
@@ -149,7 +149,7 @@ public final class Backgound {
     }
   }
 
-  private Backgound(Backgound copy, int colorIn) {
+  private Background(Background copy, int colorIn) {
     this.color = colorIn;
     this.image = copy.image;
     this.repeatX = copy.repeatX;
@@ -157,7 +157,7 @@ public final class Backgound {
     this.resize = copy.resize;
   }
 
-  private Backgound(Backgound copy, IImage imageIn) {
+  private Background(Background copy, IImage imageIn) {
     this.color = copy.color;
     this.image = imageIn;
     this.repeatX = copy.repeatX;
@@ -169,40 +169,40 @@ public final class Backgound {
     return this.repeatX;
   }
 
-  public final Backgound setRepeatX(boolean repeatXIn) {
-    return new Backgound(this, repeatXIn, KeyType.REPEATX);
+  public final Background setRepeatX(boolean repeatXIn) {
+    return new Background(this, repeatXIn, KeyType.REPEATX);
   }
 
   public final boolean isRepeatY() {
     return this.repeatY;
   }
 
-  public final Backgound setRepeatY(boolean repeatYIn) {
-    return new Backgound(this, repeatYIn, KeyType.REPEATY);
+  public final Background setRepeatY(boolean repeatYIn) {
+    return new Background(this, repeatYIn, KeyType.REPEATY);
   }
 
   public final boolean isResize() {
     return this.resize;
   }
 
-  public final Backgound setResize(boolean resizeIn) {
-    return new Backgound(this, resizeIn, KeyType.RESIZE);
+  public final Background setResize(boolean resizeIn) {
+    return new Background(this, resizeIn, KeyType.RESIZE);
   }
 
   public final IImage getImage() {
     return this.image;
   }
 
-  public final Backgound setImage(IImage image) {
-    return new Backgound(this, image);
+  public final Background setImage(IImage image) {
+    return new Background(this, image);
   }
 
   public final int getColor() {
     return this.color;
   }
 
-  public final Backgound setColor(int color) {
-    return new Backgound(this, color);
+  public final Background setColor(int color) {
+    return new Background(this, color);
   }
 
 }
