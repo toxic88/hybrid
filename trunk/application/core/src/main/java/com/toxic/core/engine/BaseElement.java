@@ -659,6 +659,11 @@ class BaseElement implements IElement {
   }
 
   @Override
+  public String getId() {
+    return this.id;
+  }
+
+  @Override
   public void setPosition(float x, float y) {
     if (positionX() != x || positionY() != y) {
       this.layer.setTranslation(x, y);
@@ -1248,7 +1253,7 @@ class BaseElement implements IElement {
   }
 
   @Override
-  public void setTextFromat(ITextFormat format) {
+  public void setTextFormat(ITextFormat format) {
     if (((TextFormat) format).getFormat().shouldWrap() || ((TextFormat) format).getFormat().wrapWidth > width()) {
       this.textFormatInner = new playn.core.TextFormat(((TextFormat) format).getFormat().font, width(),
         ((TextFormat) format).getFormat().align);
