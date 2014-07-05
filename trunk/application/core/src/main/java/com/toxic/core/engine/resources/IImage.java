@@ -22,20 +22,6 @@ public interface IImage {
   public abstract String getPath();
 
   /**
-   * Returns an image that draws the specified sub-region of this image.
-   * 
-   * @param x
-   *          the x offset (in pixels) of the subimage.
-   * @param y
-   *          the y offset (in pixels) of the subimage.
-   * @param width
-   *          the width (in pixels) of the subimage.
-   * @param height
-   *          the height (in pixels) of the subimage.
-   */
-  public IImage getSubImage(float x, float y, float width, float height);
-
-  /**
    * @return width of the image
    */
   public float getWidth();
