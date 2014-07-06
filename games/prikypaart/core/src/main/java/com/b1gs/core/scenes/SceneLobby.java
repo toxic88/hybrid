@@ -4,7 +4,7 @@ import playn.core.Font.Style;
 import playn.core.TextFormat.Alignment;
 
 import com.toxic.core.engine.DataProvider;
-import com.toxic.core.engine.base.Backgound;
+import com.toxic.core.engine.base.Background;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
 import com.toxic.core.engine.events.ActionEvent;
@@ -19,7 +19,7 @@ public class SceneLobby {
 
     public SceneLobby() {
         this.scene = DataProvider.createScene();
-        this.scene.setBackGround(new Backgound(0xFF006F00));
+        this.scene.setBackGround(new Background(0xFF006F00));
         init();
     }
 
@@ -42,22 +42,22 @@ public class SceneLobby {
         lobbySection.setId("LobbySection");
         lobbySection.setSize(800, 500);
         lobbySection.setPosition(20, 10);
-        lobbySection.setBackGround(new Backgound(0x5F000000));
+        lobbySection.setBackGround(new Background(0x5F000000));
 
         // Label for lobby
         final IElement lobbyLabel = DataProvider.createElement();
         lobbyLabel.setId("LobbyLabel");
         lobbyLabel.setSize(800, 50);
-        lobbyLabel.setBackGround(new Backgound(0xFF00A0A0));
+        lobbyLabel.setBackGround(new Background(0xFF00A0A0));
         lobbyLabel.drawText("Tables :");
-        lobbyLabel.setTextFromat(tableFormat);
+        lobbyLabel.setTextFormat(tableFormat);
 
         // Join button background
         this.joinBttn = DataProvider.createElement();
         this.joinBttn.setId("LobbyJoinBttn");
         this.joinBttn.setSize(100, 50);
         this.joinBttn.setPosition(700, 500);
-        this.joinBttn.setBackGround(new Backgound(0xFF8F8F8F));
+        this.joinBttn.setBackGround(new Background(0xFF8F8F8F));
         this.joinBttn.setAplha(0.5f);
 
         final ITextFormat joinBttnFormat = DataProvider.createTextFormat(DataProvider.createFont("TableFont", Style.BOLD, 20), Alignment.CENTER, 0xFF0F0F0F);
@@ -66,7 +66,7 @@ public class SceneLobby {
         joinBttnLabel.setId("LobbyJoinBttn");
         joinBttnLabel.setSize(100, 50);
         joinBttnLabel.drawText("Join");
-        joinBttnLabel.setTextFromat(joinBttnFormat);
+        joinBttnLabel.setTextFormat(joinBttnFormat);
         joinBttnLabel.addSelectHandler(new SelectHandler() {
 
             @Override
@@ -98,13 +98,13 @@ public class SceneLobby {
         final IElement tableElem = DataProvider.createElement();
         tableElem.setSize(800, 50);
         tableElem.setPosition(posX, posY);
-        tableElem.setBackGround(new Backgound(0x3F000000));
+        tableElem.setBackGround(new Background(0x3F000000));
 
         // Table element in tablelist
         final IElement tableElemLabel = DataProvider.createElement();
         tableElemLabel.setSize(800, 50);
         tableElemLabel.drawText("Prikypa first game table!");
-        tableElemLabel.setTextFromat(tableElemFormat);
+        tableElemLabel.setTextFormat(tableElemFormat);
         tableElemLabel.addSelectHandler(new SelectHandler() {
 
             @Override
@@ -129,13 +129,13 @@ public class SceneLobby {
         final IElement infoSection = DataProvider.createElement();
         infoSection.setSize(300, 500);
         infoSection.setPosition(870, 10);
-        infoSection.setBackGround(new Backgound(0x5F000000));
+        infoSection.setBackGround(new Background(0x5F000000));
 
         final IElement infoSectionLabel = DataProvider.createElement();
         infoSectionLabel.setSize(300, 50);
         // infoSectionLabel.setPosition(20, 20);
-        infoSectionLabel.setBackGround(new Backgound(0xEFFF0000));
-        infoSectionLabel.setTextFromat(playerInfoFormat);
+        infoSectionLabel.setBackGround(new Background(0xEFFF0000));
+        infoSectionLabel.setTextFormat(playerInfoFormat);
         infoSectionLabel.drawText("Players Info: ");
 
         infoSection.addChild(infoSectionLabel);
