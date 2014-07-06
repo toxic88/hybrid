@@ -1,9 +1,7 @@
 package com.toxic.ui.core;
 
-import javax.script.ScriptEngine;
-
 import com.toxic.core.engine.DataProvider;
-import com.toxic.core.engine.base.Backgound;
+import com.toxic.core.engine.base.Background;
 import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
@@ -40,13 +38,13 @@ public class ShowCase implements IApplication {
     final IScene main = DataProvider.createScene();
     // ANTS_TAG : provide this feature to have possibility pause game,
     // during tabs for example switched PlayN.platform.setLifeCycle()
-    main.setBackGround(new Backgound(0x0F00FF00));
+    main.setBackGround(new Background(0x0F00FF00));
     main.setId("main");
-    main.setBackGround(new Backgound("images/towerdefense.png"));
+    main.setBackGround(new Background("images/towerdefense.png"));
     main.activate();
     final IElement moveElem = DataProvider.createElement();
     moveElem.setSize( 100f , 100f );
-    moveElem.setBackGround(new Backgound(0xFF00FF00));
+    moveElem.setBackGround(new Background(0xFF00FF00));
     moveElem.setOrigin( 50f, 50f );
     moveElem.setPosition( main.width()/2f , main.height()/2f );
     main.addChild(moveElem);
