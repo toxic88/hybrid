@@ -611,7 +611,7 @@ class BaseElement implements IElement {
     int index = 0;
 
     while (!this.children.isEmpty() && this.children.size() > index
-      && this.children.get(index).depth() >= child.depth()) {
+      && this.children.get(index).depth() <= child.depth()) {
       index++;
     }
 
