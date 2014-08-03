@@ -215,4 +215,12 @@ public class DataProvider {
     return CachedImage.build(path, offsetX, offsetY, width, height);
   }
 
+  /**
+   * 
+   * @return Instance of {@link IEventManager}
+   */
+  public static IEventManager getEventManager() {
+    return EventManager.getInstanse();
+  }
+
 }

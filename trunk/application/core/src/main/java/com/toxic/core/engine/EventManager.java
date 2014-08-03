@@ -29,7 +29,7 @@ import com.toxic.core.engine.util.log.Logger;
  * @author Strelock
  * 
  */
-public final class EventManager {
+public final class EventManager implements IEventManager {
 
   final static Logger log = DataProvider.getLogFactory().getLogger(EventManager.class.getName());
 
