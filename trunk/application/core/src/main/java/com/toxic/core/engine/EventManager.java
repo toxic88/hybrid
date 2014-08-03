@@ -51,11 +51,11 @@ public final class EventManager {
    * <br/>
    */
   public static int TIME_TO_NOTIFY_HOLD = 600;
-  
+
   /**
    * <p>
-   * Time of stopping before next periodically executing {@link HoldHandler} instance, that exist on
-   * active {@link IElement} .
+   * Time of stopping before next periodically executing {@link HoldHandler}
+   * instance, that exist on active {@link IElement} .
    * </p>
    * <br/>
    */
@@ -106,6 +106,15 @@ public final class EventManager {
     PlayN.platform().touch().setEnabled(false);
     pointer().setEnabled(true);
     pointer().setListener(this.listener);
+  }
+
+  /**
+   * Provide possibility for enable or disable Pointer interaction
+   * 
+   * @param flag
+   */
+  public void enableInteraction(boolean flag) {
+    pointer().setEnabled(flag);
   }
 
   // ANTS_TAG : remove pointer create : touch and mouse separately
