@@ -829,7 +829,8 @@ class BaseElement implements IElement {
     Point localAxis = Layer.Util.screenToLayer(this.layer, e.getX(), e.getY());
     // PlayN.log().debug("Converted coord : [" + localAxis.x + ":" +
     // localAxis.y + "].\n");
-    if (localAxis.x() > 0 && localAxis.y() > 0 && width() > localAxis.x() && height() > localAxis.y() && isActive()) {
+    if (localAxis.x() > 0 && localAxis.y() > 0 && width() > localAxis.x() && height() > localAxis.y() && isActive()
+      && isVisible()) {
       // PlayN.log().debug("Event hit object : " + this.toString());
       return true;
     }
@@ -1306,7 +1307,7 @@ class BaseElement implements IElement {
   }
 
   @Override
-  public boolean visible() {
+  public boolean isVisible() {
     return this.layer.visible();
   }
 

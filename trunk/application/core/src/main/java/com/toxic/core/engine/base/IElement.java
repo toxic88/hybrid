@@ -741,7 +741,7 @@ public interface IElement {
   /**
    * @return determine visibility of element.
    */
-  public abstract boolean visible();
+  public abstract boolean isVisible();
 
   /**
    * @return determine weather element will be propagate event to the
