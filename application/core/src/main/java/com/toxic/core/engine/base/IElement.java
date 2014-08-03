@@ -516,7 +516,7 @@ public interface IElement {
    * 
    * @param action
    *          {@link CustomAnimation} object , that will be periodically
-   *          executed through the {@link CustomAnimation#uppdate(float)}
+   *          executed through the {@link CustomAnimation#update(float)}
    *          method.
    * @param mode
    *          the animation behavior mode
