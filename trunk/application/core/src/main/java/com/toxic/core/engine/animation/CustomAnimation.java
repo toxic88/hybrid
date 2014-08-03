@@ -27,6 +27,6 @@ public interface CustomAnimation {
    * 
    * @param value
    */
-  public abstract void uppdate(float value);
+  public abstract void update(float value);
 
 }

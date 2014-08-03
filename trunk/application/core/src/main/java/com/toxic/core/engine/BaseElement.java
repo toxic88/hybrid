@@ -1002,7 +1002,7 @@ class BaseElement implements IElement {
 
         @Override
         public void set(float value) {
-          action.uppdate(value);
+          action.update(value);
         }
 
         @Override
