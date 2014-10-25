@@ -28,12 +28,13 @@
 	</issueManagement>
 
 	<properties>
+        <jdk.version>1.7</jdk.version>
 		<playn.version>1.8</playn.version>
 		<android.maven.version>3.8.2</android.maven.version>
 		<android.nativelib>1.0</android.nativelib>
 		<gwt.loglevel>INFO</gwt.loglevel>
 		<gwt.outputstyle>PRETTY</gwt.outputstyle>
-		<gwt.version>2.6.0</gwt.version>
+		<gwt.version>2.6.1</gwt.version>
 		<gwt.workers>4</gwt.workers>
 		<gwt.xdisable>true</gwt.xdisable>
 		<gwt.draft>false</gwt.draft>
@@ -338,8 +339,8 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>${maven.compiler.version}</version>
 					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
 						<showDeprecation>true</showDeprecation>
 						<showWarnings>true</showWarnings>
 						<compilerArgs>
