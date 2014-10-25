@@ -1,4 +1,4 @@
-<!DOCTYPE module PUBLIC "-//Google Inc.//DTD Google Web Toolkit trunk//EN" "http://google-web-toolkit.googlecode.com/svn/trunk/distro-source/core/src/gwt-module.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
 <module rename-to="showcase">
 	<inherits name="tripleplay.TriplePlay" />
 	<inherits name="ApplicationAssets" />
@@ -10,4 +10,8 @@
 	<public path="resources" />
 
 	<entry-point class="com.toxic.ui.html.ShowCaseHtml" />
+
+	<!-- allow Super Dev Mode -->
+	<add-linker name="xsiframe" />
+
 </module>
