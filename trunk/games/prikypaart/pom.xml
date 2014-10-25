@@ -15,9 +15,9 @@
 	<url>http://code.google.com/p/own-finance</url>
 
 	<scm>
-		<connection>scm:svn:http://code.google.com/p/own-finance/trunk/PrikypaGame/</connection>
-		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/PrikypaGame/</developerConnection>
-		<url>http://code.google.com/p/own-finance/trunk/PrikypaGame/</url>
+		<connection>scm:svn:http://code.google.com/p/own-finance/trunk/games/PrikypaGame/</connection>
+		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/games/PrikypaGame/</developerConnection>
+		<url>http://code.google.com/p/own-finance/trunk/games/PrikypaGame/</url>
 	</scm>
 
 	<issueManagement>
