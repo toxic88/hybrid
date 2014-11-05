@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.googlecode.playn</groupId>
 		<artifactId>playn-project</artifactId>
-		<version>1.8</version>
+		<version>1.8.5</version>
 	</parent>
 
 	<groupId>com.toxic</groupId>
@@ -29,7 +29,7 @@
 
 	<properties>
         <jdk.version>1.7</jdk.version>
-		<playn.version>1.8</playn.version>
+		<playn.version>1.8.5</playn.version>
 		<android.maven.version>3.8.2</android.maven.version>
 		<android.nativelib>1.0</android.nativelib>
 		<gwt.loglevel>INFO</gwt.loglevel>
@@ -43,8 +43,9 @@
 		<maven.build.helper.version>1.8</maven.build.helper.version>
 		<maven.eclipse.version>2.9</maven.eclipse.version>
 		<maven.source.plugin>2.2.1</maven.source.plugin>
+		<maven.clean.plugin>2.6</maven.clean.plugin>
 		<!-- Desired Google App Engine SDK version -->
-		<gae.version>1.6.1</gae.version>
+		<gae.version>1.9.4</gae.version>
 	</properties>
 
 	<dependencyManagement>
@@ -195,6 +196,12 @@
 				<artifactId>gwt-user</artifactId>
 				<version>${gwt.version}</version>
 			</dependency>
+			
+			<dependency>
+				<groupId>com.google.gwt</groupId>
+				<artifactId>gwt-codeserver</artifactId>
+				<version>${gwt.version}</version>
+			</dependency>
 
 			<dependency>
 				<groupId>com.google.gwt</groupId>
@@ -308,13 +315,16 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*.java</include>
-					<include>**/*.class</include>
 					<include>**/*.gwt.xml</include>
 					<include>**/*.png</include>
 					<include>**/*.jpeg</include>
 					<include>**/*.jpg</include>
 					<include>**/*.js</include>
 					<include>**/*.html</include>
+					<include>**/*.xhtml</include>
+					<include>**/*.xml</include>
+					<include>**/*.jsp</include>
+					<include>**/*.css</include>
 				</includes>
 			</resource>
 			<resource>
@@ -371,7 +381,7 @@
 					<configuration>
 						<downloadSources>true</downloadSources>
 						<downloadJavadocs>true</downloadJavadocs>
-						<wtpversion>2.0</wtpversion>
+						<wtpversion>3.0</wtpversion>
 						<forceRecheck>true</forceRecheck>
 						<limitProjectReferencesToWorkspace>true</limitProjectReferencesToWorkspace>
 						<lineLength>130</lineLength>
@@ -458,6 +468,10 @@
 							<!-- </configuration> -->
 						</execution>
 					</executions>
+				</plugin>
+				<plugin>
+					<artifactId>maven-clean-plugin</artifactId>
+        			<version>${maven.clean.plugin}</version>
 				</plugin>
 			</plugins>
 		</pluginManagement>
