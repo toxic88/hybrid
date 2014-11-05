@@ -75,23 +75,27 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-eclipse-plugin</artifactId>
                     <configuration>
-                        <buildcommands>
-                            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
-                            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
-                            <buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
-                            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
-                        </buildcommands>
-                        <projectnatures>
+                    	<additionalBuildcommands>
+                            <buildcommands>org.eclipse.jdt.core.javabuilder</buildcommands>
+                            <buildcommands>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommands>
+                            <buildcommands>com.google.appengine.eclipse.core.gaeProjectChangeNotifier</buildcommands>
+                            <buildcommands>com.google.appengine.eclipse.core.projectValidator</buildcommands>
+                            <buildcommands>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommands>
+                    	</additionalBuildcommands>
+                      	<additionalProjectnatures>
                             <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                            <projectnatures>com.google.appengine.eclipse.core.gaeNature</projectnatures>
                             <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
                             <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+                            <projectnatures>org.eclipse.wst.common.project.facet.core.nature</projectnatures>
                             <!-- This nature can be removed if you don't wish to deploy to Google 
                                 App Engine -->
                             <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
-                        </projectnatures>
+                        </additionalProjectnatures>
                         <classpathContainers>
-                            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                        	<classpathContainer>com.google.appengine.eclipse.core.GAE_CONTAINER</classpathContainer>
                             <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+                            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
                         </classpathContainers>
                         <excludes>
                             <exclude>com.google.gwt:gwt-servlet</exclude>
@@ -99,6 +103,8 @@
                             <exclude>com.google.gwt:gwt-dev</exclude>
                             <exclude>javax.validation:validation-api</exclude>
                         </excludes>
+                        <overwrite>true</overwrite>
+                       	<useProjectReferences>false</useProjectReferences>
                     </configuration>
                 </plugin>
         </plugins>
