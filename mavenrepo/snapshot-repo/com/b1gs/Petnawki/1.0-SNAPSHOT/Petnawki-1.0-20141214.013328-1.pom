@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.toxic</groupId>
+		<artifactId>application</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.b1gs</groupId>
+	<artifactId>Petnawki</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>Petnawki Root</name>
+	<url>http://code.google.com/p/own-finance</url>
+
+	<scm>
+		<connection>scm:svn:http://code.google.com/p/own-finance/trunk/Petnawki/</connection>
+		<developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/Petnawki/</developerConnection>
+		<url>http://code.google.com/p/own-finance/trunk/Petnawki/</url>
+	</scm>
+
+	<issueManagement>
+		<system>Google Code</system>
+		<url>http://code.google.com/p/own-finance/issues/list</url>
+	</issueManagement>
+
+	<properties>
+		<toxic.version>1.0-SNAPSHOT</toxic.version>
+	</properties>
+	
+	<dependencyManagement>
+	   <dependencies>
+	       
+            <dependency>
+		      <groupId>com.b1gs</groupId>
+		      <artifactId>Petnawki-core</artifactId>
+		      <version>1.0-SNAPSHOT</version>
+		    </dependency>
+		    
+		    <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-android</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-assets</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-html</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-ios</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+            
+            <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-java</artifactId>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+		    
+		    <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-html</artifactId>
+              <classifier>sources</classifier>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+		    
+		    <dependency>
+              <groupId>com.b1gs</groupId>
+              <artifactId>Petnawki-core</artifactId>
+              <classifier>sources</classifier>
+              <version>1.0-SNAPSHOT</version>
+            </dependency>
+
+	   </dependencies>
+	</dependencyManagement>
+
+	<profiles>
+		<profile>
+			<id>java</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>java</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>android</id>
+			<modules>
+				<module>android</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>ios</id>
+			<modules>
+				<module>ios</module>
+			</modules>
+		</profile>
+		<profile>
+			<id>html</id>
+			<modules>
+				<module>html</module>
+			</modules>
+		</profile>
+	</profiles>
+  <modules>
+    <module>assets</module>
+    <module>core</module>
+    <!-- <module>android</module> -->
+    <!-- <module>html</module> -->
+  </modules>
+</project>
