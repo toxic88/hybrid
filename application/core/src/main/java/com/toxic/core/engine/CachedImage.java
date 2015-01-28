@@ -48,8 +48,11 @@ final class CachedImage implements IImage {
 
   @Override
   public String toString() {
-    return "The image object has size : [" + this.image.width() + ":" + this.image.height() + "]\n"
-      + "The url of image is : " + this.path;
+    if (this.image==null) {
+      return "EMTY IMAGE!!! URL=["+this.path+"].";
+    }
+    return "Image:[size=[" + this.image.width() + "x" + this.image.height() + "] "
+      + "URL=[" + this.path + "].";
   }
 
   @Override
