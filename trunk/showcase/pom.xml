@@ -113,6 +113,12 @@
 				<module>html</module>
 			</modules>
 		</profile>
+		<profile>
+			<id>robovm</id>
+			<modules>
+				<module>robovm</module>
+			</modules>
+		</profile>
 	</profiles>
   <modules>
     <module>assets</module>
