@@ -28,7 +28,7 @@ public class PlatfromJava implements IPlatform {
    * @param app
    *          executed instance of application.
    */
-  public PlatfromJava(IApplication app) {
+  protected PlatfromJava(IApplication app) {
     this.application = app;
   }
 
@@ -46,11 +46,10 @@ public class PlatfromJava implements IPlatform {
    * <p>
    * Start game launching.
    * </p>
-   * <br/>
    */
   public final void start() {
     JavaPlatform.Config config = new JavaPlatform.Config();
-    // ANTS_TAG JAVA_RESOLUTION!
+    // Strelock : JAVA_RESOLUTION!
     config.height = 720;
     config.width = 1280;
     // config.emulateTouch= true;

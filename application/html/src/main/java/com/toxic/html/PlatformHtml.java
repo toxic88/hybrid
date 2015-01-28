@@ -22,13 +22,18 @@ final class PlatformHtml implements IPlatform {
   }
   
   @Override
-  public Context getContext() {
+  public final Context getContext() {
     return this.context;
   }
 
   @Override
-  public IApplication getApp() {
+  public final IApplication getApp() {
     return this.application;
+  }
+
+  @Override
+  public final void start() {
+    // Strelock : NOOP
   }
   
 }

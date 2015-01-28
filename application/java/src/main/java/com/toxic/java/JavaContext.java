@@ -18,20 +18,20 @@ import com.toxic.core.engine.util.Context;
  */
 class JavaContext implements Context {
 
-  private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
+  private static final DateFormat FORMAT = new SimpleDateFormat("HH:mm:ss:SSS");
 
   static {
-    format.setCalendar(Calendar.getInstance());
+    FORMAT.setCalendar(Calendar.getInstance());
   }
 
   @Override
   public String getCurrentTime() {
-    return format.format(new Date());
+    return FORMAT.format(new Date());
   }
 
   @Override
   public String convertMillseconds(double millsec) {
-    return format.format(new Date((long) millsec));
+    return FORMAT.format(new Date((long) millsec));
   }
 
 }
