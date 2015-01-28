@@ -19,7 +19,7 @@ import com.toxic.core.engine.util.log.Logger;
  * 
  */
 public final class Background {
-  
+
   //ANTS_TAG : provide equals and hashCode functions here!
 
   final static Logger log = DataProvider.getLogFactory().getLogger(Background.class.getName());
@@ -203,6 +203,12 @@ public final class Background {
 
   public final Background setColor(int color) {
     return new Background(this, color);
+  }
+
+  @Override
+  public String toString() {
+    return "BackgroundObject[image=" + this.image + ",repeatX=" + this.repeatX + ",repeatY=" + this.repeatY
+      + ",resize=" + this.resize + ",color=" + Integer.toHexString(this.color) + "].";
   }
 
 }
