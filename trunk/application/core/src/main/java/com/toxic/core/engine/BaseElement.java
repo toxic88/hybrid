@@ -34,6 +34,10 @@ import com.toxic.core.engine.resources.ITextFormat;
 import com.toxic.core.engine.util.log.Logger;
 
 /**
+ * <p>
+ *  Strelock : Finally document me!
+ * </p>
+ * <br/>
  * @author Strelock
  */
 class BaseElement implements IElement {
@@ -93,7 +97,7 @@ class BaseElement implements IElement {
 
     @Override
     public void onFailure(Throwable cause) {
-      log.error("Cann't load image.\n Reason : \n" + BaseElement.this.bkground.getImage().toString());
+      log.error("Can't load image.\n Reason : \n" + BaseElement.this.bkground.toString());
     }
 
   };

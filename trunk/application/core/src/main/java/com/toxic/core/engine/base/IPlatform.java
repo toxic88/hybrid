@@ -29,5 +29,13 @@ public interface IPlatform {
    * @return instance of platform-specific implementation function.
    */
   public abstract Context getContext();
+  
+  
+  /**
+   * <p>
+   * Start game launching.
+   * </p>
+   */
+  public abstract void start();
 
 }
