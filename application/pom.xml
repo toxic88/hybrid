@@ -31,6 +31,7 @@
 <!-- 		 Strelock : java openGL concrete library-->
 		<lwjgl.version>2.9.0</lwjgl.version>
         <jdk.version>1.7</jdk.version>
+<!--          Strelock : provide sub release of playN and type here concrete version  -->
 		<playn.version>1.9-SNAPSHOT</playn.version>
 		<android.maven.version>3.8.2</android.maven.version>
 		<android.nativelib>1.0</android.nativelib>
