@@ -25,20 +25,39 @@
         </dependency>
         
         <dependency>
+			<groupId>com.googlecode.playn</groupId>
+			<artifactId>playn-html</artifactId>
+			<classifier>sources</classifier>
+		</dependency>
+        
+        <dependency>
             <groupId>com.threerings</groupId>
             <artifactId>tripleplay</artifactId>
         </dependency>
+        
+        <dependency>
+			<groupId>com.threerings</groupId>
+			<artifactId>tripleplay</artifactId>
+			<classifier>sources</classifier>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-codeserver</artifactId>
+		</dependency>
 
 		<!-- Start Google App Engine dependencies -->
 		<!-- These can be removed if you don't wish to deploy to Google App Engine -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-labs</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<dependency>
