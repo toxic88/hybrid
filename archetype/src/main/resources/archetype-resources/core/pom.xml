@@ -16,14 +16,6 @@
             <groupId>com.toxic</groupId>
             <artifactId>core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.googlecode.playn</groupId>
-            <artifactId>playn-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.threerings</groupId>
-            <artifactId>tripleplay</artifactId>
-        </dependency>
     </dependencies>
 
     <build>

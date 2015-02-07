@@ -106,31 +106,35 @@
         <include>proguard.cfg</include>
       </includes>
     </fileSet>
-    <!-- ios module -->
+    <!-- robovm module -->
     <fileSet filtered="true" encoding="UTF-8">
-      <directory>ios</directory>
+      <directory>robovm</directory>
       <includes>
         <include>pom.xml</include>
+        <include>robovm.properties</include>
       </includes>
     </fileSet>
-    <fileSet filtered="true" encoding="UTF-8">
-      <directory>ios</directory>
+    <fileSet filtered="true" packaged="true" encoding="UTF-8">
+      <directory>robovm/src/main/java</directory>
       <includes>
-        <include>Info.plist</include>
-        <include>**/*.cs</include>
-        <include>*.csproj</include>
-        <include>*.sln</include>
+        <include>**/*.java</include>
       </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
-      <directory>ios</directory>
+      <directory>robovm</directory>
       <includes>
-        <include>**/*.png</include>
+        <include>robovm.xml</include>
+        <include>Info.plist.xml</include>
+        <include>resources/*.png</include>
+        <include>resources/iTunesArtwork</include>
       </includes>
     </fileSet>
+    
+    
   </fileSets>
   
   <modules>
+  
     <module id="${rootArtifactId}-assets" dir="assets" name="${rootArtifactId}-assets">
       <fileSets>
         <fileSet filtered="true" encoding="UTF-8">
@@ -144,6 +148,7 @@
         </fileSet>
       </fileSets>
     </module>
+    
     <module id="${rootArtifactId}-core" dir="core" name="${rootArtifactId}-core">
       <fileSets>
         <fileSet filtered="true" encoding="UTF-8">
@@ -158,4 +163,5 @@
       </fileSets>
     </module>
   </modules>
+  
 </archetype-descriptor>

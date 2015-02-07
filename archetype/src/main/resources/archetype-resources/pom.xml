@@ -38,50 +38,12 @@
 		      <version>${version}</version>
 		    </dependency>
 		    
-		    <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-android</artifactId>
-              <version>${version}</version>
-            </dependency>
-            
             <dependency>
               <groupId>${groupId}</groupId>
               <artifactId>${artifactId}-assets</artifactId>
               <version>${version}</version>
             </dependency>
             
-            <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-html</artifactId>
-              <version>${version}</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-ios</artifactId>
-              <version>${version}</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-java</artifactId>
-              <version>${version}</version>
-            </dependency>
-		    
-		    <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-html</artifactId>
-              <classifier>sources</classifier>
-              <version>${version}</version>
-            </dependency>
-		    
-		    <dependency>
-              <groupId>${groupId}</groupId>
-              <artifactId>${artifactId}-core</artifactId>
-              <classifier>sources</classifier>
-              <version>${version}</version>
-            </dependency>
-
 	   </dependencies>
 	</dependencyManagement>
 
@@ -102,9 +64,9 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>ios</id>
+			<id>robovm</id>
 			<modules>
-				<module>ios</module>
+				<module>robovm</module>
 			</modules>
 		</profile>
 		<profile>
@@ -114,4 +76,6 @@
 			</modules>
 		</profile>
 	</profiles>
+	
+	
 </project>
