@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.toxic</groupId>
@@ -28,61 +29,30 @@
 	<properties>
 		<toxic.version>1.0-SNAPSHOT</toxic.version>
 	</properties>
-	
-	<dependencyManagement>
-	   <dependencies>
-	       
-            <dependency>
-		      <groupId>com.toxic.ui</groupId>
-		      <artifactId>showcase-core</artifactId>
-		      <version>1.0-SNAPSHOT</version>
-		    </dependency>
-		    
-		    <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-android</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-assets</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-html</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-ios</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-            
-            <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-java</artifactId>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-		    
-		    <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-html</artifactId>
-              <classifier>sources</classifier>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
-		    
-		    <dependency>
-              <groupId>com.toxic.ui</groupId>
-              <artifactId>showcase-core</artifactId>
-              <classifier>sources</classifier>
-              <version>1.0-SNAPSHOT</version>
-            </dependency>
 
-	   </dependencies>
+	<dependencyManagement>
+		<dependencies>
+
+			<dependency>
+				<groupId>com.toxic.ui</groupId>
+				<artifactId>showcase-core</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic.ui</groupId>
+				<artifactId>showcase-assets</artifactId>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.toxic.ui</groupId>
+				<artifactId>showcase-core</artifactId>
+				<classifier>sources</classifier>
+				<version>1.0-SNAPSHOT</version>
+			</dependency>
+
+		</dependencies>
 	</dependencyManagement>
 
 	<profiles>
@@ -102,12 +72,6 @@
 			</modules>
 		</profile>
 		<profile>
-			<id>ios</id>
-			<modules>
-				<module>ios</module>
-			</modules>
-		</profile>
-		<profile>
 			<id>html</id>
 			<modules>
 				<module>html</module>
@@ -120,8 +84,8 @@
 			</modules>
 		</profile>
 	</profiles>
-  <modules>
-    <module>assets</module>
-    <module>core</module>
-  </modules>
+	<modules>
+		<module>assets</module>
+		<module>core</module>
+	</modules>
 </project>

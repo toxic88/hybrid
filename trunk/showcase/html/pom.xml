@@ -15,7 +15,6 @@
 	<properties>
 		<gwt.module>com.toxic.ui.ShowCase</gwt.module>
 		<gwt.name>Show-Case</gwt.name>
-		<!-- Desired Google App Engine SDK version -->
 	</properties>
 
 	<dependencies>
@@ -27,44 +26,12 @@
 
 		<dependency>
 			<groupId>com.toxic</groupId>
-			<artifactId>core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.toxic</groupId>
 			<artifactId>html</artifactId>
 		</dependency>
 
 		<dependency>
 			<groupId>com.toxic.ui</groupId>
 			<artifactId>showcase-assets</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.playn</groupId>
-			<artifactId>playn-html</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.playn</groupId>
-			<artifactId>playn-html</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
-
-		<dependency>
-			<groupId>com.threerings</groupId>
-			<artifactId>tripleplay</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.threerings</groupId>
-			<artifactId>tripleplay</artifactId>
-			<classifier>sources</classifier>
-		</dependency>
-		
-		<dependency>
-			<groupId>com.google.gwt</groupId>
-			<artifactId>gwt-codeserver</artifactId>
 		</dependency>
 
 		<!-- Start Google App Engine dependencies -->
@@ -192,67 +159,5 @@
 			<!-- End Google App Engine plugin configuration -->
 		</plugins>
 
-		<!-- Start Google App Engine Eclipse plugin configuration -->
-		
-		<pluginManagement>
-	      <plugins>
-	       <!-- This plugin's configuration is used to store Eclipse m2e settings 
-                    only. -->
-                <!-- It has no influence on the Maven build itself. -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>build-helper-maven-plugin</artifactId>
-                                        <versionRange>${maven.build.helper.version}</versionRange>
-                                        <goals>
-                                            <goal>local-ip</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>net.kindleit</groupId>
-                                        <artifactId>maven-gae-plugin</artifactId>
-                                        <versionRange>[0.9.2,)</versionRange>
-                                        <goals>
-                                            <goal>unpack</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.apache.maven.plugins</groupId>
-                                        <artifactId>maven-war-plugin</artifactId>
-                                        <versionRange>[2.1.1,)</versionRange>
-                                        <goals>
-                                            <goal>exploded</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-	      </plugins>
-		</pluginManagement>
-		
-		<!-- This can be removed if you don't wish to deploy to Google App Engine -->
-		<!-- End Google App Engine plugin configuration -->
 	</build>
 </project>

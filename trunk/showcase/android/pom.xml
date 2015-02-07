@@ -34,16 +34,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.toxic</groupId>
-			<artifactId>core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.googlecode.playn</groupId>
-			<artifactId>playn-android</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.googlecode.playn</groupId>
 			<artifactId>playn-android-nativelib</artifactId>
 			<scope>runtime</scope>
@@ -55,6 +45,7 @@
 			<artifactId>android</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		
 	</dependencies>
 
 	<build>
@@ -62,15 +53,6 @@
 			<plugin>
 				<groupId>com.pyx4j</groupId>
 				<artifactId>maven-junction-plugin</artifactId>
-				<version>1.0.3</version>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>link</goal>
-						</goals>
-					</execution>
-				</executions>
 				<!-- generate a symlink to our assets directory in the proper location -->
 				<configuration>
 					<links>
@@ -84,56 +66,8 @@
 			<plugin>
 				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
 				<artifactId>android-maven-plugin</artifactId>
-				<version>${android.maven.version}</version>
-				<configuration>
-					<androidManifestFile>${basedir}/AndroidManifest.xml</androidManifestFile>
-					<assetsDirectory>${basedir}/assets</assetsDirectory>
-					<resourceDirectory>${basedir}/res</resourceDirectory>
-					<sdk>
-						<platform>11</platform>
-					</sdk>
-					<deleteConflictingFiles>true</deleteConflictingFiles>
-					<undeployBeforeDeploy>true</undeployBeforeDeploy>
-					<jvmArguments>
-						<jvmArgument>-Xmx1024m</jvmArgument>
-					</jvmArguments>
-					<dex>
-						<jvmArguments>
-							<jvmArgument>-Xmx1024m</jvmArgument>
-						</jvmArguments>
-					</dex>
-				</configuration>
-				<extensions>true</extensions>
 			</plugin>
 		</plugins>
-		<pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
-                                        <artifactId>android-maven-plugin</artifactId>
-                                        <versionRange>[${android.maven.version},)</versionRange>
-                                        <goals>
-                                            <goal>consume-aar</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <execute />
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
 	</build>
 	<!-- run 'mvn package -Pandroid -Psign -Dkeystore.password=foo' to sign 
 		and align -->
