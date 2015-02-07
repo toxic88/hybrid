@@ -1,6 +1,5 @@
 package com.toxic.ui.robovm;
 
-import com.toxic.core.engine.base.IApplication;
 import com.toxic.robovm.PlatformRoboVM;
 import com.toxic.ui.core.ShowCase;
 

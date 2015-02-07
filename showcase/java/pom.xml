@@ -31,18 +31,9 @@
 	
 	<dependency>
       <groupId>com.toxic</groupId>
-      <artifactId>core</artifactId>
-    </dependency>
-	
-	<dependency>
-      <groupId>com.toxic</groupId>
       <artifactId>java</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>com.googlecode.playn</groupId>
-      <artifactId>playn-java</artifactId>
-    </dependency>
   </dependencies>
 
   <build>
@@ -50,26 +41,6 @@
       <!-- builds a standalone jar file during 'mvn package' -->
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
-        <version>2.4</version>
-        <configuration>
-          <descriptorRefs>
-            <descriptorRef>jar-with-dependencies</descriptorRef>
-          </descriptorRefs>
-          <archive>
-            <manifest>
-              <mainClass>${mainClass}</mainClass>
-            </manifest>
-          </archive>
-        </configuration>
-        <executions>
-          <execution>
-            <id>make-assembly</id>
-            <phase>package</phase>
-            <goals>
-              <goal>single</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -83,18 +54,6 @@
           <plugin>
             <groupId>org.codehaus.mojo</groupId>
             <artifactId>exec-maven-plugin</artifactId>
-            <version>1.2.1</version>
-            <executions>
-              <execution>
-                <phase>test</phase>
-                <goals>
-                  <goal>java</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <mainClass>${mainClass}</mainClass>
-            </configuration>
           </plugin>
         </plugins>
       </build>

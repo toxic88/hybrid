@@ -9,7 +9,13 @@
 
 
 	<artifactId>showcase-robovm</artifactId>
+	<packaging>jar</packaging>
 	<name>Showcase roboVM</name>
+	
+	<properties>
+		<!-- Strelock : need to be verified! -->
+		<mainClass>com.toxic.ui.robovm.ShowcaseRoboVM</mainClass>
+	</properties>
 
 	<dependencies>
 
@@ -20,17 +26,7 @@
 
 		<dependency>
 			<groupId>com.toxic</groupId>
-			<artifactId>core</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.toxic</groupId>
 			<artifactId>robovm</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.toxic.ui</groupId>
-			<artifactId>showcase-assets</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -43,14 +39,6 @@
 			<plugin>
 				<groupId>com.pyx4j</groupId>
 				<artifactId>maven-junction-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>link</goal>
-						</goals>
-					</execution>
-				</executions>
 				<!-- generate a symlink to our assets directory in the proper location -->
 				<configuration>
 					<links>
@@ -72,18 +60,6 @@
 					<plugin>
 						<groupId>org.robovm</groupId>
 						<artifactId>robovm-maven-plugin</artifactId>
-						<version>${robovm.maven.version}</version>
-						<configuration>
-							<deviceName>iPad-Retina</deviceName>
-						</configuration>
-						<executions>
-							<execution>
-								<phase>test</phase>
-								<goals>
-									<goal>ipad-sim</goal>
-								</goals>
-							</execution>
-						</executions>
 					</plugin>
 				</plugins>
 			</build>
@@ -95,7 +71,6 @@
 					<plugin>
 						<groupId>org.robovm</groupId>
 						<artifactId>robovm-maven-plugin</artifactId>
-						<version>${robovm.maven.version}</version>
 						<executions>
 							<execution>
 								<phase>install</phase>
