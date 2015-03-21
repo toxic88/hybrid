@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.googlecode.playn</groupId>
 		<artifactId>playn-project</artifactId>
-		<version>1.9-SNAPSHOT</version>
+		<version>1.9</version>
 	</parent>
 
 	<groupId>com.toxic</groupId>
@@ -32,7 +32,7 @@
 		<lwjgl.version>2.9.0</lwjgl.version>
         <jdk.version>1.7</jdk.version>
 <!--          Strelock : provide sub release of playN and type here concrete version  -->
-		<playn.version>1.9-SNAPSHOT</playn.version>
+		<playn.version>1.9</playn.version>
 		<maven.lifecycle.version>1.0.0</maven.lifecycle.version>
 		<android.maven.version>3.8.2</android.maven.version>
 		<android.nativelib>1.0</android.nativelib>
@@ -55,8 +55,8 @@
 		<maven.war.plugin>2.1.1</maven.war.plugin>
 		<maven.junction.plugin>1.0.3</maven.junction.plugin>
 <!-- 		 Strelock : roboVM stuff -->
-		<robovm.version>1.0.0-beta-03</robovm.version>
-    	<robovm.maven.version>1.0.0-beta-03</robovm.maven.version>
+		<robovm.version>1.0.0</robovm.version>
+    	<robovm.maven.version>1.0.0</robovm.maven.version>
 <!--     	 Strelock : swt for future editor -->
 		<swt.version>4.3</swt.version>
 <!-- 		Strelock : jUnit version-->
