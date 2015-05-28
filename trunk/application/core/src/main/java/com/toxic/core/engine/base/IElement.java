@@ -20,9 +20,7 @@ import com.toxic.core.engine.resources.ITextFormat;
  * capabilities and functionality.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface IElement {
 
@@ -31,7 +29,6 @@ public interface IElement {
    * Setting up background as {@link Background} object.
    * </p>
    * <br/>
-   * 
    * @param bkgroundIn
    */
   public abstract void setBackGround(Background bkgroundIn);
@@ -42,7 +39,6 @@ public interface IElement {
    * executed, during object will be notified by {@link EventManager}.
    * </p>
    * <br/>
-   * 
    * @param handly
    */
   public abstract void addSelectHandler(SelectHandler handly);
@@ -53,7 +49,6 @@ public interface IElement {
    * executed, during object will be notified by {@link EventManager}.
    * </p>
    * <br/>
-   * 
    * @param handly
    */
   public abstract void addHoldHandler(HoldHandler handly);
@@ -64,40 +59,27 @@ public interface IElement {
    * executed, during object will be notified by {@link EventManager}.
    * </p>
    * <br/>
-   * 
    * @param handly
    */
   public abstract void addMoveHandler(MoveHandler handly);
 
   /**
-   * <p>
    * Remove all registered handler.
-   * </p>
-   * <br/>
    */
   public abstract void removeHandlers();
 
   /**
-   * <p>
    * Removed binded {@link SelectHandler} object.
-   * </p>
-   * <br/>
    */
   public abstract void removeSelectHandler();
 
   /**
-   * <p>
    * Removed binded {@link HoldHandler} object.
-   * </p>
-   * <br/>
    */
   public abstract void removeHoldHandler();
 
   /**
-   * <p>
    * Removed binded {@link MoveHandler} object.
-   * </p>
-   * <br/>
    */
   public abstract void removeMoveHandler();
 
@@ -106,7 +88,6 @@ public interface IElement {
    * Determines weather current Element has at least one assign Handler
    * </p>
    * <br/>
-   * 
    * @return true if Element has at least one handler
    */
   public abstract boolean hasHandlers();
@@ -116,7 +97,6 @@ public interface IElement {
    * Determines weather current Element has assigned {@link HoldHandler}
    * </p>
    * <br/>
-   * 
    * @return true if Element has assigned {@link HoldHandler}
    */
   public abstract boolean hasHoldHandlers();
@@ -126,7 +106,6 @@ public interface IElement {
    * Determines weather current Element has assigned {@link SelectHandler}
    * </p>
    * <br/>
-   * 
    * @return true if Element has assigned {@link SelectHandler}
    */
   public abstract boolean hasSelectHandlers();
@@ -136,7 +115,6 @@ public interface IElement {
    * Determines weather current Element has assigned {@link MoveHandler}
    * </p>
    * <br/>
-   * 
    * @return true if Element has assigned {@link MoveHandler}
    */
   public abstract boolean hasMoveHandlers();
@@ -151,7 +129,6 @@ public interface IElement {
    * it size elements will be skipped.</b>
    * </p>
    * <br/>
-   * 
    * @param child
    */
   public abstract void addChild(IElement child);
@@ -166,7 +143,6 @@ public interface IElement {
    * it size elements will be skipped.</b>
    * </p>
    * <br/>
-   * 
    * @param children
    */
   public abstract void addChildren(List<IElement> children);
@@ -176,15 +152,12 @@ public interface IElement {
    * Remove input argument element from current element.
    * </p>
    * <br/>
-   * 
    * @param child
    */
   public abstract void removeChild(IElement child);
 
   /**
-   * <p>
    * Remove current element from it parent, if it exists.
-   * </p>
    */
   public abstract void removeFromParent();
 
@@ -193,17 +166,12 @@ public interface IElement {
    * Bind to current element string identifier.
    * </p>
    * <br/>
-   * 
    * @param string
    */
   public abstract void setId(String string);
 
   /**
-   * <p>
    * Return a current element string identifier.
-   * </p>
-   * <br/>
-   * 
    */
   public abstract String getId();
 
@@ -212,11 +180,8 @@ public interface IElement {
    * Settled position of current element
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          location relative X axis
-   * @param y
-   *          location relative Y axis
+   * @param x location relative X axis
+   * @param y location relative Y axis
    */
   public abstract void setPosition(float x, float y);
 
@@ -225,9 +190,7 @@ public interface IElement {
    * Settled X axis position of current element
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          location relative X axis
+   * @param x location relative X axis
    */
   public abstract void setPositionX(float x);
 
@@ -236,9 +199,7 @@ public interface IElement {
    * Settled Y axis position of current element
    * </p>
    * <br/>
-   * 
-   * @param Y
-   *          location relative Y axis
+   * @param Y location relative Y axis
    */
   public abstract void setPositionY(float y);
 
@@ -248,11 +209,8 @@ public interface IElement {
    * will be rotated and all child elements positioned.
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          location of X axis
-   * @param y
-   *          location of Y axis
+   * @param x location of X axis
+   * @param y location of Y axis
    */
   public abstract void setOrigin(float x, float y);
 
@@ -274,9 +232,7 @@ public interface IElement {
    * will be rotated and all child elements positioned.
    * </p>
    * <br/>
-   * 
-   * @param y
-   *          location of Y axis
+   * @param y location of Y axis
    */
   public abstract void setOriginY(float y);
 
@@ -285,9 +241,7 @@ public interface IElement {
    * Set rotating angle of element in radiant.
    * </p>
    * <br/>
-   * 
-   * @param angle
-   *          radiant of rotating angle
+   * @param angle radiant of rotating angle
    */
   public abstract void setRotation(float angle);
 
@@ -296,9 +250,7 @@ public interface IElement {
    * Setting visibility of element and all of it children.
    * </p>
    * <br/>
-   * 
-   * @param flag
-   *          determine weather current instance visible
+   * @param flag determine weather current instance visible
    */
   public abstract void setVisible(boolean flag);
 
@@ -307,11 +259,8 @@ public interface IElement {
    * Setting scaling of element.
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          scaling element relative axis X
-   * @param y
-   *          scaling element relative axis Y
+   * @param x scaling element relative axis X
+   * @param y scaling element relative axis Y
    */
   public abstract void setScale(float x, float y);
 
@@ -320,9 +269,7 @@ public interface IElement {
    * Setting scaling of element.
    * </p>
    * <br/>
-   * 
-   * @param scale
-   *          multiplier of scaling
+   * @param scale multiplier of scaling
    */
   public abstract void setScale(float scale);
 
@@ -331,7 +278,6 @@ public interface IElement {
    * Determine current position of element.
    * </p>
    * <br/>
-   * 
    * @return {@link Point} object of position element.
    */
   public abstract Point position();
@@ -341,58 +287,32 @@ public interface IElement {
    * Determine current scaling multiplier of element.
    * </p>
    * <br/>
-   * 
    * @return {@link Point} object of scaling multiplier.
    */
   public abstract Point scale();
 
   /**
-   * <p>
-   * Determine current scaling multiplier of element relative to axis X.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return current scaling multiplier of element relative to axis X.
    */
   public abstract float scaleX();
 
   /**
-   * <p>
-   * Determine current scaling multiplier of element relative to axis Y.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return current scaling multiplier of element relative to axis Y.
    */
   public abstract float scaleY();
 
   /**
-   * <p>
-   * Determine current depth of element
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return current depth of element
    */
   public abstract float depth();
 
   /**
-   * <p>
-   * Determine weather element will be rendered.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return current depth of element
    */
   public abstract boolean isActive();
 
   /**
-   * <p>
-   * Absolute index of ordering {@link IElement}s according to depth.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return Absolute index of ordering {@link IElement}s according to depth.
    */
   public abstract int getPriority();
 
@@ -402,7 +322,6 @@ public interface IElement {
    * rendered region.
    * </p>
    * <br/>
-   * 
    * @param flag
    */
   public abstract void setDebug(boolean flag);
@@ -415,7 +334,6 @@ public interface IElement {
    * <b> NOTE : opacity coudn't be less or equals zero or greater then one. </b>
    * </p>
    * <br/>
-   * 
    * @param alpha
    */
   public abstract void setAplha(float alpha);
@@ -425,9 +343,7 @@ public interface IElement {
    * Setting current width of element.
    * </p>
    * <br/>
-   * 
-   * @param width
-   *          width of element
+   * @param width width of element
    */
   public abstract void setWidth(float width);
 
@@ -436,9 +352,7 @@ public interface IElement {
    * Setting current height of element.
    * </p>
    * <br/>
-   * 
-   * @param height
-   *          height of element
+   * @param height height of element
    */
   public abstract void setHeight(float height);
 
@@ -447,11 +361,8 @@ public interface IElement {
    * Setting size of current element.
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          width of element
-   * @param y
-   *          height of element
+   * @param x width of element
+   * @param y height of element
    */
   public abstract void setSize(float x, float y);
 
@@ -461,7 +372,6 @@ public interface IElement {
    * of element greater then it sibling, it will be rendered early.
    * </p>
    * <br/>
-   * 
    * @param depth
    */
   public abstract void setDepth(float depth);
@@ -471,17 +381,11 @@ public interface IElement {
    * Animate element randomly shifted it.
    * </p>
    * <br/>
-   * 
-   * @param amplitudeX
-   *          maximum amplitude of shift relative X axis
-   * @param amplitudeY
-   *          maximum amplitude of shift relative Y axis
-   * @param mode
-   *          animation behavior
-   * @param duration
-   *          time in milliseconds
-   * @return {@link CancelHandler} instance that ,has possibility cancel
-   *         animation.
+   * @param amplitudeX maximum amplitude of shift relative X axis
+   * @param amplitudeY maximum amplitude of shift relative Y axis
+   * @param mode animation behavior
+   * @param duration time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel animation.
    */
   public abstract CancelHandler animateShake(final float amplitudeX, final float amplitudeY, final Interpolator mode,
     final float duration);
@@ -491,18 +395,11 @@ public interface IElement {
    * Simple animation transition to supplied point.
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          location relative to axis X
-   * @param y
-   *          location relative to axis Y
-   * @param mode
-   *          the animation behavior mode
-   * @param duration
-   *          time in milliseconds
-   * 
-   * @return {@link CancelHandler} instance that ,has possibility cancel
-   *         animation.
+   * @param x location relative to axis X
+   * @param y location relative to axis Y
+   * @param mode the animation behavior mode
+   * @param duration time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel animation.
    */
   public abstract CancelHandler animateTransition(final float x, final float y, final Interpolator mode,
     final float duration);
@@ -513,17 +410,11 @@ public interface IElement {
    * {@link CustomAnimation} instance.
    * </p>
    * <br/>
-   * 
-   * @param action
-   *          {@link CustomAnimation} object , that will be periodically
-   *          executed through the {@link CustomAnimation#update(float)}
-   *          method.
-   * @param mode
-   *          the animation behavior mode
-   * @param duration
-   *          time in milliseconds
-   * @return {@link CancelHandler} instance that ,has possibility cancel
-   *         animation.
+   * @param action {@link CustomAnimation} object , that will be periodically executed through 
+   * the {@link CustomAnimation#update(float)} method.
+   * @param mode the animation behavior mode
+   * @param duration time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel animation.
    */
   public abstract CancelHandler animateAction(final CustomAnimation action, final Interpolator mode, final int duration);
 
@@ -532,15 +423,10 @@ public interface IElement {
    * Animate rotation of element to supplied value of angle in radiant.
    * </p>
    * <br/>
-   * 
-   * @param angle
-   *          value of angle in radiant
-   * @param mode
-   *          the animation behavior mode
-   * @param duration
-   *          time in milliseconds
-   * @return {@link CancelHandler} instance that ,has possibility cancel
-   *         animation.
+   * @param angle value of angle in radiant
+   * @param mode the animation behavior mode
+   * @param duration time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel animation.
    */
   public abstract CancelHandler animateRotate(final float angle, final Interpolator mode, final int duration);
 
@@ -550,83 +436,50 @@ public interface IElement {
    * milliseconds.
    * </p>
    * <br/>
-   * 
-   * @param to
-   *          value of alpha parameter in the end of animation.
-   * @param mode
-   *          the animation behavior mode
-   * @param duration
-   *          time in milliseconds
-   * @return {@link CancelHandler} instance that ,has possibility cancel
-   *         animation.
+   * @param to value of alpha parameter in the end of animation.
+   * @param mode the animation behavior mode
+   * @param duration time in milliseconds
+   * @return {@link CancelHandler} instance that ,has possibility cancel animation.
    */
   public abstract CancelHandler animateOpacity(final float to, final Interpolator mode, final int duration);
 
   /**
-   * <p>
    * Stop all currently executed animation.
-   * </p>
-   * <br/>
    */
   public abstract void stopAnimation();
 
   /**
-   * <p>
    * Stop current animated shake animation if it is executing now.
-   * </p>
-   * <br/>
    */
   public abstract void stopShakeAnimation();
 
   /**
-   * <p>
    * Stop current animated transition animation if it is executing now.
-   * </p>
-   * <br/>
    */
   public abstract void stopTransitionAnimation();
 
   /**
-   * <p>
    * Stop current animated custom animation if it is executing now.
-   * </p>
-   * <br/>
    */
   public abstract void stopActionAnimation();
 
   /**
-   * <p>
    * Stop current rotate transition animation if it is executing now.
-   * </p>
-   * <br/>
    */
   public abstract void stopRotateAnimation();
 
   /**
-   * <p>
    * Stop current rotate opacity animation if it is executing now.
-   * </p>
-   * <br/>
    */
   public abstract void stopOpacityAnimation();
 
   /**
-   * <p>
-   * Determine weather current element is animating now.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return whether current element is animating now.
    */
   public abstract boolean isAnimated();
 
   /**
-   * <p>
-   * Determine weather current element is clipped.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return whether current element is clipped.
    */
   public abstract boolean isClipped();
 
@@ -636,7 +489,6 @@ public interface IElement {
    * background out of it boundaries.
    * </p>
    * <br/>
-   * 
    * @param flag
    */
   public abstract void setClipped(boolean flag);
@@ -646,90 +498,47 @@ public interface IElement {
    * Set current element draw text in it according to {@link TextFormat} object.
    * </p>
    * <br/>
-   * 
    * @param format
    */
   public abstract void setTextFormat(ITextFormat format);
 
   /**
-   * <p>
-   * Width of element.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return width of element.
    */
   public abstract float width();
 
   /**
-   * <p>
-   * Height of element.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return height of element.
    */
   public abstract float height();
 
   /**
-   * <p>
-   * Opacity of element.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return opacity of element.
    */
   public abstract float alpha();
 
   /**
-   * <p>
-   * The x value of origin point of element. Relative origin point all children
-   * element will be positioned.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return value of origin point of element. Relative origin point all children element will be positioned.
    */
   public abstract float originX();
 
   /**
-   * <p>
-   * The y value of origin point of element. Relative origin point all children
-   * element will be positioned.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return value of origin point of element. Relative origin point all children element will be positioned.
    */
   public abstract float originY();
 
   /**
-   * <p>
-   * The x position of element. Relative position point element will be
-   * positioned into parent.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return the x position of element. Relative position point element will be positioned into parent.
    */
   public abstract float positionX();
 
   /**
-   * <p>
    * Remove all children from this element.
-   * </p>
-   * <br/>
    */
   public abstract void removeChildren();
 
   /**
-   * <p>
-   * The y position of element. Relative position point element will be
-   * positioned into parent.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return y position of element. Relative position point element will be positioned into parent.
    */
   public abstract float positionY();
 
@@ -744,8 +553,7 @@ public interface IElement {
   public abstract boolean isVisible();
 
   /**
-   * @return determine weather element will be propagate event to the
-   *         underground elements.
+   * @return determine weather element will be propagate event to the underground elements.
    */
   public abstract boolean isPropagative();
 
@@ -754,7 +562,6 @@ public interface IElement {
    * Set propagate event to underground elements.
    * </p>
    * <br/>
-   * 
    * @param propogativeIn
    */
   public abstract void setPropagative(boolean propogativeIn);
@@ -769,7 +576,6 @@ public interface IElement {
    * Draws input text into element.
    * </p>
    * <br/>
-   * 
    * @param value
    */
   public abstract void drawText(String value);

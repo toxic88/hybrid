@@ -7,7 +7,6 @@ package com.toxic.core.engine.base;
  * </p>
  * <br/>
  * @author Strelock
- *
  */
 public interface IScene extends IElement {
   
