@@ -7,7 +7,6 @@ import com.toxic.ui.core.ShowCase;
  * <p>Example of executing android application.</p>
  * <br/>
  * @author Strelock
- *
  */
 public class ShowCaseAndroid extends PlatfromAndroid {
 
@@ -18,7 +17,7 @@ public class ShowCaseAndroid extends PlatfromAndroid {
 
     @Override
     public void start() {
-        
+
     }
 
 }

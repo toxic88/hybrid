@@ -10,23 +10,22 @@ import com.toxic.java.PlatfromJava;
  * </p>
  * <br/>
  * @author Strelock
- *
  */
 public class ShowCaseJava extends PlatfromJava {
 
-  /**
-   * <p>
-   *  Default constructor of java platform.
-   * </p> 
-   * <br/>
-   * @param app instance of application
-   */
-  public ShowCaseJava(IApplication app) {
-    super(app);
-  }
+    /**
+     * <p>
+     *  Default constructor of java platform.
+     * </p> 
+     * <br/>
+     * @param app instance of application
+     */
+    public ShowCaseJava(IApplication app) {
+        super(app);
+    }
 
-  public static void main(String[] args) {
-    (new ShowCaseJava(new ShowCase())).start();
-  }
+    public static void main(String[] args) {
+        (new ShowCaseJava(new ShowCase())).start();
+    }
 
 }
