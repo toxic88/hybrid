@@ -1,22 +1,21 @@
-/**
- * 
- */
 package com.toxic.core.engine;
 
 /**
- * Interface for enable and disable pointer interaction
- * 
+ * <p>
+ *  Interface for enable and disable pointer interaction
+ * </p>
+ * <br/>
  * @author b1gs
- * 
  */
 public interface IEventManager {
 
-  /**
-   * Enable Pointer interaction
-   * 
-   * @param flag
-   *          (true - enable,false - disable)
-   */
-  void enableInteraction(boolean flag);
+    /**
+     * <p>
+     * Enable Pointer interaction
+     * </p>
+     * <br/>
+     * @param flag (true - enable,false - disable)
+     */
+    void enableInteraction(boolean flag);
 
 }

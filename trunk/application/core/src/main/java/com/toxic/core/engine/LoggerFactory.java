@@ -12,86 +12,66 @@ import playn.core.PlayN;
  * Implementation of log factory.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 final class LoggerFactory implements LogFactory {
 
-  private static LoggerFactory instance;
+    private static LoggerFactory instance;
 
-  LogLevel level;
+    LogLevel level;
 
-  boolean shouldPrintTime = false;
+    boolean shouldPrintTime = false;
 
-  /**
-   * <p>
-   * Hidden single constructor, for preventing of corruption.
-   * </p>
-   * <br/>
-   */
-  private LoggerFactory() {
-    PlayN.log().setMinLevel(Level.DEBUG);
-  }
-
-  /**
-   * <p>
-   * Initializing method.
-   * </p>
-   * <br/>
-   * 
-   * @return
-   */
-  static LoggerFactory get() {
-    if (instance == null) {
-      instance = new LoggerFactory();
+    /**
+     * Hidden single constructor, for preventing of corruption.
+     */
+    private LoggerFactory() {
+        PlayN.log().setMinLevel(Level.DEBUG);
     }
-    return instance;
-  }
 
-  @Override
-  public void setLogLevel(LogLevel logLevel) {
-    if (logLevel == null) {
-      throw new IllegalArgumentException("You have specified empty log level!");
+    /**
+     * @return instance {@link LogFactory}
+     */
+    static LoggerFactory get() {
+        if (instance == null) {
+            instance = new LoggerFactory();
+        }
+        return instance;
     }
-    get().level = logLevel;
-  }
 
-  @Override
-  public void setPrintTime(boolean flag) {
-    get().shouldPrintTime = flag;
-  }
-
-  @Override
-  public Logger getLogger(String className) {
-    if (className == null || className.trim().isEmpty()) {
-      throw new IllegalArgumentException("You have tried create logger of empty class!");
+    @Override
+    public void setLogLevel(LogLevel logLevel) {
+        if (logLevel == null) {
+            throw new IllegalArgumentException("You have specified empty log level!");
+        }
+        get().level = logLevel;
     }
-    return new LoggerImpl(className);
-  }
 
-  /**
-   * <p>
-   * Allows determine global logging Level.
-   * </p>
-   * <br/>
-   * 
-   * @return
-   */
-  static LogLevel getGlobalLevel() {
-    return get().level;
-  }
+    @Override
+    public void setPrintTime(boolean flag) {
+        get().shouldPrintTime = flag;
+    }
 
-  /**
-   * <p>
-   * Allows determine global logging Level.
-   * </p>
-   * <br/>
-   * 
-   * @return
-   */
-  static boolean shoudPrintTime() {
-    return get().shouldPrintTime;
-  }
+    @Override
+    public Logger getLogger(String className) {
+        if (className == null || className.trim().isEmpty()) {
+            throw new IllegalArgumentException("You have tried create logger of empty class!");
+        }
+        return new LoggerImpl(className);
+    }
+
+    /**
+     * @return determine global logging Level.
+     */
+    static LogLevel getGlobalLevel() {
+        return get().level;
+    }
+
+    /**
+     * @return determine global logging Level.
+     */
+    static boolean shoudPrintTime() {
+        return get().shouldPrintTime;
+    }
 
 }

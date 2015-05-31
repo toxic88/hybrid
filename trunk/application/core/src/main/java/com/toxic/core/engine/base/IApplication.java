@@ -5,17 +5,12 @@ package com.toxic.core.engine.base;
  * The instance of every application, used by this library.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface IApplication {
 
   /**
-   * <p>
    * Provide possibility create initializing
-   * </p>
-   * <br/>
    */
   public abstract void init();
 
@@ -28,8 +23,7 @@ public interface IApplication {
    * <b>NOTE : this is very expensive function in term of performance issue.</b>
    * </p>
    * <br/>
-   * @param delta
-   *          time (in ms) since the last update call.
+   * @param delta time (in ms) since the last update call.
    */
   public abstract void update(int delta);
   

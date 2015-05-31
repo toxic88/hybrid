@@ -8,27 +8,26 @@ import java.util.Date;
 import com.toxic.core.engine.util.Context;
 
 /**
- * <p></p>
+ * <p>Android's specific implementation of {@link Context}.</p>
  * <br/>
  * @author Strelock
- *
  */
 class AndroidContext implements Context {
-  
-  private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
 
-  static {
-    format.setCalendar(Calendar.getInstance());
-  }
+    private static final DateFormat format = new SimpleDateFormat("HH:mm:ss:SSS");
 
-  @Override
-  public String getCurrentTime() {
-    return format.format(new Date());
-  }
+    static {
+        format.setCalendar(Calendar.getInstance());
+    }
 
-  @Override
-  public String convertMillseconds(double millsec) {
-    return format.format(new Date((long) millsec));
-  }
+    @Override
+    public String getCurrentTime() {
+        return format.format(new Date());
+    }
+
+    @Override
+    public String convertMillseconds(double millsec) {
+        return format.format(new Date((long) millsec));
+    }
 
 }

@@ -10,30 +10,29 @@ import com.toxic.core.engine.util.Context;
  * </p>
  * <br/>
  * @author Strelock
- *
  */
 final class PlatformHtml implements IPlatform {
-  
-  private final Context context = new HtmlContext();
-  private final IApplication application;
-  
-  PlatformHtml(IApplication app){
-    this.application = app;
-  }
-  
-  @Override
-  public final Context getContext() {
-    return this.context;
-  }
 
-  @Override
-  public final IApplication getApp() {
-    return this.application;
-  }
+    private final Context context = new HtmlContext();
+    private final IApplication application;
 
-  @Override
-  public final void start() {
-    // Strelock : NOOP
-  }
-  
+    PlatformHtml(IApplication app) {
+        this.application = app;
+    }
+
+    @Override
+    public final Context getContext() {
+        return this.context;
+    }
+
+    @Override
+    public final IApplication getApp() {
+        return this.application;
+    }
+
+    @Override
+    public final void start() {
+        // Strelock : NOOP
+    }
+
 }

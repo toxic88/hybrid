@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.toxic.core.engine.base;
 
 import com.toxic.core.engine.DataProvider;
@@ -14,13 +11,11 @@ import com.toxic.core.engine.util.log.Logger;
  * method.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public final class Background {
 
-  //ANTS_TAG : provide equals and hashCode functions here!
+  //Strelock : provide equals and hashCode functions here!
 
   final static Logger log = DataProvider.getLogFactory().getLogger(Background.class.getName());
 
@@ -29,9 +24,7 @@ public final class Background {
    * For determining which flag should be interpreted for boolean
    * </p>
    * <br/>
-   * 
    * @author Strelock
-   * 
    */
   enum KeyType {
     REPEATX, REPEATY, RESIZE;
@@ -48,10 +41,7 @@ public final class Background {
   private final int color;
 
   /**
-   * <p>
    * Default constructor
-   * </p>
-   * <br/>
    */
   public Background() {
     this.image = null;

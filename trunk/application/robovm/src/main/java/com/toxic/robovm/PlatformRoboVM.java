@@ -22,73 +22,67 @@ import com.toxic.core.engine.util.Context;
  * </p>
  * <br/>
  * @author Strelock
- *
  */
 public class PlatformRoboVM extends UIApplicationDelegateAdapter implements IPlatform {
 
-  protected static String[] ARGS;
-  private static final Context CONTEXT = new RoboVMContext();
-  protected static IApplication APPLICATION;
-  
-  /**
-   * <p>
-   *  Necessary for roboVM implementation - think about better approach!
-   * </p>
-   * <br/>
-   */
-  public PlatformRoboVM() {
-    
-  }
+    protected static String[] ARGS;
+    private static final Context CONTEXT = new RoboVMContext();
+    protected static IApplication APPLICATION;
 
-  public static void setApp(IApplication app) {
-    APPLICATION = app;
-  }
+    /**
+     * Necessary for roboVM implementation - think about better approach!
+     */
+    public PlatformRoboVM() {
 
-  @Override
-  public final IApplication getApp() {
-    return APPLICATION;
-  }
+    }
 
-  @Override
-  public final Context getContext() {
-    return CONTEXT;
-  }
+    public static void setApp(IApplication app) {
+        APPLICATION = app;
+    }
 
-  /**
-   * <p>
-   * Start game launching.
-   * </p>
-   */
-  public final void start() {
-    NSAutoreleasePool pool = new NSAutoreleasePool();
-    UIApplication.main(getArgs(), null, PlatformRoboVM.class);
-    pool.close();
-  }
+    @Override
+    public final IApplication getApp() {
+        return APPLICATION;
+    }
 
-  @Override
-  public final boolean didFinishLaunching(UIApplication app, UIApplicationLaunchOptions launchOpts) {
-    // create a full-screen window
-    CGRect bounds = UIScreen.getMainScreen().getBounds();
-    UIWindow window = new UIWindow(bounds);
+    @Override
+    public final Context getContext() {
+        return CONTEXT;
+    }
 
-    // configure and register the PlayN platform; start our game
-    RoboPlatform.Config config = new RoboPlatform.Config();
-    config.orients = UIInterfaceOrientationMask.All;
-    RoboPlatform pf = RoboPlatform.register(window, config);
-    pf.run( new BaseApp(this));
+    /**
+     * Start game launching.
+     */
+    public final void start() {
+        NSAutoreleasePool pool = new NSAutoreleasePool();
+        UIApplication.main(getArgs(), null, PlatformRoboVM.class);
+        pool.close();
+    }
 
-    // make our main window visible
-    window.makeKeyAndVisible();
-    addStrongRef(window);
-    return true;
-  }
+    @Override
+    public final boolean didFinishLaunching(UIApplication app, UIApplicationLaunchOptions launchOpts) {
+        // create a full-screen window
+        CGRect bounds = UIScreen.getMainScreen().getBounds();
+        UIWindow window = new UIWindow(bounds);
 
-  public static final String[] getArgs() {
-    return ARGS;
-  }
+        // configure and register the PlayN platform; start our game
+        RoboPlatform.Config config = new RoboPlatform.Config();
+        config.orients = UIInterfaceOrientationMask.All;
+        RoboPlatform pf = RoboPlatform.register(window, config);
+        pf.run(new BaseApp(this));
 
-  public static final void setArgs(String[] args) {
-    ARGS = args;
-  }
+        // make our main window visible
+        window.makeKeyAndVisible();
+        addStrongRef(window);
+        return true;
+    }
+
+    public static final String[] getArgs() {
+        return ARGS;
+    }
+
+    public static final void setArgs(String[] args) {
+        ARGS = args;
+    }
 
 }

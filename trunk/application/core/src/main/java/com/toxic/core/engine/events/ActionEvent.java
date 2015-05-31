@@ -5,48 +5,27 @@ package com.toxic.core.engine.events;
  * Represented based properties of event object.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface ActionEvent {
 
   /**
-   * <p>
-   * Returns location of event relative to X axis.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return location of event relative to X axis.
    */
   public abstract float getX();
 
   /**
-   * <p>
-   * Returns location of event relative to Y axis.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return location of event relative to Y axis.
    */
   public abstract float getY();
 
   /**
-   * <p>
-   * Return time of occurred event in milliseconds.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return time of occurred event in milliseconds.
    */
   public abstract double getTime();
   
   /**
-   * <p>
-   * Weather current event is touchable.  
-   * </p> 
-   * <br/>
-   * @return
+   * @return weather current event is touchable.
    */
   public abstract boolean isTouch();
 

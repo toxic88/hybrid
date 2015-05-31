@@ -11,27 +11,26 @@ import com.toxic.core.engine.util.Context;
  * <p> Strelock : properly document me!</p>
  * <br/>
  * @author Strelock
- *
  */
-final class RoboVMContext  implements Context {
+final class RoboVMContext implements Context {
 
-  private static final DateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
+    private static final DateFormat FORMAT = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
 
-  static {
-    FORMAT.setCalendar(Calendar.getInstance());
-  }
-  
-  public RoboVMContext() {
-  }
+    static {
+        FORMAT.setCalendar(Calendar.getInstance());
+    }
 
-  @Override
-  public String getCurrentTime() {
-    return FORMAT.format(new Date());
-  }
+    public RoboVMContext() {
+    }
 
-  @Override
-  public String convertMillseconds(double millsec) {
-    return FORMAT.format(new Date((long) millsec));
-  }
+    @Override
+    public String getCurrentTime() {
+        return FORMAT.format(new Date());
+    }
+
+    @Override
+    public String convertMillseconds(double millsec) {
+        return FORMAT.format(new Date((long) millsec));
+    }
 
 }

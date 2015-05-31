@@ -5,30 +5,23 @@ package com.toxic.core.engine.resources;
  * Representing image object API in this library.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface IImage {
 
-  /**
-   * <p>
-   * Path to the image, relative assets.
-   * </p>
-   * <br/>
-   * 
-   * @return
-   */
-  public abstract String getPath();
+    /**
+     * @return path to the image, relative assets.
+     */
+    public abstract String getPath();
 
-  /**
-   * @return width of the image
-   */
-  public float getWidth();
+    /**
+     * @return width of the image
+     */
+    public float getWidth();
 
-  /**
-   * @return height of the image
-   */
-  public float getHeight();
+    /**
+     * @return height of the image
+     */
+    public float getHeight();
 
 }

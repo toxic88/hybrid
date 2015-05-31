@@ -16,71 +16,58 @@ import com.toxic.core.engine.base.IApplication;
  * Represent basic class of html application.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public abstract class ApplicationHtml extends HtmlGame {
 
-  private static native int screenWidth()/*-{
-		return screen.availWidth;
-  }-*/;
+    private static native int screenWidth()/*-{
+       return screen.availWidth;
+    }-*/;
 
-  private static native int screenHeight()/*-{
-		return screen.availHeight;
-  }-*/;
+    private static native int screenHeight()/*-{
+        return screen.availHeight;
+    }-*/;
 
-  private static Element HTML_ROOT;
+    private static Element HTML_ROOT;
 
-  protected IApplication application;
-  
-  /**
-   * <p>
-   * Default constructor. 
-   * </p> 
-   * <br/>
-   */
-  public ApplicationHtml(){
-    this.setApplication();
-  }
-  
-  /**
-   * <p>
-   * You should identify here {@link ApplicationHtml#application} variable; 
-   * </p> 
-   * <br/>
-   */
-  public abstract void setApplication();
-  
+    protected IApplication application;
 
-  /**
-   * <p>
-   * Customize size of canvas element here... 
-   * </p> 
-   * <br/>
-   */
-  private static final void initSize() {
-    // ANTS_TAG : should remade it in future to use resolution not more then
-    // 1280x1024
-    if (HTML_ROOT != null) {
-      return;
+    /**
+     * Default constructor. 
+     */
+    public ApplicationHtml() {
+        this.setApplication();
     }
-    HTML_ROOT = Document.get().createDivElement();
-    HTML_ROOT.setId("playn-root");
-    Document.get().getBody().appendChild(HTML_ROOT);
-    HTML_ROOT.setAttribute("style", "width: " + Document.get().getBody().getOffsetWidth() + "px; height: "
-      + Document.get().getBody().getOffsetHeight() + "px");
-  }
 
-  @Override
-  public final void start() {
-    initSize();
-    HtmlPlatform.Config config = new HtmlPlatform.Config();
-     config.mode = Mode.CANVAS;
-    // config.experimentalFullscreen = true;
-    HtmlPlatform platForm = HtmlPlatform.register(config);
-    platForm.assets().setPathPrefix(GWT.getModuleName()+"/");
-    PlayN.run(new BaseApp(new PlatformHtml(this.application)));
-  }
+    /**
+     * You should identify here {@link ApplicationHtml#application} variable; 
+     */
+    public abstract void setApplication();
+
+    /**
+     * Customize size of canvas element here... 
+     */
+    private static final void initSize() {
+        // Strelock : should remade it in future to use resolution not more then 1280x1024
+        if (HTML_ROOT != null) {
+            return;
+        }
+        HTML_ROOT = Document.get().createDivElement();
+        HTML_ROOT.setId("playn-root");
+        Document.get().getBody().appendChild(HTML_ROOT);
+        HTML_ROOT.setAttribute("style", "width: " + Document.get().getBody().getOffsetWidth() + "px; height: "
+            + Document.get().getBody().getOffsetHeight() + "px");
+    }
+
+    @Override
+    public final void start() {
+        initSize();
+        HtmlPlatform.Config config = new HtmlPlatform.Config();
+        config.mode = Mode.CANVAS;
+        // config.experimentalFullscreen = true;
+        HtmlPlatform platForm = HtmlPlatform.register(config);
+        platForm.assets().setPathPrefix(GWT.getModuleName() + "/");
+        PlayN.run(new BaseApp(new PlatformHtml(this.application)));
+    }
 
 }

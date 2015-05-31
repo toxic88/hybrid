@@ -220,9 +220,7 @@ public interface IElement {
    * will be rotated and all child elements positioned.
    * </p>
    * <br/>
-   * 
-   * @param x
-   *          location of X axis
+   * @param x location of X axis
    */
   public abstract void setOriginX(float x);
 

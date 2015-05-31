@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.toxic.core.engine.handlers;
 
 import com.toxic.core.engine.events.ActionEvent;
@@ -11,16 +8,12 @@ import com.toxic.core.engine.events.ActionEvent;
  * handler will be executed, when binded element excited.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface SelectHandler {
 
 	/**
-	 * <p>
 	 * Will be executed when selected element.
-	 * </p>
 	 */
 	public abstract void onSelect(ActionEvent e);
 
