@@ -18,13 +18,7 @@ import com.toxic.core.engine.util.log.Logger;
  * Through this object you can create almost all library object.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
- */
-/**
- * @author Strelock
- * 
  */
 public class DataProvider {
 
@@ -37,12 +31,7 @@ public class DataProvider {
   }
 
   /**
-   * <p>
-   * Weather game has been properly loaded.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return weather game has been properly loaded.
    */
   private static void checkConditions() {
     if (!(instance != null && instance.application != null)) {
@@ -58,12 +47,7 @@ public class DataProvider {
   }
 
   /**
-   * <p>
-   * Create default instance of element with default values.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return create default instance of element with default values.
    */
   public static IElement createElement() {
     checkConditions();
@@ -71,12 +55,7 @@ public class DataProvider {
   }
 
   /**
-   * <p>
-   * Create {@link IScene} with default parameters.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return create {@link IScene} with default parameters.
    */
   public static IScene createScene() {
     checkConditions();
@@ -88,13 +67,9 @@ public class DataProvider {
    * Create instance of {@link IFont}.
    * </p>
    * <br/>
-   * 
-   * @param id
-   *          {@link String} identifier of element
-   * @param style
-   *          {@link Style} of font text
-   * @param size
-   *          size of font
+   * @param id {@link String} identifier of element
+   * @param style {@link Style} of font text
+   * @param size size of font
    * @return {@link IFont} object
    */
   public static IFont createFont(String id, Style style, float size) {
@@ -106,13 +81,9 @@ public class DataProvider {
    * Create instance of {@link IFont}.
    * </p>
    * <br/>
-   * 
-   * @param id
-   *          {@link String} identifier of element
-   * @param style
-   *          {@link Style} of font text
-   * @param size
-   *          size of font
+   * @param id {@link String} identifier of element
+   * @param style {@link Style} of font text
+   * @param size size of font
    * @return {@link IFont} object
    */
   public static ITextFormat createTextFormat(IFont font, Alignment alignment) {
@@ -124,13 +95,9 @@ public class DataProvider {
    * Create instance of {@link IFont}.
    * </p>
    * <br/>
-   * 
-   * @param id
-   *          {@link String} identifier of element
-   * @param style
-   *          {@link Style} of font text
-   * @param color
-   *          integer value like 0xAARRGGBB
+   * @param id {@link String} identifier of element
+   * @param style {@link Style} of font text
+   * @param color integer value like 0xAARRGGBB
    * @return {@link IFont} object
    */
   public static ITextFormat createTextFormat(IFont font, Alignment align, int textColor) {
@@ -142,7 +109,6 @@ public class DataProvider {
    * Context of application.
    * </p>
    * <br/>
-   * 
    * @return instance of {@link Context}
    */
   public static Context getContext() {
@@ -151,12 +117,7 @@ public class DataProvider {
   }
 
   /**
-   * <p>
-   * Returns instance of {@link AppTimer}.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return instance of {@link AppTimer}.
    */
   public static AppTimer getTimer() {
     checkConditions();
@@ -164,14 +125,8 @@ public class DataProvider {
   }
 
   /**
-   * <p>
-   * Return {@link LogFactory} instance for creating
-   * {@link LogFactory#getLogger(String)} instance of {@link Logger} for
-   * specified class.
-   * </p>
-   * <br/>
-   * 
-   * @return
+   * @return {@link LogFactory} instance for creating {@link LogFactory#getLogger(String)}
+   *  instance of {@link Logger} for specified class.
    */
   public static LogFactory getLogFactory() {
     checkConditions();
@@ -183,9 +138,7 @@ public class DataProvider {
    * Load image from specified path.
    * </p>
    * <br/>
-   * 
-   * @param path
-   *          location of image relative assets
+   * @param path location of image relative assets
    * @return {@link IImage} instance
    */
   public static IImage getImage(String path) {
@@ -197,17 +150,12 @@ public class DataProvider {
    * <p>
    * Load sub image from specified path with params
    * </p>
-   * 
-   * @param path
-   *          - image path
-   * @param offsetX
-   *          - x axis offset
-   * @param offsetY
-   *          - y axis offset
-   * @param width
-   *          - sub image width
-   * @param height
-   *          - sub image height
+   * <br/>
+   * @param path image path
+   * @param offsetX x axis offset
+   * @param offsetY y axis offset
+   * @param width sub image width
+   * @param height sub image height
    * @return subImage of image from path
    */
   public static IImage getImage(String path, float offsetX, float offsetY, float width, float height) {
@@ -216,7 +164,6 @@ public class DataProvider {
   }
 
   /**
-   * 
    * @return Instance of {@link IEventManager}
    */
   public static IEventManager getEventManager() {

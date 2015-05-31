@@ -9,16 +9,16 @@ package com.toxic.core.engine.base;
  * @author Strelock
  */
 public interface IScene extends IElement {
-  
-  /**
-   * <p>
-   * Activate current scene on screen.
-   * </p>
-   * <p>
-   *  <b>NOTE : if currently active some other instance of {@link IScene} it will be deactivated. </b>
-   * </p>
-   * <br/>
-   */
-  public abstract void activate();
-  
+
+    /**
+     * <p>
+     * Activate current scene on screen.
+     * </p>
+     * <p>
+     *  <b>NOTE : if currently active some other instance of {@link IScene} it will be deactivated. </b>
+     * </p>
+     * <br/>
+     */
+    public abstract void activate();
+
 }

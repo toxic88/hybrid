@@ -42,7 +42,7 @@ class HtmlCanvas extends AbstractHtmlCanvas {
     return canvas;
   }
   
-  //ANTS_TAG : test this feature!
+  //Strelock : test this feature!
   @Override
   public Canvas clear() {
       this.canvas.setWidth((int) this.width);;

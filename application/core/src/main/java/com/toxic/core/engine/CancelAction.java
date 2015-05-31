@@ -9,30 +9,27 @@ import com.toxic.core.engine.handlers.CancelHandler;
  * Implementation of canceling timer's task.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 final class CancelAction implements CancelHandler {
 
-  private final Handle handler;
+    private final Handle handler;
 
-  /**
-   * <p>
-   * Appropriated handler for canceling timer's task
-   * </p>
-   * <br/>
-   * 
-   * @param handle
-   */
-  public CancelAction(Handle handle) {
-    this.handler = handle;
-  }
+    /**
+     * <p>
+     * Appropriated handler for canceling timer's task
+     * </p>
+     * <br/>
+     * @param handle
+     */
+    public CancelAction(Handle handle) {
+        this.handler = handle;
+    }
 
-  @Override
-  public void cancel() {
-    this.handler.cancel();
-    ((TimerUtility) TimerUtility.getInstance()).removeCancelHandler(this);
-  }
+    @Override
+    public void cancel() {
+        this.handler.cancel();
+        ((TimerUtility) TimerUtility.getInstance()).removeCancelHandler(this);
+    }
 
 }

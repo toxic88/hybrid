@@ -8,9 +8,7 @@ import com.toxic.core.engine.util.Context;
  * application logic engine, representing by object {@link IApplication}.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface IPlatform {
 
@@ -20,7 +18,6 @@ public interface IPlatform {
    * logic engine.
    * </p>
    * <br/>
-   * 
    * @param application
    */
   public abstract IApplication getApp();
@@ -32,9 +29,7 @@ public interface IPlatform {
   
   
   /**
-   * <p>
    * Start game launching.
-   * </p>
    */
   public abstract void start();
 

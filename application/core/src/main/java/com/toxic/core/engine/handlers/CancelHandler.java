@@ -5,18 +5,13 @@ package com.toxic.core.engine.handlers;
  * Represents the basic API of canceling engine. 
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 public interface CancelHandler {
-  
-  /**
-   * <p>
-   * Cancel associated process. 
-   * </p> 
-   * <br/>
-   */
-  public abstract void cancel();
+
+    /**
+     * Cancel associated process. 
+     */
+    public abstract void cancel();
 
 }

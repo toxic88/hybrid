@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.toxic.core.engine;
 
 import java.util.HashMap;
@@ -14,12 +11,10 @@ import com.toxic.core.engine.util.log.Logger;
 
 /**
  * <p>
- * Implementation of wrapper {@link Timer}.
+ *  Implementation of wrapper {@link Timer}.
  * </p>
  * <br/>
- * 
  * @author Strelock
- * 
  */
 final class TimerUtility implements AppTimer {
 
@@ -46,10 +41,7 @@ final class TimerUtility implements AppTimer {
   final Map<Runnable, CancelHandler> cancels = new HashMap<Runnable, CancelHandler>();
 
   /**
-   * <p>
    * Default hidden constructor, for singleton ensuring.
-   * </p>
-   * <br/>
    */
   private TimerUtility() {
   }
@@ -81,10 +73,7 @@ final class TimerUtility implements AppTimer {
   }
 
   /**
-   * <p>
    * Check weather necessary execute any pending task.
-   * </p>
-   * <br/>
    */
   public void update() {
     this.timer.update();
@@ -99,9 +88,7 @@ final class TimerUtility implements AppTimer {
    * Removed handlers from collection, after proper execution.
    * </p>
    * <br/>
-   * 
    * @author Strelock
-   * 
    */
   private class ActionWrapper implements Runnable {
 
@@ -113,7 +100,6 @@ final class TimerUtility implements AppTimer {
      * binded with executed actions.
      * </p>
      * <br/>
-     * 
      * @param act
      */
     ActionWrapper(Runnable act) {
