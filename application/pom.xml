@@ -16,10 +16,14 @@
   <url>https://github.com/toxic88/own-finance</url>
   <description>RAP project oriented for mobile and tables platforms.</description>
   <properties>
+    <source.level>1.7</source.level>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <android.version>4.1.1.4</android.version>
+    <android.maven.version>4.2.1</android.maven.version>
 <!-- 		 Strelock : java openGL concrete library 2.9.3 - is the last minor version! -->
     <svn.repo>scm:svn:https://code.google.com/p/own-finance/</svn.repo>
     <git.repo>scm:git:git://github.com/toxic88/own-finance.git</git.repo>
-    <lwjgl.version>2.9.0</lwjgl.version>
+    <lwjgl.version>2.9.3</lwjgl.version>
     <jdk.version>1.7</jdk.version>
     <playn.version>1.9</playn.version>
     <maven.lifecycle.version>1.0.0</maven.lifecycle.version>
@@ -59,7 +63,7 @@
   <scm>
     <connection>${git.repo}</connection>
     <developerConnection>scm:git:git@github.com:toxic88/own-finance.git</developerConnection>
-    <url>https://github.com/toxic88/own-finance</url>
+    <url>https://github.com/toxic88/own-finance/tree/master/application/</url>
   </scm>
   <issueManagement>
     <system>Google Code</system>
@@ -371,7 +375,7 @@
           <artifactId>maven-release-plugin</artifactId>
           <version>2.1</version>
           <configuration>
-            <mavenExecutorId>forked-path</mavenExecutorId>
+<!--             <mavenExecutorId>forked-path</mavenExecutorId> -->
             <useReleaseProfile>true</useReleaseProfile>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <addSchema>true</addSchema>
@@ -552,7 +556,7 @@
             <extraJvmArgs>-Xmx2048M -Xss256M -Dgwt.usearchives=false</extraJvmArgs>
             <logLevel>${gwt.loglevel}</logLevel>
             <style>${gwt.outputstyle}</style>
-            <runTarget>index.html</runTarget>
+            <runTarget>${gwt.module}${gwt.modulesuffix}/index.html</runTarget>
             <hostedWebapp>${project.build.directory}/${gwt.name}</hostedWebapp>
             <draftCompile>${gwt.draft}</draftCompile>
             <disableCastChecking>${gwt.xdisable}</disableCastChecking>
@@ -627,6 +631,16 @@
             </filesets>
           </configuration>
         </plugin>
+        
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.6</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        
 <!-- robovm simulator execution  -->
         <plugin>
           <groupId>org.robovm</groupId>
