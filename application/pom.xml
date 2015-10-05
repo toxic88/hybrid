@@ -61,7 +61,7 @@
     <gae.version>1.9.4</gae.version>
   </properties>
   <scm>
-    <connection>${git.repo}</connection>
+    <connection>scm:git:git://github.com/toxic88/own-finance.git</connection>
     <developerConnection>scm:git:git@github.com:toxic88/own-finance.git</developerConnection>
     <url>https://github.com/toxic88/own-finance/tree/master/application/</url>
   </scm>
@@ -373,7 +373,6 @@
         <!-- Strelock : properly setup me! -->
         <plugin>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.1</version>
           <configuration>
 <!--             <mavenExecutorId>forked-path</mavenExecutorId> -->
             <useReleaseProfile>true</useReleaseProfile>
