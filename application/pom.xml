@@ -18,7 +18,7 @@
   <properties>
 <!-- 		 Strelock : java openGL concrete library 2.9.3 - is the last minor version! -->
     <svn.repo>scm:svn:https://code.google.com/p/own-finance/</svn.repo>
-    <git.repo>scm:git:https://github.com/toxic88/own-finance.git</git.repo>
+    <git.repo>scm:git:git://github.com/toxic88/own-finance.git</git.repo>
     <lwjgl.version>2.9.0</lwjgl.version>
     <jdk.version>1.7</jdk.version>
     <playn.version>1.9</playn.version>
