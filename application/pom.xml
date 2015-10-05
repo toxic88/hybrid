@@ -13,12 +13,12 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Application Metaproject</name>
-  <url>http://code.google.com/p/own-finance/trunk/application</url>
+  <url>https://github.com/toxic88/own-finance</url>
   <description>RAP project oriented for mobile and tables platforms.</description>
   <properties>
 <!-- 		 Strelock : java openGL concrete library 2.9.3 - is the last minor version! -->
     <svn.repo>scm:svn:https://code.google.com/p/own-finance/</svn.repo>
-    <git.repo><!-- git path to repository --></git.repo>
+    <git.repo>scm:git:https://github.com/toxic88/own-finance.git</git.repo>
     <lwjgl.version>2.9.0</lwjgl.version>
     <jdk.version>1.7</jdk.version>
     <playn.version>1.9</playn.version>
@@ -57,13 +57,13 @@
     <gae.version>1.9.4</gae.version>
   </properties>
   <scm>
-<!--     <connection>scm:svn:https://code.google.com/p/own-finance/trunk/application</connection> -->
-    <developerConnection>${svn.repo}trunk/application</developerConnection>
-<!--     <url>http://own-finance.googlecode.com/svn/trunk/application</url> -->
+    <connection>${git.repo}</connection>
+    <developerConnection>scm:git:git@github.com:toxic88/own-finance.git</developerConnection>
+    <url>https://github.com/toxic88/own-finance</url>
   </scm>
   <issueManagement>
     <system>Google Code</system>
-    <url>http://code.google.com/p/own-finance/issues/list</url>
+    <url>http://github.com/own-finance/issues</url>
   </issueManagement>
   <dependencyManagement>
     <dependencies>
