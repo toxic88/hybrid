@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+
+    <artifactId>${artifactId}-html</artifactId>
+    <packaging>war</packaging>
+    <name>${appName} HTML</name>
+
+    <properties>
+        <gwt.module>${package}.${appClass}</gwt.module>
+        <gwt.name>${appName}</gwt.name>
+    </properties>
+
+    <dependencies>
+    
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-core</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.toxic</groupId>
+            <artifactId>html</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.toxic</groupId>
+            <artifactId>html</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>${groupId}</groupId>
+            <artifactId>${rootArtifactId}-assets</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.googlecode.playn</groupId>
+            <artifactId>playn-html</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+        
+        <dependency>
+            <groupId>com.threerings</groupId>
+            <artifactId>tripleplay</artifactId>
+            <classifier>sources</classifier>
+        </dependency>
+
+        <!-- Start Google App Engine dependencies -->
+        <!-- These can uncomment if you wish to deploy to Google App Engine -->
+<!--         <dependency> -->
+<!--             <groupId>com.google.appengine</groupId> -->
+<!--             <artifactId>appengine-api-1.0-sdk</artifactId> -->
+<!--         </dependency> -->
+
+<!--         <dependency> -->
+<!--             <groupId>com.google.appengine</groupId> -->
+<!--             <artifactId>appengine-api-labs</artifactId> -->
+<!--         </dependency> -->
+
+<!--         <dependency> -->
+<!--             <groupId>com.google.appengine</groupId> -->
+<!--             <artifactId>appengine-testing</artifactId> -->
+<!--             <scope>test</scope> -->
+<!--         </dependency> -->
+
+<!--         <dependency> -->
+<!--             <groupId>com.google.appengine</groupId> -->
+<!--             <artifactId>appengine-api-stubs</artifactId> -->
+<!--             <scope>test</scope> -->
+<!--         </dependency> -->
+        <!-- End Google App Engine dependencies -->
+    </dependencies>
+
+    <build>
+        <finalName>${gwt.name}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <configuration>
+                        <buildcommands>
+                            <buildcommand>org.eclipse.wst.jsdt.core.javascriptValidator</buildcommand>
+                            <buildcommand>org.eclipse.jdt.core.javabuilder</buildcommand>
+                            <buildcommand>com.google.gdt.eclipse.core.webAppProjectValidator</buildcommand>
+                            <buildcommand>com.google.appengine.eclipse.core.projectValidator</buildcommand>
+                            <buildcommand>com.google.gwt.eclipse.core.gwtProjectValidator</buildcommand>
+                        </buildcommands>
+                        <projectnatures>
+                            <projectnature>org.eclipse.jdt.core.javanature</projectnature>
+                            <projectnature>com.google.gdt.eclipse.core.webAppNature</projectnature>
+                            <projectnature>com.google.gwt.eclipse.core.gwtNature</projectnature>
+                            <projectnature>org.eclipse.wst.jsdt.core.jsNature</projectnature>
+                            <!-- This nature can be removed if you don't wish to deploy to Google 
+                                App Engine -->
+                            <!-- <projectnature>com.google.appengine.eclipse.core.gaeNature</projectnature> -->
+                        </projectnatures>
+                        <classpathContainers>
+                            <classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER</classpathContainer>
+                            <classpathContainer>com.google.gwt.eclipse.core.GWT_CONTAINER</classpathContainer>
+                        </classpathContainers>
+                        <excludes>
+                            <exclude>com.google.gwt:gwt-servlet</exclude>
+                            <exclude>com.google.gwt:gwt-user</exclude>
+                            <exclude>com.google.gwt:gwt-dev</exclude>
+                            <exclude>javax.validation:validation-api</exclude>
+                        </excludes>
+                    </configuration>
+                </plugin>
+
+            <!-- allows testing of HTML backend via: mvn integration-test -Phtml -->
+<!--             <plugin> -->
+<!--                 <groupId>org.mortbay.jetty</groupId> -->
+<!--                 <artifactId>jetty-maven-plugin</artifactId> -->
+<!--                 <configuration> -->
+<!--                     <webApp> -->
+<!--                         ${project.basedir}/target/${gwt.name} -->
+<!--                     </webApp> -->
+<!--                 </configuration> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <id>test-html</id> -->
+<!--                         <phase>integration-test</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>run-exploded</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
+
+            <!-- Start Google App Engine plugin configuration -->
+            <!-- This can be uncomment if you don't wish to deploy to Google App Engine -->
+<!--             <plugin> -->
+<!--                 <groupId>net.kindleit</groupId> -->
+<!--                 <artifactId>maven-gae-plugin</artifactId> -->
+<!--                 <dependencies> -->
+<!--                     Use explicit dependency on gae-runtime here, so we can specify -->
+<!--                         GAE SDK version --> 
+<!--                     <dependency> -->
+<!--                         <groupId>net.kindleit</groupId> -->
+<!--                         <artifactId>gae-runtime</artifactId> -->
+<!--                         <version>${gae.version}</version> -->
+<!--                         <type>pom</type> -->
+<!--                     </dependency> -->
+<!--                 </dependencies> -->
+<!--                 <executions> -->
+<!--                     <execution> -->
+<!--                         <id /> -->
+<!--                         <phase>validate</phase> -->
+<!--                         <goals> -->
+<!--                             <goal>unpack</goal> -->
+<!--                         </goals> -->
+<!--                     </execution> -->
+<!--                 </executions> -->
+<!--             </plugin> -->
+            <!-- End Google App Engine plugin configuration -->
+        </plugins>
+    </build>
+</project>

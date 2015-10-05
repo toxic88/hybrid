@@ -1,0 +1,16 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<module rename-to="${rootArtifactId}">
+	<inherits name="tripleplay.TriplePlay" />
+	<inherits name="ApplicationAssets" />
+	<inherits name="com.toxic.CoreApplication" />
+
+	<source path="core" />
+	<source path="html" />
+
+	<public path="resources" />
+
+	<entry-point class="${package}.html.${appClass}Html" />
+</module>

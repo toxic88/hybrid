@@ -1,1 +1,5 @@
 /prikupa.launch
+/target/
+/.settings/
+/.classpath
+/.project

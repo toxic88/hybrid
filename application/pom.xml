@@ -18,6 +18,7 @@
   <properties>
 <!-- 		 Strelock : java openGL concrete library 2.9.3 - is the last minor version! -->
     <svn.repo>scm:svn:https://code.google.com/p/own-finance/</svn.repo>
+    <git.repo><!-- git path to repository --></git.repo>
     <lwjgl.version>2.9.0</lwjgl.version>
     <jdk.version>1.7</jdk.version>
     <playn.version>1.9</playn.version>
@@ -43,8 +44,8 @@
     <maven.war.plugin>2.1.1</maven.war.plugin>
     <maven.junction.plugin>1.0.3</maven.junction.plugin>
 <!--  roboVM stuff -->
-    <robovm.version>1.2.0</robovm.version>
-    <robovm.maven.version>1.2.0</robovm.maven.version>
+    <robovm.version>1.8.0</robovm.version>
+    <robovm.maven.version>1.8.0</robovm.maven.version>
 <!--  swt for future editor -->
     <swt.version>4.3</swt.version>
 <!-- jUnit version-->
