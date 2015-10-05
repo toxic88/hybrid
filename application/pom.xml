@@ -379,7 +379,8 @@
             <useReleaseProfile>true</useReleaseProfile>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <addSchema>true</addSchema>
-            <arguments>-Psonatype-oss-release</arguments>
+            <detail>true</detail>
+<!--             <arguments>-Psonatype-oss-release</arguments> -->
           </configuration>
         </plugin>
 			
