@@ -36,7 +36,7 @@ public class ShowCase implements IApplication {
         // during tabs for example switched PlayN.platform.setLifeCycle()
         main.setBackGround(new Background(0x0F00FF00));
         main.setId("main");
-        main.setBackGround(new Background("images/towerdefense.png"));
+        main.setBackGround(new Background("images/main_bg.jpg"));
         main.activate();
         main.addSelectHandler(new SelectHandler() {
 
