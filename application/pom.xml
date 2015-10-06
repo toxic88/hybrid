@@ -556,7 +556,7 @@
             <extraJvmArgs>-Xmx2048M -Xss256M -Dgwt.usearchives=false</extraJvmArgs>
             <logLevel>${gwt.loglevel}</logLevel>
             <style>${gwt.outputstyle}</style>
-            <runTarget>${gwt.module}${gwt.modulesuffix}/index.html</runTarget>
+            <runTarget>index.html</runTarget>
             <hostedWebapp>${project.build.directory}/${gwt.name}</hostedWebapp>
             <draftCompile>${gwt.draft}</draftCompile>
             <disableCastChecking>${gwt.xdisable}</disableCastChecking>
@@ -571,6 +571,9 @@
             <detail>true</detail>
             <saveSource>true</saveSource>
             <inplace>${gwt.inplace}</inplace>
+            <modules>
+              <module>${gwt.module}</module>
+            </modules>
           </configuration>
           <dependencies>
             <dependency>
