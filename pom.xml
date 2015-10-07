@@ -301,19 +301,19 @@
       <url>http://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
     </repository>
   </repositories>
-  <distributionManagement>
-    <repository>
-      <id>own-finance-repository</id>
-      <name>Maven Repository of google code</name>
-      <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url>
-    </repository>
-    <snapshotRepository>
-      <id>own-finance-snapshot-repository</id>
-      <name>Maven Repository of google code (snapshot)</name>
-      <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
-      <uniqueVersion>false</uniqueVersion>
-    </snapshotRepository>
-  </distributionManagement>
+<!--   <distributionManagement> -->
+<!--     <repository> -->
+<!--       <id>own-finance-repository</id> -->
+<!--       <name>Maven Repository of google code</name> -->
+<!--       <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url> -->
+<!--     </repository> -->
+<!--     <snapshotRepository> -->
+<!--       <id>own-finance-snapshot-repository</id> -->
+<!--       <name>Maven Repository of google code (snapshot)</name> -->
+<!--       <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url> -->
+<!--       <uniqueVersion>false</uniqueVersion> -->
+<!--     </snapshotRepository> -->
+<!--   </distributionManagement> -->
 	
 	<!-- Common dependencies for all modules -->
   <dependencies>
@@ -378,7 +378,12 @@
             <useReleaseProfile>true</useReleaseProfile>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <addSchema>true</addSchema>
+            <dryRun>true</dryRun>
+            <releaseProfiles>fullcompile</releaseProfiles>
+            <useEditMode>true</useEditMode>
+            <javaHome>${java.home}</javaHome>
             <detail>true</detail>
+            <arguments>-Djava.home=${java.home}</arguments>
 <!--             <arguments>-Psonatype-oss-release</arguments> -->
           </configuration>
         </plugin>
