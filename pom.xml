@@ -38,6 +38,7 @@
     <jetty.maven.plugin>8.0.0.v20110901</jetty.maven.plugin>
     <javadoc.version>2.9.1</javadoc.version>
     <exec.maven.plugin>1.2.1</exec.maven.plugin>
+    <maven.release.plugin>2.5.2</maven.release.plugin>
     <maven.assembly.plugin>2.4</maven.assembly.plugin>
     <maven.compiler.version>3.1</maven.compiler.version>
     <maven.build.helper.version>1.8</maven.build.helper.version>
@@ -378,8 +379,7 @@
             <useReleaseProfile>true</useReleaseProfile>
             <autoVersionSubmodules>true</autoVersionSubmodules>
             <addSchema>true</addSchema>
-            <dryRun>true</dryRun>
-            <releaseProfiles>fullcompile</releaseProfiles>
+<!--             <releaseProfiles>fullcompile</releaseProfiles> -->
             <useEditMode>true</useEditMode>
             <javaHome>${java.home}</javaHome>
             <detail>true</detail>
