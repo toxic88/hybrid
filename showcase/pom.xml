@@ -4,12 +4,12 @@
 	<parent>
 		<groupId>com.toxic</groupId>
 		<artifactId>application</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 	</parent>
 
 	<groupId>com.toxic.ui</groupId>
 	<artifactId>showcase</artifactId>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Show-Case Root</name>
 	<url>http://code.google.com/p/own-finance</url>
@@ -35,20 +35,20 @@
 			<dependency>
 				<groupId>com.toxic.ui</groupId>
 				<artifactId>showcase-core</artifactId>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.toxic.ui</groupId>
 				<artifactId>showcase-assets</artifactId>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 			</dependency>
 
 			<dependency>
 				<groupId>com.toxic.ui</groupId>
 				<artifactId>showcase-core</artifactId>
 				<classifier>sources</classifier>
-				<version>1.0</version>
+				<version>1.1-SNAPSHOT</version>
 			</dependency>
 
 		</dependencies>
