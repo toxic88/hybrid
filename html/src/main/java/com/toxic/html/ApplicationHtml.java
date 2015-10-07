@@ -63,7 +63,7 @@ public abstract class ApplicationHtml extends HtmlGame {
     public final void start() {
         initSize();
         HtmlPlatform.Config config = new HtmlPlatform.Config();
-        config.mode = Mode.CANVAS;
+        config.mode = Mode.AUTODETECT;
         // config.experimentalFullscreen = true;
         HtmlPlatform platForm = HtmlPlatform.register(config);
         platForm.assets().setPathPrefix(GWT.getModuleName() + "/");
