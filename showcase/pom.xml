@@ -67,18 +67,39 @@
 		</profile>
 		<profile>
 			<id>android</id>
+            <activation>
+              <activeByDefault>false</activeByDefault>
+              <property>
+                <name>fullcompile</name>
+                <value>true</value>
+              </property>
+            </activation>
 			<modules>
 				<module>android</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>html</id>
+            <activation>
+              <activeByDefault>false</activeByDefault>
+              <property>
+                <name>fullcompile</name>
+                <value>true</value>
+              </property>
+            </activation>
 			<modules>
 				<module>html</module>
 			</modules>
 		</profile>
 		<profile>
 			<id>robovm</id>
+            <activation>
+              <activeByDefault>false</activeByDefault>
+              <property>
+                <name>fullcompile</name>
+                <value>true</value>
+              </property>
+            </activation>      
 			<modules>
 				<module>robovm</module>
 			</modules>

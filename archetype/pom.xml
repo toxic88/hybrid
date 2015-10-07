@@ -35,25 +35,27 @@
 
   <description>RAP project oriented for mobile and tables platforms.</description>
 
-  <url>http://code.google.com/p/own-finance</url>
+<!--   <url>http://code.google.com/p/own-finance</url> -->
 
-  <scm>
-    <connection>scm:svn:http://code.google.com/p/own-finance/trunk/core/application-demo/</connection>
-    <developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/core/application-demo/</developerConnection>
-    <url>http://code.google.com/p/own-finance/trunk/core/application-demo/</url>
-  </scm>
+<!--   <scm> -->
+<!--     <connection>scm:svn:http://code.google.com/p/own-finance/trunk/core/application-demo/</connection> -->
+<!--     <developerConnection>scm:svn:https://code.google.com/p/own-finance/trunk/core/application-demo/</developerConnection> -->
+<!--     <url>http://code.google.com/p/own-finance/trunk/core/application-demo/</url> -->
+<!--   </scm> -->
 
-  <distributionManagement>
-    <repository>
-      <id>own-finance-repository</id>
-      <name>Maven Repository of google code</name>
-      <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url>
-    </repository>
-    <snapshotRepository>
-      <uniqueVersion>false</uniqueVersion>
-      <id>own-finance-snapshot-repository</id>
-      <name>Maven Repository of google code (snapshot)</name>
-      <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url>
-    </snapshotRepository>
-  </distributionManagement>
+<!--   <distributionManagement> -->
+<!--     <repository> -->
+<!--       <id>own-finance-repository</id> -->
+<!--       <name>Maven Repository of google code</name> -->
+<!--       <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/repo</url> -->
+<!--     </repository> -->
+<!--     <snapshotRepository> -->
+<!--       <uniqueVersion>false</uniqueVersion> -->
+<!--       <id>own-finance-snapshot-repository</id> -->
+<!--       <name>Maven Repository of google code (snapshot)</name> -->
+<!--       <url>svn:https://own-finance.googlecode.com/svn/mavenrepo/snapshot-repo</url> -->
+<!--     </snapshotRepository> -->
+<!--   </distributionManagement> -->
+  
+  
 </project>

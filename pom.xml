@@ -789,5 +789,20 @@
     <module>android</module>
     <module>java</module>
     <module>robovm</module>
+    <module>archetype</module>
+    <module>showcase</module>
   </modules>
+  
+  <profiles>
+    <profile>
+      <id>games</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+        <module>games</module>
+      </modules>
+    </profile>
+  </profiles>
+  
 </project>
