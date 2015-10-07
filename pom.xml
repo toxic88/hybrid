@@ -64,7 +64,7 @@
   <scm>
     <connection>scm:git:http://github.com/toxic88/own-finance.git</connection>
     <developerConnection>scm:git:http://github.com/toxic88/own-finance.git</developerConnection>
-    <url>https://github.com/toxic88/own-finance/tree/master/application/</url>
+    <url>https://github.com/toxic88/own-finance</url>
   </scm>
   <issueManagement>
     <system>Google Code</system>
@@ -797,17 +797,5 @@
     <module>archetype</module>
     <module>showcase</module>
   </modules>
-  
-  <profiles>
-    <profile>
-      <id>games</id>
-      <activation>
-        <activeByDefault>false</activeByDefault>
-      </activation>
-      <modules>
-        <module>games</module>
-      </modules>
-    </profile>
-  </profiles>
   
 </project>
