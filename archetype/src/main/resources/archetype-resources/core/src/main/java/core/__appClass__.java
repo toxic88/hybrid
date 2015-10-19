@@ -10,7 +10,7 @@ import tripleplay.util.Interpolator;
 
 import com.toxic.core.engine.DataProvider;
 import com.toxic.core.engine.animation.CustomAnimation;
-import com.toxic.core.engine.base.Backgound;
+import com.toxic.core.engine.base.Background;
 import com.toxic.core.engine.base.IApplication;
 import com.toxic.core.engine.base.IElement;
 import com.toxic.core.engine.base.IScene;
@@ -69,7 +69,7 @@ public class ${appClass} implements IApplication {
     ITextFormat format = DataProvider.createTextFormat(DataProvider.createFont("italic48", Style.ITALIC, 48),
       Alignment.CENTER);
     // format.setMargin(150f, 50f);
-    clipped.setTextFromat(format);
+    clipped.setTextFormat(format);
     clipped.drawText("some value${symbol_escape}ntest ${symbol_escape}nmore text!!!!!!");
     clipped.addSelectHandler(new SelectHandler() {
       private static final int MAX_RANGE = 700;
@@ -117,18 +117,19 @@ public class ${appClass} implements IApplication {
           private static final float RADIUS = 100;
 
           @Override
-          public void uppdate(float value) {
-            float radians = (float) (Math.PI * 10.0f * value);
-            float distanceXOrigin = (float) (Math.sqrt(value) * RADIUS);
-            float distanceYOrigin = (float) (Math.sqrt(value) * RADIUS);
-            elem.setRotation(radians);
-            elem.setOrigin(distanceXOrigin, -distanceYOrigin);
-            elem.setScale(1.0f + value);
-            if (value == 1.0f) {
-              elem.setPosition(elem.positionX() - distanceXOrigin, elem.positionY() + distanceYOrigin);
-              elem.setOrigin(0, 0);
-            }
+          public void update(float value) {
+              float radians = (float) (Math.PI * 10.0f * value);
+              float distanceXOrigin = (float) (Math.sqrt(value) * RADIUS);
+              float distanceYOrigin = (float) (Math.sqrt(value) * RADIUS);
+              elem.setRotation(radians);
+              elem.setOrigin(distanceXOrigin, -distanceYOrigin);
+              elem.setScale(1.0f + value);
+              if (value == 1.0f) {
+                  elem.setPosition(elem.positionX() - distanceXOrigin, elem.positionY() + distanceYOrigin);
+                  elem.setOrigin(0, 0);
+              }
           }
+          
         }, Interpolator.EASE_OUT_BACK, 5000);
         elem.addHoldHandler(new HoldHandler() {
 

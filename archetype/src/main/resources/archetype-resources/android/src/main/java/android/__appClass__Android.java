@@ -4,6 +4,7 @@
 package ${package}.android;
 
 import com.toxic.android.PlatfromAndroid;
+
 import ${package}.core.${appClass};
 
 
@@ -11,13 +12,17 @@ import ${package}.core.${appClass};
  * <p>Example of executing android application.</p>
  * <br/>
  * @author Strelock
- *
  */
 public class ${appClass}Android extends PlatfromAndroid {
 
   @Override
   public void setApplication() {
     this.application = new ${appClass}();
+  }
+  
+  @Override
+  public void start() {
+
   }
 
 }

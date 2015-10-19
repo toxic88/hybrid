@@ -30,12 +30,6 @@
         </dependency>
         
         <dependency>
-            <groupId>com.toxic</groupId>
-            <artifactId>html</artifactId>
-            <classifier>sources</classifier>
-        </dependency>
-        
-        <dependency>
             <groupId>${groupId}</groupId>
             <artifactId>${rootArtifactId}-assets</artifactId>
         </dependency>
