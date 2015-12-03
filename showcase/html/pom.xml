@@ -63,6 +63,7 @@
 
 	<build>
 		<finalName>${gwt.name}</finalName>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
         <defaultGoal>gwt:eclipse</defaultGoal>
 		<plugins>
 		    <plugin>
@@ -72,6 +73,9 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>gwt-maven-plugin</artifactId>
+				<configuration>
+					<hostedWebapp>${basedir}/target/classes</hostedWebapp>
+				</configuration>
 				<executions>
 					<execution>
 						<phase>prepare-package</phase>
